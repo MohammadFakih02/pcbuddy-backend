@@ -82,3 +82,49 @@ model GPU {
   externalPower          String?
   personalPCs            PersonalPC[]
 }
+model Memory {
+  id                 Int      @id @default(autoincrement())
+  name               String
+  imageUrl           String?
+  productUrl         String?
+  price              Float?
+  manufacturer       String?
+  speed              String?
+  formFactor         String?
+  modules            Int?
+  pricePerGb         Float?
+  color              String?
+  firstWordLatency   Float?
+  casLatency         Float?
+  voltage            Float?
+  timing             String?
+  heatSpreader       Boolean?
+  specsNumber        String?
+  personalPCs        PersonalPC[]
+}
+
+model Motherboard {
+  id                   Int      @id @default(autoincrement())
+  name                 String
+  imageUrl             String?
+  productUrl           String?
+  price                Float?
+  manufacturer         String?
+  chipset              String?
+  memoryMax            Int?
+  memoryType           String?
+  memorySlots          Int?
+  memorySpeed          String?
+  pcieX16Slots         Int?
+  m2Slots              Int?
+  sata6Gbps            Int?
+  onboardEthernet      Boolean?
+  usb20Headers         Int?
+  usb32Gen1Headers     Int?
+  usb32Gen2Headers     Int?
+  usb32Gen2x2Headers   Int?
+  wirelessNetworking   Boolean?
+  socket               String?
+  formFactor           String?
+  personalPCs          PersonalPC[]
+}
