@@ -140,3 +140,26 @@ model PowerSupply {
   color      String?
   personalPCs PersonalPC[]
 }
+
+model Storage {
+  id           Int      @id @default(autoincrement())
+  name         String
+  type         String?
+  imageUrl     String?
+  productUrl   String?
+  price        Float?
+  manufacturer String?
+  capacity     String?
+  cache        String?
+  formFactor   String?
+  personalPCs  PersonalPC[]
+}
+
+model User {
+  id           Int          @id @default(autoincrement())
+  username     String       @unique
+  email        String       @unique
+  password     String
+  createdAt    DateTime     @default(now())
+  personalPCs  PersonalPC[]
+}
