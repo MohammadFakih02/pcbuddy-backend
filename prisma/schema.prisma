@@ -128,3 +128,15 @@ model Motherboard {
   formFactor           String?
   personalPCs          PersonalPC[]
 }
+
+model PowerSupply {
+  id         Int      @id @default(autoincrement())
+  name       String
+  price      Float?
+  type       String?
+  efficiency String?
+  wattage    Int?
+  modular    Boolean?
+  color      String?
+  personalPCs PersonalPC[]
+}
