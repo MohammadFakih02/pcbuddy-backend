@@ -32,8 +32,7 @@ model Cpu {
   l3Cache                   String?
   tdp                       Int?
   integratedGraphics        String?
-  maxSupportedMemory        String?
-  includesCooler            Boolean?
+  maxSupportedMemory        Int?
   simultaneousMultithreading Boolean?
   personalPCs               PersonalPC[]
 }
@@ -67,6 +66,7 @@ model Gpu {
   productUrl             String?
   price                  Float?
   manufacturer           String?
+  partNumber             String?
   chipset                String?
   memory                 String?
   memoryType             String?
