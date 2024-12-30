@@ -20,7 +20,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Asus ROG STRIX B650-A GAMING WIFI",
@@ -43,7 +43,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"MSI B760 GAMING PLUS WIFI",
@@ -66,7 +66,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"LGA1700",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"MSI B550 GAMING GEN3",
@@ -89,7 +89,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"AM4",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"MSI PRO Z790-A MAX WIFI",
@@ -112,7 +112,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 7",
         "socket":"LGA1700",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Gigabyte B650 GAMING X AX",
@@ -135,7 +135,7 @@
         "usb32Gen2x2Headers":1,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"MSI MAG B650 TOMAHAWK WIFI",
@@ -158,7 +158,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"MSI B450M-A PRO MAX II",
@@ -181,7 +181,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"AM4",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"ASRock B650M Pro RS WiFi",
@@ -204,7 +204,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"Asus PRIME B550M-A WIFI II",
@@ -227,7 +227,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6",
         "socket":"AM4",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"ASRock B660M Pro RS",
@@ -250,7 +250,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"LGA1700",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"MSI PRO B650M-P",
@@ -273,7 +273,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"AM5",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"MSI PRO Z790-P WIFI",
@@ -296,7 +296,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"LGA1700",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"MSI PRO B650M-A WIFI",
@@ -319,7 +319,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"MSI MAG X670E TOMAHAWK WIFI",
@@ -342,7 +342,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Asus TUF GAMING Z790-PRO WIFI",
@@ -365,7 +365,7 @@
         "usb32Gen2x2Headers":1,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"LGA1700",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Asus ROG STRIX B550-F GAMING WIFI II",
@@ -388,7 +388,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6",
         "socket":"AM4",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"MSI MAG B550 TOMAHAWK MAX WIFI",
@@ -411,7 +411,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6",
         "socket":"AM4",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Gigabyte B550M K",
@@ -434,7 +434,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"AM4",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"ASRock B650I Lightning Wifi",
@@ -457,7 +457,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"Mini ITX"
+        "formFactor":"Mini ITX"
     },
     {
         "name":"MSI B550M PRO-VDH WIFI",
@@ -480,7 +480,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 5",
         "socket":"AM4",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"Asus ROG STRIX B650E-F GAMING WIFI",
@@ -503,7 +503,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Gigabyte B650 AORUS ELITE AX ICE",
@@ -526,7 +526,7 @@
         "usb32Gen2x2Headers":1,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Gigabyte B650 EAGLE AX",
@@ -549,7 +549,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Asus ROG MAXIMUS Z790 DARK HERO",
@@ -572,7 +572,7 @@
         "usb32Gen2x2Headers":1,
         "wirelessNetworking":"Wi-Fi 7",
         "socket":"LGA1700",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"MSI PRO B650-S WIFI",
@@ -595,7 +595,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Asus Prime B450M-A II",
@@ -618,7 +618,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"AM4",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"Asus ROG STRIX Z790-A GAMING WIFI II",
@@ -641,7 +641,7 @@
         "usb32Gen2x2Headers":1,
         "wirelessNetworking":"Wi-Fi 7",
         "socket":"LGA1700",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"MSI PRO B550M-VC WIFI",
@@ -664,7 +664,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM4",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"MSI MAG Z790 TOMAHAWK WIFI",
@@ -687,7 +687,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"LGA1700",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Gigabyte B650 AORUS ELITE AX",
@@ -710,7 +710,7 @@
         "usb32Gen2x2Headers":1,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Asus PRIME B760-PLUS",
@@ -733,7 +733,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"LGA1700",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Gigabyte TRX40 AORUS XTREME",
@@ -756,7 +756,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6",
         "socket":"sTRX4",
-        "form_factor":"XL ATX"
+        "formFactor":"XL ATX"
     },
     {
         "name":"Asus TUF GAMING B650-PLUS WIFI",
@@ -779,7 +779,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6",
         "socket":"AM5",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"MSI B550-A PRO",
@@ -802,7 +802,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"AM4",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Gigabyte X670E AORUS PRO X",
@@ -825,7 +825,7 @@
         "usb32Gen2x2Headers":1,
         "wirelessNetworking":"Wi-Fi 7",
         "socket":"AM5",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Gigabyte Z790 AORUS ELITE AX",
@@ -848,7 +848,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"LGA1700",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"MSI PRO B760-P WIFI DDR4",
@@ -871,7 +871,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"LGA1700",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Asus ROG STRIX Z790-E GAMING WIFI II",
@@ -894,7 +894,7 @@
         "usb32Gen2x2Headers":1,
         "wirelessNetworking":"Wi-Fi 7",
         "socket":"LGA1700",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Gigabyte B550 UD AC",
@@ -917,7 +917,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 5",
         "socket":"AM4",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"ASRock B450M-HDV R4.0",
@@ -940,7 +940,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"AM4",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"MSI PRO A620M-E",
@@ -963,7 +963,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"AM5",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"MSI PRO H610M-G DDR4",
@@ -986,7 +986,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"LGA1700",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"MSI B450M PRO-VDH MAX",
@@ -1009,7 +1009,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"AM4",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"Asus ROG STRIX B650E-I GAMING WIFI",
@@ -1032,7 +1032,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"Mini ITX"
+        "formFactor":"Mini ITX"
     },
     {
         "name":"ASRock B760M-HDV\/M.2",
@@ -1055,7 +1055,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"LGA1700",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"ASRock B450M\/ac R2.0",
@@ -1078,7 +1078,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 5",
         "socket":"AM4",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"MSI PRO Z690-A WIFI",
@@ -1101,7 +1101,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6",
         "socket":"LGA1700",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"ASRock B650M Pro RS",
@@ -1124,7 +1124,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"AM5",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"ASRock B550M Pro4",
@@ -1147,7 +1147,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"AM4",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"Asus TUF GAMING B550-PLUS WIFI II",
@@ -1170,7 +1170,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6",
         "socket":"AM4",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Gigabyte B760M DS3H DDR4",
@@ -1193,7 +1193,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"LGA1700",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"Gigabyte A520I AC",
@@ -1216,7 +1216,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 5",
         "socket":"AM4",
-        "form_factor":"Mini ITX"
+        "formFactor":"Mini ITX"
     },
     {
         "name":"Asus ROG STRIX B760-I GAMING WIFI",
@@ -1239,7 +1239,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"LGA1700",
-        "form_factor":"Mini ITX"
+        "formFactor":"Mini ITX"
     },
     {
         "name":"Asus ROG STRIX B550-A GAMING",
@@ -1262,7 +1262,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"AM4",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Gigabyte B650M D3HP",
@@ -1285,7 +1285,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"AM5",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"Asus TUF GAMING A520M-PLUS WIFI",
@@ -1308,7 +1308,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 5",
         "socket":"AM4",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"ASRock B650M-HDV\/M.2",
@@ -1331,7 +1331,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"AM5",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"Asus ROG STRIX X670E-E GAMING WIFI",
@@ -1354,7 +1354,7 @@
         "usb32Gen2x2Headers":1,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"MSI PRO B650-P WIFI",
@@ -1377,7 +1377,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"ASRock Z690M-ITX\/ax",
@@ -1400,7 +1400,7 @@
         "usb32Gen2x2Headers":1,
         "wirelessNetworking":"Wi-Fi 6",
         "socket":"LGA1700",
-        "form_factor":"Mini ITX"
+        "formFactor":"Mini ITX"
     },
     {
         "name":"NZXT N7 B650E",
@@ -1423,7 +1423,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"NZXT N7 B650E",
@@ -1446,7 +1446,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Gigabyte B450M DS3H WIFI",
@@ -1469,7 +1469,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 5",
         "socket":"AM4",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"Asus TUF GAMING X570-PLUS (WI-FI)",
@@ -1492,7 +1492,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 5",
         "socket":"AM4",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Gigabyte B550 AORUS ELITE AX V2",
@@ -1515,7 +1515,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6",
         "socket":"AM4",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Gigabyte B650 GAMING X AX V2",
@@ -1538,7 +1538,7 @@
         "usb32Gen2x2Headers":1,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"MSI MPG B550 GAMING PLUS",
@@ -1561,7 +1561,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"AM4",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Asus ROG MAXIMUS Z790 FORMULA",
@@ -1584,7 +1584,7 @@
         "usb32Gen2x2Headers":1,
         "wirelessNetworking":"Wi-Fi 7",
         "socket":"LGA1700",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Gigabyte B450M K",
@@ -1607,7 +1607,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"AM4",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"ASRock B760M-H\/M.2",
@@ -1630,7 +1630,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"LGA1700",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"ASRock A520M-HDV",
@@ -1653,7 +1653,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"AM4",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"Asus TUF GAMING X670E-PLUS WIFI",
@@ -1676,7 +1676,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Gigabyte B650I AORUS ULTRA",
@@ -1699,7 +1699,7 @@
         "usb32Gen2x2Headers":1,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"Mini ITX"
+        "formFactor":"Mini ITX"
     },
     {
         "name":"MSI MPG B650I EDGE WIFI",
@@ -1722,7 +1722,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"Mini ITX"
+        "formFactor":"Mini ITX"
     },
     {
         "name":"MSI X670E GAMING PLUS WIFI",
@@ -1745,7 +1745,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Asus ROG STRIX Z690-E GAMING WIFI",
@@ -1768,7 +1768,7 @@
         "usb32Gen2x2Headers":1,
         "wirelessNetworking":"Wi-Fi 6",
         "socket":"LGA1700",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Gigabyte Z790 AORUS PRO X",
@@ -1791,7 +1791,7 @@
         "usb32Gen2x2Headers":1,
         "wirelessNetworking":"Wi-Fi 7",
         "socket":"LGA1700",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Asus ROG STRIX Z690-I GAMING WIFI",
@@ -1814,7 +1814,7 @@
         "usb32Gen2x2Headers":1,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"LGA1700",
-        "form_factor":"Mini ITX"
+        "formFactor":"Mini ITX"
     },
     {
         "name":"MSI MAG B550 TOMAHAWK",
@@ -1837,7 +1837,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"AM4",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Asus ROG STRIX Z790-E GAMING WIFI",
@@ -1860,7 +1860,7 @@
         "usb32Gen2x2Headers":1,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"LGA1700",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"Gigabyte B650M AORUS ELITE AX",
@@ -1883,7 +1883,7 @@
         "usb32Gen2x2Headers":1,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"Gigabyte A620I AX",
@@ -1906,7 +1906,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"Mini ITX"
+        "formFactor":"Mini ITX"
     },
     {
         "name":"ASRock A620I LIGHTNING WIFI",
@@ -1929,7 +1929,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM5",
-        "form_factor":"Mini ITX"
+        "formFactor":"Mini ITX"
     },
     {
         "name":"Gigabyte B550 GAMING X V2",
@@ -1952,7 +1952,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"AM4",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     },
     {
         "name":"MSI PRO B760M-P DDR4",
@@ -1975,7 +1975,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"LGA1700",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"Gigabyte B550M DS3H AC",
@@ -1998,7 +1998,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 5",
         "socket":"AM4",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"ASRock B650M-H\/M.2+",
@@ -2021,7 +2021,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"AM5",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"Gigabyte H410M H V2",
@@ -2044,7 +2044,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":null,
         "socket":"LGA1200",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"ASRock B550M-ITX\/ac",
@@ -2067,7 +2067,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 5",
         "socket":"AM4",
-        "form_factor":"Mini ITX"
+        "formFactor":"Mini ITX"
     },
     {
         "name":"Gigabyte B550M AORUS ELITE AX",
@@ -2090,7 +2090,7 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"AM4",
-        "form_factor":"Micro ATX"
+        "formFactor":"Micro ATX"
     },
     {
         "name":"MSI MEG Z790 GODLIKE MAX",
@@ -2113,7 +2113,7 @@
         "usb32Gen2x2Headers":2,
         "wirelessNetworking":"Wi-Fi 7",
         "socket":"LGA1700",
-        "form_factor":"EATX"
+        "formFactor":"EATX"
     },
     {
         "name":"Asus TUF GAMING Z790-PLUS WIFI",
@@ -2136,6 +2136,6 @@
         "usb32Gen2x2Headers":0,
         "wirelessNetworking":"Wi-Fi 6E",
         "socket":"LGA1700",
-        "form_factor":"ATX"
+        "formFactor":"ATX"
     }
 ]
