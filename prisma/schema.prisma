@@ -163,3 +163,24 @@ model User {
   createdAt    DateTime     @default(now())
   personalPCs  PersonalPC[]
 }
+
+model PersonalPC {
+  id            Int      @id @default(autoincrement())
+  userId        Int      @unique
+  user          User     @relation(fields: [userId], references: [id])
+  cpuId         Int?     @default(0)
+  gpuId         Int?     @default(0)
+  memoryId      Int?     @default(0)
+  motherboardId Int?     @default(0)
+  powerSupplyId Int?     @default(0)
+  storageId     Int?     @default(0)
+  caseId        Int?     @default(0)
+  cpu           CPU?     @relation(fields: [cpuId], references: [id])
+  gpu           GPU?     @relation(fields: [gpuId], references: [id])
+  memory        Memory?  @relation(fields: [memoryId], references: [id])
+  motherboard   Motherboard? @relation(fields: [motherboardId], references: [id])
+  powerSupply   PowerSupply? @relation(fields: [powerSupplyId], references: [id])
+  storage       Storage? @relation(fields: [storageId], references: [id])
+  case          Case?    @relation(fields: [caseId], references: [id])
+  totalPrice    Float?   @default(0)
+}
