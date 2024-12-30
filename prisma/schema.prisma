@@ -131,7 +131,6 @@ model Memory {
   price              Float?
   manufacturer       String?
   speed              String?
-  formFactor         String?
   modules            String?
   pricePerGb         Float?
   color              String?
@@ -146,6 +145,8 @@ model Memory {
 model PowerSupply {
   id                              Int      @id @default(autoincrement())
   name                            String
+  imageUrl                        String?
+  productUrl                      String?
   price                           Float?
   type                            String?
   efficiency                      String?
