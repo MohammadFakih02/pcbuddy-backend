@@ -130,16 +130,30 @@ model Motherboard {
 }
 
 model PowerSupply {
-  id         Int      @id @default(autoincrement())
-  name       String
-  price      Float?
-  type       String?
-  efficiency String?
-  wattage    Int?
-  modular    Boolean?
-  color      String?
-  personalPCs PersonalPC[]
+  id                              Int      @id @default(autoincrement())
+  name                            String
+  price                           Float?
+  type                            String?
+  efficiency                      String?
+  wattage                         Int?
+  modular                         Boolean?
+  color                           String?
+  manufacturer                    String?
+  partNumber                      String?
+  length                          Int?
+  atx4PinConnectors               Int?
+  eps8PinConnectors               Int?
+  pcie12Plus4Pin12VHPWRConnectors Int?
+  pcie12PinConnectors             Int?
+  pcie8PinConnectors              Int?
+  pcie6Plus2PinConnectors         Int?
+  pcie6PinConnectors              Int?
+  sataConnectors                  Int?
+  molex4PinConnectors             Int? 
+  specsNumber                     String?
+  personalPCs                     PersonalPC[]
 }
+
 
 model Storage {
   id           Int      @id @default(autoincrement())
