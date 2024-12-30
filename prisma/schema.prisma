@@ -59,3 +59,26 @@ model Case {
   dimensions            String?
   personalPCs           PersonalPC[]
 }
+
+model GPU {
+  id                     Int      @id @default(autoincrement())
+  name                   String
+  imageUrl               String?
+  productUrl             String?
+  price                  Float?
+  manufacturer           String?
+  chipset                String?
+  memory                 String?
+  memoryType             String?
+  coreClock              Float?
+  boostClock             Float?
+  effectiveMemoryClock   Float?
+  color                  String?
+  frameSync              String?
+  length                 Int?
+  tdp                    Int?
+  caseExpansionSlotWidth Int?
+  totalSlotWidth         Int?
+  externalPower          String?
+  personalPCs            PersonalPC[]
+}
