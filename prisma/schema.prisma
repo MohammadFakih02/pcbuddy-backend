@@ -13,7 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model CPU {
+model Cpu {
   id                        Int      @id @default(autoincrement())
   name                      String
   imageUrl                  String?
@@ -60,7 +60,7 @@ model Case {
   personalPCs           PersonalPC[]
 }
 
-model GPU {
+model Gpu {
   id                     Int      @id @default(autoincrement())
   name                   String
   imageUrl               String?
@@ -189,8 +189,8 @@ model PersonalPC {
   powerSupplyId Int?     @default(0)
   storageId     Int?     @default(0)
   caseId        Int?     @default(0)
-  cpu           CPU?     @relation(fields: [cpuId], references: [id])
-  gpu           GPU?     @relation(fields: [gpuId], references: [id])
+  cpu           Cpu?     @relation(fields: [cpuId], references: [id])  // Updated reference to Cpu
+  gpu           Gpu?     @relation(fields: [gpuId], references: [id])  // Updated reference to Gpu
   memory        Memory?  @relation(fields: [memoryId], references: [id])
   motherboard   Motherboard? @relation(fields: [motherboardId], references: [id])
   powerSupply   PowerSupply? @relation(fields: [powerSupplyId], references: [id])
@@ -198,3 +198,4 @@ model PersonalPC {
   case          Case?    @relation(fields: [caseId], references: [id])
   totalPrice    Float?   @default(0)
 }
+
