@@ -12,3 +12,50 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model CPU {
+  id                        Int      @id @default(autoincrement())
+  name                      String
+  imageUrl                  String?
+  productUrl                String?
+  price                     Float?
+  manufacturer              String?
+  series                    String?
+  microarchitecture         String?
+  socket                    String?
+  coreCount                 Int?
+  performanceCoreClock      Float?
+  performanceCoreBoostClock Float?
+  efficiencyCoreClock       Float?
+  efficiencyCoreBoostClock  Float?
+  l2Cache                   String?
+  l3Cache                   String?
+  tdp                       Int?
+  integratedGraphics        String?
+  maxSupportedMemory        String?
+  includesCooler            Boolean?
+  simultaneousMultithreading Boolean?
+  personalPCs               PersonalPC[]
+}
+
+model Case {
+  id                    Int      @id @default(autoincrement())
+  name                  String
+  imageUrl              String?
+  productUrl            String?
+  price                 Float?
+  manufacturer          String?
+  partNumber            String?
+  type                  String?
+  color                 String?
+  powerSupply           String?
+  sidePanel             String?
+  powerSupplyShroud     Boolean?
+  frontPanelUsb         String?
+  motherboardFormFactor String?
+  maxVideoCardLength    Int?
+  driveBays             String?
+  expansionSlots        String?
+  dimensions            String?
+  personalPCs           PersonalPC[]
+}
