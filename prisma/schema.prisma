@@ -168,16 +168,6 @@ model PowerSupply {
   personalPCs                     PersonalPC[]
 }
 
-
-model User {
-  id           Int          @id @default(autoincrement())
-  username     String       @unique
-  email        String       @unique
-  password     String
-  createdAt    DateTime     @default(now())
-  personalPCs  PersonalPC[]
-}
-
 model PersonalPC {
   id            Int      @id @default(autoincrement())
   userId        Int      @unique
@@ -199,3 +189,20 @@ model PersonalPC {
   totalPrice    Float?   @default(0)
 }
 
+model User {
+  id         Int      @id @default(autoincrement())
+  username   String   @unique
+  email      String   @unique
+  password   String
+  createdAt  DateTime @default(now())
+  personalPCs  PersonalPC[]
+  refreshTokens RefreshToken[]
+}
+
+model RefreshToken {
+  id         Int      @id @default(autoincrement())
+  token      String   @unique
+  userId     Int
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
+}
