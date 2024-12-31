@@ -30,4 +30,28 @@ export const userController = new Elysia()
         return error;
       }
     }
+  )
+  .put(
+    '/profile',
+    async ({ body, jwt, set }) => {
+      const payload = await isAuthenticated({ jwt, set });
+      if (set.status === 401) {
+        return 'Unauthorized';
+      }
+
+      try {
+        const updatedUser = await userService.updateProfile(payload.userId, body);
+        return updatedUser;
+      } catch (error) {
+        set.status = 400;
+        return error;
+      }
+    },
+    {
+      body: t.Object({
+        username: t.String(),
+        email: t.String(),
+        password: t.String()
+      })
+    }
   );
