@@ -19,7 +19,6 @@ export class AuthService {
     }
 
     const hashedPassword = await hashPassword(data.password)
-
     const user = await prisma.user.create({
       data: {
         username: data.username,
@@ -52,36 +51,5 @@ export class AuthService {
     }
 
     return user
-  }
-
-  async createRefreshToken(userId: number) {
-    const token = crypto.randomUUID()
-    await prisma.refreshToken.create({
-      data: {
-        token,
-        userId
-      }
-    })
-
-    return token
-  }
-
-  async validateRefreshToken(token: string) {
-    const refreshToken = await prisma.refreshToken.findUnique({
-      where: { token },
-      include: { user: true }
-    })
-
-    if (!refreshToken) {
-      throw new Error('Invalid refresh token')
-    }
-
-    return refreshToken.user
-  }
-
-  async revokeRefreshToken(token: string) {
-    await prisma.refreshToken.delete({
-      where: { token }
-    })
   }
 }

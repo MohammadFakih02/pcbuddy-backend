@@ -1,4 +1,3 @@
-
 export const hashPassword = async (password: string): Promise<string> => {
   return await Bun.password.hash(password, {
     algorithm: "bcrypt",

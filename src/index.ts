@@ -1,7 +1,9 @@
-import { Elysia } from "elysia";
+import { Elysia } from 'elysia'
+import { authController } from './controller/auth.controller'
+import { env } from './config/env'
 
-const app = new Elysia().get("/", () => "Hello Elysia").listen(3000);
+const app = new Elysia()
+  .use(authController)
+  .listen(env.PORT)
 
-console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
-);
+  console.log("Hello")
