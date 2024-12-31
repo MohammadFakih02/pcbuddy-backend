@@ -45,4 +45,29 @@ export class UserService {
 
     return userProfile;
   }
+  async updateProfile(userId: number, updateData: { username?: string; email?: string }) {
+    const existingUser = await prisma.user.findFirst({
+      where: {
+        OR: [
+          { username: updateData.username },
+          { email: updateData.email }
+        ]
+      }
+    });
+
+    if (existingUser) {
+      throw new Error('Username or email already in use');
+    }
+
+    const updatedUser = await prisma.user.update({
+      where: { id: userId },
+      data: {
+        username: updateData.username,
+        email: updateData.email
+      }
+    });
+
+    return updatedUser;
+  }
+
 }

@@ -27,7 +27,7 @@ export const userController = new Elysia()
         return userProfile;
       } catch (error) {
         set.status = 404;
-        return "error: user not found";
+        return error;
       }
     }
   );
