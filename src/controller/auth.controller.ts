@@ -42,13 +42,3 @@ export const authController = new Elysia()
       })
     }
   )
-  .get(
-    '/protected',
-    async ({ jwt }) => {
-      const payload = await jwt.verify()
-      if (!payload) {
-        throw new Error('Unauthorized')
-      }
-      return { message: 'This is a protected route', userId: payload.userId }
-    }
-  )
