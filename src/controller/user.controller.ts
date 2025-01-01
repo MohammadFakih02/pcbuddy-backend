@@ -40,9 +40,9 @@ export const userController = new Elysia()
       }
 
       try {
-        if (!body.username && !body.email) {
+        if (!body.username && !body.email && !body.preferences && !body.profilePicture) {
           set.status = 400
-          return { message: 'At least one field (username or email) is required' }
+          return { message: 'At least one field (username, email, preferences, or profilePicture) is required' }
         }
 
         const updatedUser = await userService.updateProfile(payload.userId, body)
@@ -55,7 +55,53 @@ export const userController = new Elysia()
     {
       body: t.Object({
         username: t.Optional(t.String()),
-        email: t.Optional(t.String())
+        email: t.Optional(t.String()),
+        preferences: t.Optional(t.String()),
+        profilePicture: t.Optional(t.String())
+      })
+    }
+  )
+  .patch(
+    '/profile/picture',
+    async ({ body, jwt, set }) => {
+      const payload = await isAuthenticated({ jwt, set })
+      if (set.status === 401) {
+        return { message: 'Unauthorized' }
+      }
+
+      try {
+        const updatedUser = await userService.updateProfilePicture(payload.userId, body.profilePicture)
+        return updatedUser
+      } catch (error) {
+        set.status = 400
+        return { message: error instanceof Error ? error.message : 'An unexpected error occurred' }
+      }
+    },
+    {
+      body: t.Object({
+        profilePicture: t.String()
+      })
+    }
+  )
+  .patch(
+    '/profile/preferences',
+    async ({ body, jwt, set }) => {
+      const payload = await isAuthenticated({ jwt, set })
+      if (set.status === 401) {
+        return { message: 'Unauthorized' }
+      }
+
+      try {
+        const updatedUser = await userService.updatePreferences(payload.userId, body.preferences)
+        return updatedUser
+      } catch (error) {
+        set.status = 400
+        return { message: error instanceof Error ? error.message : 'An unexpected error occurred' }
+      }
+    },
+    {
+      body: t.Object({
+        preferences: t.String()
       })
     }
   )
