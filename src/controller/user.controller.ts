@@ -3,6 +3,8 @@
   import { Elysia, t } from 'elysia'
   import { jwt } from '@elysiajs/jwt'
   import { JWT_CONFIG } from '../config/jwt'
+  import { saveFile } from '../utils/file'
+
 
   const userService = new UserService()
 
@@ -21,7 +23,7 @@
         if (set.status === 401) {
           return { message: 'Unauthorized' }
         }
-
+  
         try {
           const userProfile = await userService.getProfile(payload.userId)
           return userProfile
@@ -38,13 +40,13 @@
         if (set.status === 401) {
           return { message: 'Unauthorized' }
         }
-
+  
         try {
-          if (!body.username && !body.email && !body.preferences && !body.profilePicture) {
+          if (!body.username && !body.email && !body.preferences) {
             set.status = 400
-            return { message: 'At least one field (username, email, preferences, or profilePicture) is required' }
+            return { message: 'At least one field (username, email, or preferences) is required' }
           }
-
+  
           const updatedUser = await userService.updateProfile(payload.userId, body)
           return updatedUser
         } catch (error) {
@@ -56,30 +58,32 @@
         body: t.Object({
           username: t.Optional(t.String()),
           email: t.Optional(t.String()),
-          preferences: t.Optional(t.String()),
-          profilePicture: t.Optional(t.String())
+          preferences: t.Optional(t.String())
         })
       }
     )
-    .patch(
+    .post(
       '/profile/picture',
-      async ({ body, jwt, set }) => {
+      async ({ body: { file }, jwt, set }) => {
         const payload = await isAuthenticated({ jwt, set })
         if (set.status === 401) {
           return { message: 'Unauthorized' }
         }
-
+  
         try {
-          const updatedUser = await userService.updateProfilePicture(payload.userId, body.profilePicture)
+          const profilePictureUrl = await saveFile(file)
+  
+          const updatedUser = await userService.updateProfilePicture(payload.userId, profilePictureUrl)
+  
           return updatedUser
         } catch (error) {
           set.status = 400
-          return { message: error instanceof Error ? error.message : 'An unexpected error occurred' }
+          return { message: error instanceof Error ? error.message : 'Failed to upload profile picture' }
         }
       },
       {
         body: t.Object({
-          profilePicture: t.String()
+          file: t.File()
         })
       }
     )
