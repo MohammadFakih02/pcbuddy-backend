@@ -3,6 +3,7 @@ import { jwt } from '@elysiajs/jwt'
 import { AuthService } from '../services/auth.service'
 import { JWT_CONFIG } from '../config/jwt'
 import { z } from 'zod'
+import { validatePassword } from '../utils/password'
 
 const authService = new AuthService()
 
@@ -24,6 +25,13 @@ export const authController = new Elysia()
           set.status = 400
           return { message: 'Invalid email format' }
         }
+  
+        const passwordError = validatePassword(body.password)
+        if (passwordError) {
+          set.status = 400
+          return { message: passwordError }
+        }
+  
 
         const user = await authService.register(body)
         const accessToken = await jwt.sign({ userId: user.id })
