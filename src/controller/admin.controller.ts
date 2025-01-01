@@ -63,4 +63,25 @@ export const adminController = new Elysia()
         banned: t.Boolean(),
       }),
     }
+  ).patch(
+    '/admin/users/:id/make-admin',
+    async ({ params: { id }, jwt, set, request }) => {
+      const payload = await isAuthenticated({ jwt, set, request })
+      if (set.status === 401) {
+        return { message: 'Unauthorized' }
+      }
+
+      if (!await isAdmin(payload.userId)) {
+        set.status = 403
+        return { message: 'Forbidden: Admin access required' }
+      }
+
+      try {
+        const user = await adminService.makeAdmin(Number(id))
+        return user
+      } catch (error) {
+        set.status = 400
+        return { message: error instanceof Error ? error.message : 'Failed to make user admin' }
+      }
+    }
   )
