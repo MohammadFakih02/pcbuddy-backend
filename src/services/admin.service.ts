@@ -68,4 +68,24 @@ export class AdminService {
       data: partData,
     })
   }
+  async deletePart(partType: PartType, partId: number) {
+    const modelMap = {
+      cpu: prisma.cpu,
+      gpu: prisma.gpu,
+      memory: prisma.memory,
+      storage: prisma.storage,
+      motherboard: prisma.motherboard,
+      powerSupply: prisma.powerSupply,
+      case: prisma.case,
+    }
+
+    const model = modelMap[partType]
+    if (!model) {
+      throw new Error('Invalid part type')
+    }
+
+    return await (model as any).delete({
+      where: { id: partId },
+    })
+  }
 }
