@@ -10,31 +10,34 @@ const userService = new UserService();
 export const userController = new Elysia()
   .use(
     jwt({
-      name: "jwt",
+      name: 'jwt',
       secret: JWT_CONFIG.secret,
-      exp: JWT_CONFIG.accessTokenExp,
+      exp: JWT_CONFIG.accessTokenExp
     })
   )
-  .get("/profile", async ({ jwt, set }) => {
-    const payload = await isAuthenticated({ jwt, set });
-    if (set.status === 401) {
-      return { message: "Unauthorized" };
-    }
+  // Get user profile
+  .get(
+    '/profile',
+    async ({ jwt, set, request }) => {
+      const payload = await isAuthenticated({ jwt, set, request });
+      if (set.status === 401) {
+        return { message: 'Unauthorized' };
+      }
 
-    try {
-      const userProfile = await userService.getProfile(payload.userId);
-      return userProfile;
-    } catch (error) {
-      set.status = 404;
-      return {
-        message: error instanceof Error ? error.message : "User not found",
-      };
+      try {
+        const userProfile = await userService.getProfile(payload.userId);
+        return userProfile;
+      } catch (error) {
+        set.status = 404;
+        return { message: error instanceof Error ? error.message : 'User not found' };
+      }
     }
-  })
+  )
+  // Update user profile (username, email, preferences)
   .put(
     "/profile",
-    async ({ body, jwt, set }) => {
-      const payload = await isAuthenticated({ jwt, set });
+    async ({ body, jwt, set, request }) => {
+      const payload = await isAuthenticated({ jwt, set, request });
       if (set.status === 401) {
         return { message: "Unauthorized" };
       }
@@ -71,10 +74,11 @@ export const userController = new Elysia()
       }),
     }
   )
+  // Update profile picture
   .post(
     "/profile/picture",
-    async ({ body: { file }, jwt, set }) => {
-      const payload = await isAuthenticated({ jwt, set });
+    async ({ body: { file }, jwt, set, request }) => {
+      const payload = await isAuthenticated({ jwt, set, request });
       if (set.status === 401) {
         return { message: "Unauthorized" };
       }
@@ -104,10 +108,11 @@ export const userController = new Elysia()
       }),
     }
   )
+  // Update user preferences
   .patch(
     "/profile/preferences",
-    async ({ body, jwt, set }) => {
-      const payload = await isAuthenticated({ jwt, set });
+    async ({ body, jwt, set, request }) => {
+      const payload = await isAuthenticated({ jwt, set, request });
       if (set.status === 401) {
         return { message: "Unauthorized" };
       }
