@@ -6,7 +6,7 @@ import { JWT_CONFIG } from '../config/jwt'
 import { jwt } from '@elysiajs/jwt'
 
 const adminService = new AdminService()
-
+type PartType = 'cpu' | 'gpu' | 'memory' | 'storage' | 'motherboard' | 'powerSupply' | 'case'
 export const adminController = new Elysia()
   .use(
     jwt({
@@ -83,5 +83,34 @@ export const adminController = new Elysia()
         set.status = 400
         return { message: error instanceof Error ? error.message : 'Failed to make user admin' }
       }
+    }
+  ).post(
+    '/admin/parts/:type',
+    async ({ params: { type }, body, jwt, set, request }) => {
+      const payload = await isAuthenticated({ jwt, set, request })
+      if (set.status === 401) {
+        return { message: 'Unauthorized' }
+      }
+
+      if (!await isAdmin(payload.userId)) {
+        set.status = 403
+        return { message: 'Forbidden: Admin access required' }
+      }
+
+      try {
+        if (!['cpu', 'gpu', 'memory', 'storage', 'motherboard', 'powerSupply', 'case'].includes(type)) {
+          set.status = 400
+          return { message: 'Invalid part type' }
+        }
+
+        const part = await adminService.addPart(type as PartType, body)
+        return part
+      } catch (error) {
+        set.status = 400
+        return { message: error instanceof Error ? error.message : 'Failed to add part' }
+      }
+    },
+    {
+      body: t.Object({}),
     }
   )
