@@ -193,6 +193,8 @@ model User {
   id         Int      @id @default(autoincrement())
   username   String   @unique
   email      String   @unique
+  preferences   String?
+  profilePicture String?
   password   String
   createdAt  DateTime @default(now())
   personalPCs  PersonalPC[]
