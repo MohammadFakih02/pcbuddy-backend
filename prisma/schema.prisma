@@ -189,10 +189,15 @@ model PersonalPC {
   totalPrice    Float?   @default(0)
 }
 
+enum Role {
+  USER
+  ADMIN
+}
 model User {
   id         Int      @id @default(autoincrement())
   username   String   @unique
   email      String   @unique
+  role          Role     @default(USER) 
   preferences   String?
   profilePicture String?
   password   String
