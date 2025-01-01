@@ -13,4 +13,17 @@ export class AdminService {
       },
     })
   }
+  async banUser(userId: number, banned: boolean) {
+    return await prisma.user.update({
+      where: { id: userId },
+      data: { banned },
+    })
+  }
+
+  async makeAdmin(userId: number) {
+    return await prisma.user.update({
+      where: { id: userId },
+      data: { role: Role.ADMIN },
+    })
+  }
 }

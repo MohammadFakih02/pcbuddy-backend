@@ -200,6 +200,7 @@ model User {
   role          Role     @default(USER) 
   preferences   String?
   profilePicture String?
+  banned        Boolean  @default(false)
   password   String
   createdAt  DateTime @default(now())
   personalPCs  PersonalPC[]
