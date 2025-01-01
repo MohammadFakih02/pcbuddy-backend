@@ -74,7 +74,6 @@ export const userController = new Elysia()
       }),
     }
   )
-  // Update profile picture
   .post(
     "/profile/picture",
     async ({ body: { file }, jwt, set, request }) => {
@@ -108,7 +107,7 @@ export const userController = new Elysia()
       }),
     }
   )
-  // Update user preferences
+
   .patch(
     "/profile/preferences",
     async ({ body, jwt, set, request }) => {
