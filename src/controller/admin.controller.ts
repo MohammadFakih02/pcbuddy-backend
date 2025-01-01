@@ -113,4 +113,33 @@ export const adminController = new Elysia()
     {
       body: t.Object({}),
     }
+  ).put(
+    '/admin/parts/:type/:id',
+    async ({ params: { type, id }, body, jwt, set, request }) => {
+      const payload = await isAuthenticated({ jwt, set, request })
+      if (set.status === 401) {
+        return { message: 'Unauthorized' }
+      }
+
+      if (!await isAdmin(payload.userId)) {
+        set.status = 403
+        return { message: 'Forbidden: Admin access required' }
+      }
+
+      try {
+        if (!['cpu', 'gpu', 'memory', 'storage', 'motherboard', 'powerSupply', 'case'].includes(type)) {
+          set.status = 400
+          return { message: 'Invalid part type' }
+        }
+
+        const part = await adminService.updatePart(type as PartType, Number(id), body)
+        return part
+      } catch (error) {
+        set.status = 400
+        return { message: error instanceof Error ? error.message : 'Failed to update part' }
+      }
+    },
+    {
+      body: t.Object({}),
+    }
   )
