@@ -112,4 +112,33 @@ export class ComputerService {
 
     return pc
   }
+  async getPartDetails(partIds: {
+    cpuId?: number
+    gpuId?: number
+    memoryId?: number
+    storageId?: number
+    motherboardId?: number
+    powerSupplyId?: number
+    caseId?: number
+  }) {
+    const [cpu, gpu, memory, storage, motherboard, powerSupply, pcCase] = await Promise.all([
+      partIds.cpuId ? prisma.cpu.findUnique({ where: { id: partIds.cpuId } }) : Promise.resolve(null),
+      partIds.gpuId ? prisma.gpu.findUnique({ where: { id: partIds.gpuId } }) : Promise.resolve(null),
+      partIds.memoryId ? prisma.memory.findUnique({ where: { id: partIds.memoryId } }) : Promise.resolve(null),
+      partIds.storageId ? prisma.storage.findUnique({ where: { id: partIds.storageId } }) : Promise.resolve(null),
+      partIds.motherboardId ? prisma.motherboard.findUnique({ where: { id: partIds.motherboardId } }) : Promise.resolve(null),
+      partIds.powerSupplyId ? prisma.powerSupply.findUnique({ where: { id: partIds.powerSupplyId } }) : Promise.resolve(null),
+      partIds.caseId ? prisma.case.findUnique({ where: { id: partIds.caseId } }) : Promise.resolve(null),
+    ])
+
+    return {
+      cpu,
+      gpu,
+      memory,
+      storage,
+      motherboard,
+      powerSupply,
+      case: pcCase,
+    }
+  }
 }
