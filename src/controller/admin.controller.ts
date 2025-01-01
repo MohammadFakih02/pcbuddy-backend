@@ -36,4 +36,31 @@ export const adminController = new Elysia()
         return { message: error instanceof Error ? error.message : 'Failed to fetch users' }
       }
     }
+    
+  ) .patch(
+    '/admin/users/:id/ban',
+    async ({ params: { id }, body: { banned }, jwt, set, request }) => {
+      const payload = await isAuthenticated({ jwt, set, request })
+      if (set.status === 401) {
+        return { message: 'Unauthorized' }
+      }
+
+      if (!await isAdmin(payload.userId)) {
+        set.status = 403
+        return { message: 'Forbidden: Admin access required' }
+      }
+
+      try {
+        const user = await adminService.banUser(Number(id), banned)
+        return user
+      } catch (error) {
+        set.status = 400
+        return { message: error instanceof Error ? error.message : 'Failed to update user' }
+      }
+    },
+    {
+      body: t.Object({
+        banned: t.Boolean(),
+      }),
+    }
   )
