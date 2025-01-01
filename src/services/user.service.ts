@@ -72,4 +72,13 @@ export class UserService {
 
     return updatedUser
   }
+
+  async updatePreferences(userId: number, preferences: string) {
+    const updatedUser = await prisma.user.update({
+      where: { id: userId },
+      data: { preferences }
+    })
+
+    return updatedUser
+  }
 }
