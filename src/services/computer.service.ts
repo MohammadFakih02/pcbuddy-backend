@@ -85,4 +85,31 @@ export class ComputerService {
     const totalPrice = prices.reduce((sum, part) => sum + (part?.price || 0), 0)
     return totalPrice
   }
+  async savePCConfiguration(userId: number, parts: {
+    cpuId?: number
+    gpuId?: number
+    memoryId?: number
+    storageId?: number
+    motherboardId?: number
+    powerSupplyId?: number
+    caseId?: number
+  }) {
+    const totalPrice = await this.calculateTotalPrice(parts)
+
+    const pc = await prisma.personalPC.create({
+      data: {
+        userId,
+        cpuId: parts.cpuId,
+        gpuId: parts.gpuId,
+        memoryId: parts.memoryId,
+        storageId: parts.storageId,
+        motherboardId: parts.motherboardId,
+        powerSupplyId: parts.powerSupplyId,
+        caseId: parts.caseId,
+        totalPrice,
+      },
+    })
+
+    return pc
+  }
 }
