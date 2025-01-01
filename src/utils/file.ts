@@ -1,0 +1,19 @@
+import { randomUUID } from 'crypto'
+import { join } from 'path'
+import { unlink } from 'fs/promises'
+
+const uploadDir = join(__dirname, '../../uploads/profile-pictures')
+
+export const saveFile = async (file: File): Promise<string> => {
+  const fileName = `${randomUUID()}-${file.name}`
+  const filePath = join(uploadDir, fileName)
+
+  await Bun.write(filePath, file)
+
+  return `/uploads/profile-pictures/${fileName}`
+}
+
+export const deleteFile = async (filePath: string): Promise<void> => {
+  const absolutePath = join(__dirname, '../../', filePath)
+  await unlink(absolutePath)
+}
