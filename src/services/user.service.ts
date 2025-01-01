@@ -32,7 +32,7 @@ export class UserService {
     return userProfile
   }
 
-  async updateProfile(userId: number, updateData: { username?: string; email?: string }) {
+  async updateProfile(userId: number, updateData: { username?: string; email?: string; preferences?: string; profilePicture?: string }) {
     const existingUser = await prisma.user.findFirst({
       where: {
         OR: [
@@ -42,7 +42,7 @@ export class UserService {
       }
     })
 
-    if (existingUser) {
+    if (existingUser && existingUser.id !== userId) {
       throw new Error('Username or email already in use')
     }
 
@@ -50,7 +50,9 @@ export class UserService {
       where: { id: userId },
       data: {
         username: updateData.username,
-        email: updateData.email
+        email: updateData.email,
+        preferences: updateData.preferences,
+        profilePicture: updateData.profilePicture
       }
     })
 
