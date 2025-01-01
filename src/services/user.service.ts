@@ -1,5 +1,5 @@
 import { prisma } from '../prisma'
-
+import { deleteFile } from '../utils/file'
 export class UserService {
   async getProfile(userId: number) {
     const userProfile = await prisma.user.findUnique({
@@ -8,6 +8,8 @@ export class UserService {
         id: true,
         username: true,
         email: true,
+        preferences: true,
+        profilePicture: true,
         createdAt: true,
         personalPCs: {
           select: {
@@ -31,8 +33,7 @@ export class UserService {
 
     return userProfile
   }
-
-  async updateProfile(userId: number, updateData: { username?: string; email?: string; preferences?: string; profilePicture?: string }) {
+  async updateProfile(userId: number, updateData: { username?: string; email?: string; preferences?: string }) {
     const existingUser = await prisma.user.findFirst({
       where: {
         OR: [
@@ -51,13 +52,13 @@ export class UserService {
       data: {
         username: updateData.username,
         email: updateData.email,
-        preferences: updateData.preferences,
-        profilePicture: updateData.profilePicture
+        preferences: updateData.preferences
       }
     })
 
     return updatedUser
   }
+  
   async updateProfilePicture(userId: number, profilePicture: string) {
     const updatedUser = await prisma.user.update({
       where: { id: userId },
