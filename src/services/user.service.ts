@@ -1,4 +1,4 @@
-import { prisma } from '../prisma';
+import { prisma } from '../prisma'
 
 export class UserService {
   async getProfile(userId: number) {
@@ -13,38 +13,25 @@ export class UserService {
           select: {
             id: true,
             totalPrice: true,
-            cpu: {
-              select: { id: true, name: true }
-            },
-            gpu: {
-              select: { id: true, name: true }
-            },
-            memory: {
-              select: { id: true, name: true }
-            },
-            motherboard: {
-              select: { id: true, name: true }
-            },
-            powerSupply: {
-              select: { id: true, name: true }
-            },
-            storage: {
-              select: { id: true, name: true }
-            },
-            case: {
-              select: { id: true, name: true }
-            }
+            cpu: { select: { id: true, name: true } },
+            gpu: { select: { id: true, name: true } },
+            memory: { select: { id: true, name: true } },
+            motherboard: { select: { id: true, name: true } },
+            powerSupply: { select: { id: true, name: true } },
+            storage: { select: { id: true, name: true } },
+            case: { select: { id: true, name: true } }
           }
         }
       }
-    });
+    })
 
     if (!userProfile) {
-      throw new Error('User not found');
+      throw new Error('User not found')
     }
 
-    return userProfile;
+    return userProfile
   }
+
   async updateProfile(userId: number, updateData: { username?: string; email?: string }) {
     const existingUser = await prisma.user.findFirst({
       where: {
@@ -53,10 +40,10 @@ export class UserService {
           { email: updateData.email }
         ]
       }
-    });
+    })
 
     if (existingUser) {
-      throw new Error('Username or email already in use');
+      throw new Error('Username or email already in use')
     }
 
     const updatedUser = await prisma.user.update({
@@ -65,9 +52,8 @@ export class UserService {
         username: updateData.username,
         email: updateData.email
       }
-    });
+    })
 
-    return updatedUser;
+    return updatedUser
   }
-
 }

@@ -1,7 +1,6 @@
 import { prisma } from '../prisma'
 import { hashPassword, verifyPassword } from '../utils/password'
 import { LoginDto, RegisterDto } from '../types/auth'
-import { JWT_CONFIG } from '../config/jwt'
 
 export class AuthService {
   async register(data: RegisterDto) {
@@ -15,7 +14,7 @@ export class AuthService {
     })
 
     if (existingUser) {
-      throw new Error('User already exists')
+      throw new Error('User already exists with the provided email or username')
     }
 
     const hashedPassword = await hashPassword(data.password)
@@ -42,12 +41,12 @@ export class AuthService {
     })
 
     if (!user) {
-      throw new Error('Invalid credentials')
+      throw new Error('Invalid credentials: User not found')
     }
 
     const isValidPassword = await verifyPassword(data.password, user.password)
     if (!isValidPassword) {
-      throw new Error('Invalid credentials')
+      throw new Error('Invalid credentials: Incorrect password')
     }
 
     return user
