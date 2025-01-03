@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,26 +7,68 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Case {
-  id                    Int      @id @default(autoincrement())
-  name                  String
-  imageUrl              String?
-  productUrl            String?
-  price                 Float?
-  manufacturer          String?
-  partNumber            String?
-  type                  String?
-  color                 String?
-  powerSupply           String?
-  sidePanel             String?
-  powerSupplyShroud     Boolean?
-  frontPanelUsb         String?
-  motherboardFormFactor String?
-  maxVideoCardLength    Float?
-  driveBays             String?
-  expansionSlots        String?
-  dimensions            String?
-  personalPCs           PersonalPC[]
+model User {
+  id              Int          @id @default(autoincrement())
+  username        String       @unique
+  email           String       @unique
+  role            Role         @default(USER)
+  preferences     String?
+  profilePicture  String?
+  banned          Boolean      @default(false)
+  password        String
+  createdAt       DateTime     @default(now())
+  lastLogin       DateTime?
+  personalPCs     PersonalPC[]
+  name            String?
+  bio             String?
+  adminLogs       AdminLog[]   @relation("AdminActions")
+  userLogs        AdminLog[]   @relation("UserActions")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model PersonalPC {
+  id            Int           @id @default(autoincrement())
+  userId        Int
+  user          User          @relation(fields: [userId], references: [id])
+  cpuId         Int?
+  gpuId         Int?
+  memoryId      Int?
+  motherboardId Int?
+  powerSupplyId Int?
+  storageId     Int?
+  caseId        Int?
+  cpu           Cpu?          @relation(fields: [cpuId], references: [id])
+  gpu           Gpu?          @relation(fields: [gpuId], references: [id])
+  memory        Memory?       @relation(fields: [memoryId], references: [id])
+  motherboard   Motherboard?  @relation(fields: [motherboardId], references: [id])
+  powerSupply   PowerSupply?  @relation(fields: [powerSupplyId], references: [id])
+  storage       Storage?      @relation(fields: [storageId], references: [id])
+  case          Case?         @relation(fields: [caseId], references: [id])
+  totalPrice    Float?        @default(0)
+  buildName     String?
+  buildDate     DateTime      @default(now())
+  buildStatus   BuildStatus   @default(COMPLETED)
+  usageCount    Int?          @default(0)
+}
+
+enum BuildStatus {
+  COMPLETED
+  IN_PROGRESS
+  SAVED
+}
+
+model AdminLog {
+  id          Int      @id @default(autoincrement())
+  action      String 
+  adminId     Int
+  admin       User     @relation("AdminActions", fields: [adminId], references: [id])
+  userId      Int?
+  user        User?    @relation("UserActions", fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
 }
 
 model Cpu {
@@ -56,6 +92,7 @@ model Cpu {
   integratedGraphics        String?
   maxSupportedMemory        Float?
   simultaneousMultithreading Boolean?
+  usageCount                Int?     @default(0)
   personalPCs               PersonalPC[]
 }
 
@@ -80,7 +117,28 @@ model Gpu {
   caseExpansionSlotWidth Int?
   totalSlotWidth         Int?
   externalPower          String?
+  usageCount             Int?     @default(0)
   personalPCs            PersonalPC[]
+}
+
+model Memory {
+  id                 Int      @id @default(autoincrement())
+  name               String
+  imageUrl           String?
+  productUrl         String?
+  price              Float?
+  manufacturer       String?
+  speed              String?
+  modules            String?
+  pricePerGb         Float?
+  color              String?
+  firstWordLatency   Float?
+  casLatency         Float?
+  voltage            Float?
+  timing             String?
+  heatSpreader       Boolean?
+  usageCount         Int?     @default(0)
+  personalPCs        PersonalPC[]
 }
 
 model Storage {
@@ -94,6 +152,7 @@ model Storage {
   capacity     Float?
   cache        String?
   formFactor   String?
+  usageCount   Int?     @default(0)
   personalPCs  PersonalPC[]
 }
 
@@ -120,26 +179,8 @@ model Motherboard {
   wirelessNetworking   String?
   socket               String?
   formFactor           String?
+  usageCount           Int?     @default(0)
   personalPCs          PersonalPC[]
-}
-
-model Memory {
-  id                 Int      @id @default(autoincrement())
-  name               String
-  imageUrl           String?
-  productUrl         String?
-  price              Float?
-  manufacturer       String?
-  speed              String?
-  modules            String?
-  pricePerGb         Float?
-  color              String?
-  firstWordLatency   Float?
-  casLatency         Float?
-  voltage            Float?
-  timing             String?
-  heatSpreader       Boolean?
-  personalPCs        PersonalPC[]
 }
 
 model PowerSupply {
@@ -165,43 +206,29 @@ model PowerSupply {
   pcie6PinConnectors              Int?
   sataConnectors                  Int?
   molex4PinConnectors             Int? 
+  usageCount                      Int?     @default(0)
   personalPCs                     PersonalPC[]
 }
 
-model PersonalPC {
-  id            Int      @id @default(autoincrement())
-  userId        Int      @unique
-  user          User     @relation(fields: [userId], references: [id])
-  cpuId         Int?     @default(0)
-  gpuId         Int?     @default(0)
-  memoryId      Int?     @default(0)
-  motherboardId Int?     @default(0)
-  powerSupplyId Int?     @default(0)
-  storageId     Int?     @default(0)
-  caseId        Int?     @default(0)
-  cpu           Cpu?     @relation(fields: [cpuId], references: [id])  // Updated reference to Cpu
-  gpu           Gpu?     @relation(fields: [gpuId], references: [id])  // Updated reference to Gpu
-  memory        Memory?  @relation(fields: [memoryId], references: [id])
-  motherboard   Motherboard? @relation(fields: [motherboardId], references: [id])
-  powerSupply   PowerSupply? @relation(fields: [powerSupplyId], references: [id])
-  storage       Storage? @relation(fields: [storageId], references: [id])
-  case          Case?    @relation(fields: [caseId], references: [id])
-  totalPrice    Float?   @default(0)
-}
-
-enum Role {
-  USER
-  ADMIN
-}
-model User {
-  id         Int      @id @default(autoincrement())
-  username   String   @unique
-  email      String   @unique
-  role          Role     @default(USER) 
-  preferences   String?
-  profilePicture String?
-  banned        Boolean  @default(false)
-  password   String
-  createdAt  DateTime @default(now())
-  personalPCs  PersonalPC[]
+model Case {
+  id                    Int      @id @default(autoincrement())
+  name                  String
+  imageUrl              String?
+  productUrl            String?
+  price                 Float?
+  manufacturer          String?
+  partNumber            String?
+  type                  String?
+  color                 String?
+  powerSupply           String?
+  sidePanel             String?
+  powerSupplyShroud     Boolean?
+  frontPanelUsb         String?
+  motherboardFormFactor String?
+  maxVideoCardLength    Float?
+  driveBays             String?
+  expansionSlots        String?
+  dimensions            String?
+  usageCount            Int?     @default(0)
+  personalPCs           PersonalPC[]
 }
