@@ -1,5 +1,6 @@
-import { prisma } from '../prisma'
-import { deleteFile } from '../utils/file'
+import { prisma } from '../prisma';
+import { deleteFile } from '../utils/file';
+
 export class UserService {
   async getProfile(userId: number) {
     const userProfile = await prisma.user.findUnique({
@@ -8,43 +9,33 @@ export class UserService {
         id: true,
         username: true,
         email: true,
-        preferences: true,
+        name: true,
+        bio: true,
         profilePicture: true,
         createdAt: true,
-        personalPCs: {
-          select: {
-            id: true,
-            totalPrice: true,
-            cpu: { select: { id: true, name: true } },
-            gpu: { select: { id: true, name: true } },
-            memory: { select: { id: true, name: true } },
-            motherboard: { select: { id: true, name: true } },
-            powerSupply: { select: { id: true, name: true } },
-            storage: { select: { id: true, name: true } },
-            case: { select: { id: true, name: true } }
-          }
-        }
-      }
-    })
+      },
+    });
 
     if (!userProfile) {
-      throw new Error('User not found')
+      throw new Error('User not found');
     }
 
-    return userProfile
+    return userProfile;
   }
-  async updateProfile(userId: number, updateData: { username?: string; email?: string; preferences?: string }) {
+
+  async updateProfile(userId: number, updateData: { username?: string; email?: string; name?: string; bio?: string }) {
     const existingUser = await prisma.user.findFirst({
       where: {
         OR: [
           { username: updateData.username },
-          { email: updateData.email }
-        ]
-      }
-    })
+          { email: updateData.email },
+        ],
+        NOT: { id: userId },
+      },
+    });
 
-    if (existingUser && existingUser.id !== userId) {
-      throw new Error('Username or email already in use')
+    if (existingUser) {
+      throw new Error('Username or email already in use');
     }
 
     const updatedUser = await prisma.user.update({
@@ -52,33 +43,25 @@ export class UserService {
       data: {
         username: updateData.username,
         email: updateData.email,
-        preferences: updateData.preferences
-      }
-    })
+        name: updateData.name,
+        bio: updateData.bio,
+      },
+    });
 
-    return updatedUser
+    return updatedUser;
   }
 
   async updateProfilePicture(userId: number, profilePicture: string) {
-    const user = await prisma.user.findUnique({ where: { id: userId } })
+    const user = await prisma.user.findUnique({ where: { id: userId } });
     if (user?.profilePicture) {
-      await deleteFile(user.profilePicture)
+      await deleteFile(user.profilePicture);
     }
 
     const updatedUser = await prisma.user.update({
       where: { id: userId },
-      data: { profilePicture }
-    })
+      data: { profilePicture },
+    });
 
-    return updatedUser
-  }
-
-  async updatePreferences(userId: number, preferences: string) {
-    const updatedUser = await prisma.user.update({
-      where: { id: userId },
-      data: { preferences }
-    })
-
-    return updatedUser
+    return updatedUser;
   }
 }
