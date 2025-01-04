@@ -53,23 +53,18 @@ export const authController = new Elysia()
     '/login',
     async ({ body, jwt, set }) => {
       try {
-        if (!emailSchema.safeParse(body.email).success) {
-          set.status = 400
-          return { message: 'Invalid email format' }
-        }
-
-        const user = await authService.login(body)
-        const accessToken = await jwt.sign({ userId: user.id })
-        return { user, accessToken }
+        const user = await authService.login(body);
+        const accessToken = await jwt.sign({ userId: user.id, role: user.role });
+        return { user, accessToken };
       } catch (error) {
-        set.status = 400
-        return { message: error instanceof Error ? error.message : 'An unexpected error occurred' }
+        set.status = 400;
+        return { message: error instanceof Error ? error.message : 'An unexpected error occurred' };
       }
     },
     {
       body: t.Object({
         email: t.String(),
-        password: t.String()
-      })
+        password: t.String(),
+      }),
     }
-  )
+  );
