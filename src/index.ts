@@ -6,8 +6,10 @@ import { adminController } from './controller/admin.controller'
 import { env } from './config/env'
 import { staticPlugin } from '@elysiajs/static'
 import { rateLimit } from 'elysia-rate-limit'
+import cors from '@elysiajs/cors'
 
 const app = new Elysia()
+  .use(cors())
   .use(rateLimit({
     duration:60000,
     max:100,
