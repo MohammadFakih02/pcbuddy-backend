@@ -40,7 +40,7 @@ export const userController = new Elysia()
       if (set.status === 401) {
         return { message: 'Unauthorized' };
       }
-
+  
       try {
         const updatedUser = await userService.updateProfile(payload.userId, body);
         return updatedUser;
@@ -51,8 +51,6 @@ export const userController = new Elysia()
     },
     {
       body: t.Object({
-        username: t.Optional(t.String()),
-        email: t.Optional(t.String()),
         name: t.Optional(t.String()),
         bio: t.Optional(t.String()),
       }),
