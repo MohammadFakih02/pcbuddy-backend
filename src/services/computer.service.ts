@@ -141,4 +141,24 @@ export class ComputerService {
       case: pcCase,
     }
   }
+  async getUserPc(userId: number) {
+    const pc = await prisma.personalPC.findFirst({
+      where: { userId },
+      include: {
+        cpu: true,
+        gpu: true,
+        memory: true,
+        storage: true,
+        motherboard: true,
+        powerSupply: true,
+        case: true,
+      },
+    });
+  
+    if (!pc) {
+      throw new Error('No PC configuration found for this user');
+    }
+  
+    return pc;
+  }
 }
