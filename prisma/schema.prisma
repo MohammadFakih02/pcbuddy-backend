@@ -12,7 +12,6 @@ model User {
   username        String       @unique
   email           String       @unique
   role            Role         @default(USER)
-  preferences     String?
   profilePicture  String?
   banned          Boolean      @default(false)
   password        String
@@ -53,6 +52,7 @@ model PersonalPC {
   buildDate     DateTime      @default(now())
   buildStatus   BuildStatus   @default(COMPLETED)
   usageCount    Int?          @default(0)
+  addToProfile  Boolean       @default(false)
 }
 
 enum BuildStatus {
