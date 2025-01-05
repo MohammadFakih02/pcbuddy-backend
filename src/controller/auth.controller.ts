@@ -32,7 +32,7 @@ export const authController = new Elysia()
           return { message: passwordError }
         }
   
-
+        set.status= 200
         const user = await authService.register(body)
         const accessToken = await jwt.sign({ userId: user.id })
         return { user, accessToken }
