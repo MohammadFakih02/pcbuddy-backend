@@ -93,4 +93,32 @@ export const computerController = new Elysia()
             caseId: t.Optional(t.Number()),
           })
         }
+      ).post(
+        '/build',
+        async ({ body, jwt, set, request }) => {
+          const payload = await isAuthenticated({ jwt, set, request });
+          if (set.status === 401) {
+            return { message: 'Unauthorized' };
+          }
+      
+          try {
+            const pc = await computerService.savePCConfiguration(payload.userId, body);
+            return pc;
+          } catch (error) {
+            set.status = 400;
+            return { message: error instanceof Error ? error.message : 'Failed to save PC configuration' };
+          }
+        },
+        {
+          body: t.Object({
+            cpuId: t.Optional(t.Number()),
+            gpuId: t.Optional(t.Number()),
+            memoryId: t.Optional(t.Number()),
+            storageId: t.Optional(t.Number()),
+            motherboardId: t.Optional(t.Number()),
+            powerSupplyId: t.Optional(t.Number()),
+            caseId: t.Optional(t.Number()),
+            addToProfile: t.Optional(t.Boolean()),
+          }),
+        }
       )
