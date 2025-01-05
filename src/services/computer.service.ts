@@ -86,16 +86,17 @@ export class ComputerService {
     return totalPrice
   }
   async savePCConfiguration(userId: number, parts: {
-    cpuId?: number
-    gpuId?: number
-    memoryId?: number
-    storageId?: number
-    motherboardId?: number
-    powerSupplyId?: number
-    caseId?: number
+    cpuId?: number;
+    gpuId?: number;
+    memoryId?: number;
+    storageId?: number;
+    motherboardId?: number;
+    powerSupplyId?: number;
+    caseId?: number;
+    addToProfile?: boolean;
   }) {
-    const totalPrice = await this.calculateTotalPrice(parts)
-
+    const totalPrice = await this.calculateTotalPrice(parts);
+  
     const pc = await prisma.personalPC.create({
       data: {
         userId,
@@ -107,10 +108,11 @@ export class ComputerService {
         powerSupplyId: parts.powerSupplyId,
         caseId: parts.caseId,
         totalPrice,
+        addToProfile: parts.addToProfile || false,
       },
-    })
-
-    return pc
+    });
+  
+    return pc;
   }
   async getPartDetails(partIds: {
     cpuId?: number
@@ -161,4 +163,5 @@ export class ComputerService {
   
     return pc;
   }
+  
 }
