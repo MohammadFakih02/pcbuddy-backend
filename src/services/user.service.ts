@@ -49,12 +49,21 @@ export class UserService {
     if (user?.profilePicture) {
       await deleteFile(user.profilePicture);
     }
-
+  
     const updatedUser = await prisma.user.update({
       where: { id: userId },
       data: { profilePicture },
+      select: {
+        id: true,
+        username: true,
+        email: true,
+        name: true,
+        bio: true,
+        profilePicture: true,
+        createdAt: true,
+      },
     });
-
+  
     return updatedUser;
   }
 }

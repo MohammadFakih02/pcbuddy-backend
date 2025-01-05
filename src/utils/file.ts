@@ -9,10 +9,10 @@ export const saveFile = async (file: File): Promise<string> => {
   const filePath = join(uploadDir, fileName);
 
   const arrayBuffer = await file.arrayBuffer();
-
   await Bun.write(filePath, arrayBuffer);
 
-  return `/uploads/profile-pictures/${fileName}`;
+  const backendUrl = process.env.BACKEND_URL || 'http://localhost:1889';
+  return `${backendUrl}/uploads/profile-pictures/${fileName}`;
 };
 
 export const deleteFile = async (filePath: string): Promise<void> => {
