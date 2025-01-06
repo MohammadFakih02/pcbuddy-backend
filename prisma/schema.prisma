@@ -232,3 +232,14 @@ model Case {
   usageCount            Int?     @default(0)
   personalPCs           PersonalPC[]
 }
+
+model Game {
+  id            Int      @id @default(autoincrement())
+  name          String   @unique
+  memory        Float?
+  graphicsCard  String?
+  cpu           String?
+  fileSize      Float?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
