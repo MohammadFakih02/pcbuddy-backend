@@ -65,13 +65,13 @@ export class ComputerService {
     })
   }
   async calculateTotalPrice(parts: {
-    cpuId?: number
-    gpuId?: number
-    memoryId?: number
-    storageId?: number
-    motherboardId?: number
-    powerSupplyId?: number
-    caseId?: number
+    cpuId?: number | null;
+    gpuId?: number | null;
+    memoryId?: number | null;
+    storageId?: number | null;
+    motherboardId?: number | null;
+    powerSupplyId?: number | null;
+    caseId?: number | null;
   }) {
     const prices = await Promise.all([
       parts.cpuId ? prisma.cpu.findUnique({ where: { id: parts.cpuId }, select: { price: true } }) : Promise.resolve(null),
@@ -81,40 +81,40 @@ export class ComputerService {
       parts.motherboardId ? prisma.motherboard.findUnique({ where: { id: parts.motherboardId }, select: { price: true } }) : Promise.resolve(null),
       parts.powerSupplyId ? prisma.powerSupply.findUnique({ where: { id: parts.powerSupplyId }, select: { price: true } }) : Promise.resolve(null),
       parts.caseId ? prisma.case.findUnique({ where: { id: parts.caseId }, select: { price: true } }) : Promise.resolve(null),
-    ])
+    ]);
+  
+    const totalPrice = prices.reduce((sum, part) => sum + (part?.price || 0), 0);
+    return totalPrice;
+  }
+async savePCConfiguration(userId: number, parts: {
+  cpuId?: number | null;
+  gpuId?: number | null;
+  memoryId?: number | null;
+  storageId?: number | null;
+  motherboardId?: number | null;
+  powerSupplyId?: number | null;
+  caseId?: number | null;
+  addToProfile?: boolean;
+}) {
+  const totalPrice = await this.calculateTotalPrice(parts);
 
-    const totalPrice = prices.reduce((sum, part) => sum + (part?.price || 0), 0)
-    return totalPrice
-  }
-  async savePCConfiguration(userId: number, parts: {
-    cpuId?: number;
-    gpuId?: number;
-    memoryId?: number;
-    storageId?: number;
-    motherboardId?: number;
-    powerSupplyId?: number;
-    caseId?: number;
-    addToProfile?: boolean;
-  }) {
-    const totalPrice = await this.calculateTotalPrice(parts);
-  
-    const pc = await prisma.personalPC.create({
-      data: {
-        userId,
-        cpuId: parts.cpuId,
-        gpuId: parts.gpuId,
-        memoryId: parts.memoryId,
-        storageId: parts.storageId,
-        motherboardId: parts.motherboardId,
-        powerSupplyId: parts.powerSupplyId,
-        caseId: parts.caseId,
-        totalPrice,
-        addToProfile: parts.addToProfile || false,
-      },
-    });
-  
-    return pc;
-  }
+  const pc = await prisma.personalPC.create({
+    data: {
+      userId,
+      cpuId: parts.cpuId || null,
+      gpuId: parts.gpuId || null,
+      memoryId: parts.memoryId || null,
+      storageId: parts.storageId || null,
+      motherboardId: parts.motherboardId || null,
+      powerSupplyId: parts.powerSupplyId || null,
+      caseId: parts.caseId || null,
+      totalPrice,
+      addToProfile: parts.addToProfile || false,
+    },
+  });
+
+  return pc;
+}
   async getPartDetails(partIds: {
     cpuId?: number
     gpuId?: number
