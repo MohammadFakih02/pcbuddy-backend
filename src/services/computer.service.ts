@@ -144,26 +144,42 @@ async savePCConfiguration(userId: number, parts: {
       case: pcCase,
     }
   }
-  async getUserPc(userId: number) {
-    const pc = await prisma.personalPC.findFirst({
-      where: { userId },
-      include: {
-        cpu: true,
-        gpu: true,
-        memory: true,
-        storage: true,
-        motherboard: true,
-        powerSupply: true,
-        case: true,
-      },
-    });
-  
-    if (!pc) {
-      throw new Error('No PC configuration found for this user');
-    }
-  
-    return pc;
+async getUserPc(userId: number) {
+  const pc = await prisma.personalPC.findFirst({
+    where: { userId },
+    include: {
+      cpu: true,
+      gpu: true,
+      memory: true,
+      storage: true,
+      motherboard: true,
+      powerSupply: true,
+      case: true,
+    },
+  });
+
+  if (!pc) {
+    throw new Error('No PC configuration found for this user');
   }
+
+  const formatImageUrl = (url: string | null | undefined): string | null | undefined => {
+    if (url && url.startsWith('//')) {
+      return `https:${url}`;
+    }
+    return url;
+  };
+
+  return {
+    ...pc,
+    cpu: pc.cpu ? { id: pc.cpu.id, name: pc.cpu.name, imageUrl: formatImageUrl(pc.cpu.imageUrl) } : null,
+    gpu: pc.gpu ? { id: pc.gpu.id, name: pc.gpu.name, imageUrl: formatImageUrl(pc.gpu.imageUrl) } : null,
+    memory: pc.memory ? { id: pc.memory.id, name: pc.memory.name, imageUrl: formatImageUrl(pc.memory.imageUrl) } : null,
+    storage: pc.storage ? { id: pc.storage.id, name: pc.storage.name, imageUrl: formatImageUrl(pc.storage.imageUrl) } : null,
+    motherboard: pc.motherboard ? { id: pc.motherboard.id, name: pc.motherboard.name, imageUrl: formatImageUrl(pc.motherboard.imageUrl) } : null,
+    powerSupply: pc.powerSupply ? { id: pc.powerSupply.id, name: pc.powerSupply.name, imageUrl: formatImageUrl(pc.powerSupply.imageUrl) } : null,
+    case: pc.case ? { id: pc.case.id, name: pc.case.name, imageUrl: formatImageUrl(pc.case.imageUrl) } : null,
+  };
+}
   async getGames(search: string, page: number, limit: number) {
     const offset = (page - 1) * limit;
   
