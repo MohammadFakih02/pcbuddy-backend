@@ -164,5 +164,12 @@ export class ComputerService {
   
     return pc;
   }
-  
+  async getGames() {
+    return await prisma.game.findMany({
+      select: {
+        id: true,
+        name: true,
+      },
+    });
+  }
 }

@@ -121,4 +121,10 @@ export const computerController = new Elysia()
             addToProfile: t.Optional(t.Boolean()),
           }),
         }
+      ).get(
+        '/games',
+        async () => {
+          const games = await computerService.getGames();
+          return games;
+        }
       )
