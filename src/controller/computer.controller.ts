@@ -141,4 +141,45 @@ export const computerController = new Elysia()
           error instanceof Error ? error.message : "Failed to fetch user PC",
       };
     }
-  });
+  })
+  .get(
+    "/proxy/image",
+    async ({ query, set }) => {
+      const { url } = query;
+
+      if (!url) {
+        set.status = 400;
+        return { message: "Image URL is required" };
+      }
+
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          set.status = 500;
+          return { message: "Failed to fetch image from external URL" };
+        }
+
+        const imageData = await response.arrayBuffer();
+        const contentType = response.headers.get("content-type") || "image/jpeg";
+
+        return new Response(imageData, {
+          headers: {
+            "Content-Type": contentType,
+          },
+        });
+      } catch (error) {
+        set.status = 500;
+        return {
+          message:
+            error instanceof Error
+              ? error.message
+              : "Failed to proxy image request",
+        };
+      }
+    },
+    {
+      query: t.Object({
+        url: t.String(),
+      }),
+    }
+  );
