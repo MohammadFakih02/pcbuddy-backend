@@ -12,7 +12,7 @@ const app = new Elysia()
   .use(cors())
   .use(rateLimit({
     duration:60000,
-    max:100,
+    max:1000,
   } ))
   .use(authController)
   .use(userController)
