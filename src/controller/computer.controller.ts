@@ -123,8 +123,16 @@ export const computerController = new Elysia()
         }
       ).get(
         '/games',
-        async () => {
-          const games = await computerService.getGames();
+        async ({ query }) => {
+          const { search = '', page = 1, limit = 10 } = query;
+          const games = await computerService.getGames(search, Number(page), Number(limit));
           return games;
+        },
+        {
+          query: t.Object({
+            search: t.Optional(t.String()),
+            page: t.Optional(t.Numeric()),
+            limit: t.Optional(t.Numeric()),
+          }),
         }
       )

@@ -164,12 +164,38 @@ export class ComputerService {
   
     return pc;
   }
-  async getGames() {
-    return await prisma.game.findMany({
+  async getGames(search: string, page: number, limit: number) {
+    const offset = (page - 1) * limit;
+  
+    const games = await prisma.game.findMany({
+      where: {
+        name: {
+          contains: search,
+          mode: 'insensitive', // Case-insensitive search
+        },
+      },
+      skip: offset,
+      take: limit,
       select: {
         id: true,
         name: true,
       },
     });
+  
+    const total = await prisma.game.count({
+      where: {
+        name: {
+          contains: search,
+          mode: 'insensitive',
+        },
+      },
+    });
+  
+    return {
+      games,
+      total,
+      page,
+      limit,
+    };
   }
 }
