@@ -104,11 +104,11 @@ export class ComputerService {
     addToProfile?: boolean;
   }) {
     const totalPrice = await this.calculateTotalPrice(parts);
-  
+
     const existingPC = await prisma.personalPC.findFirst({
       where: { userId },
     });
-  
+
     let pc;
     if (existingPC) {
       pc = await prisma.personalPC.update({
@@ -143,7 +143,7 @@ export class ComputerService {
         },
       });
     }
-  
+
     return pc;
   }
 
@@ -208,14 +208,14 @@ export class ComputerService {
 
     return {
       ...pc,
-      cpu: pc.cpu ? { id: pc.cpu.id, name: pc.cpu.name, imageUrl: formatImageUrl(pc.cpu.imageUrl) } : null,
-      gpu: pc.gpu ? { id: pc.gpu.id, name: `${pc.gpu.name} ${pc.gpu.chipset}`, imageUrl: formatImageUrl(pc.gpu.imageUrl) } : null, // Concatenate GPU name with chipset
-      memory: pc.memory ? { id: pc.memory.id, name: pc.memory.name, imageUrl: formatImageUrl(pc.memory.imageUrl) } : null,
-      storage: pc.storage ? { id: pc.storage.id, name: `${pc.storage.name} ${pc.storage.capacity}GB`, imageUrl: formatImageUrl(pc.storage.imageUrl) } : null, // Concatenate storage name with capacity
-      storage2: pc.storage2 ? { id: pc.storage2.id, name: `${pc.storage2.name} ${pc.storage2.capacity}GB`, imageUrl: formatImageUrl(pc.storage2.imageUrl) } : null, // Concatenate second storage name with capacity
-      motherboard: pc.motherboard ? { id: pc.motherboard.id, name: pc.motherboard.name, imageUrl: formatImageUrl(pc.motherboard.imageUrl) } : null,
-      powerSupply: pc.powerSupply ? { id: pc.powerSupply.id, name: pc.powerSupply.name, imageUrl: formatImageUrl(pc.powerSupply.imageUrl) } : null,
-      case: pc.case ? { id: pc.case.id, name: pc.case.name, imageUrl: formatImageUrl(pc.case.imageUrl) } : null,
+      cpu: pc.cpu ? { id: pc.cpu.id, name: pc.cpu.name, price: pc.cpu.price, imageUrl: formatImageUrl(pc.cpu.imageUrl) } : null,
+      gpu: pc.gpu ? { id: pc.gpu.id, name: `${pc.gpu.name} ${pc.gpu.chipset}`, price: pc.gpu.price, imageUrl: formatImageUrl(pc.gpu.imageUrl) } : null,
+      memory: pc.memory ? { id: pc.memory.id, name: pc.memory.name, price: pc.memory.price, imageUrl: formatImageUrl(pc.memory.imageUrl) } : null,
+      storage: pc.storage ? { id: pc.storage.id, name: `${pc.storage.name} ${pc.storage.capacity}GB`, price: pc.storage.price, imageUrl: formatImageUrl(pc.storage.imageUrl) } : null,
+      storage2: pc.storage2 ? { id: pc.storage2.id, name: `${pc.storage2.name} ${pc.storage2.capacity}GB`, price: pc.storage2.price, imageUrl: formatImageUrl(pc.storage2.imageUrl) } : null,
+      motherboard: pc.motherboard ? { id: pc.motherboard.id, name: pc.motherboard.name, price: pc.motherboard.price, imageUrl: formatImageUrl(pc.motherboard.imageUrl) } : null,
+      powerSupply: pc.powerSupply ? { id: pc.powerSupply.id, name: pc.powerSupply.name, price: pc.powerSupply.price, imageUrl: formatImageUrl(pc.powerSupply.imageUrl) } : null,
+      case: pc.case ? { id: pc.case.id, name: pc.case.name, price: pc.case.price, imageUrl: formatImageUrl(pc.case.imageUrl) } : null,
     };
   }
 
@@ -226,7 +226,7 @@ export class ComputerService {
       where: {
         name: {
           contains: search,
-          mode: 'insensitive', // Case-insensitive search
+          mode: 'insensitive',
         },
       },
       skip: offset,
