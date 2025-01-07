@@ -104,23 +104,46 @@ export class ComputerService {
     addToProfile?: boolean;
   }) {
     const totalPrice = await this.calculateTotalPrice(parts);
-
-    const pc = await prisma.personalPC.create({
-      data: {
-        userId,
-        cpuId: parts.cpuId || null,
-        gpuId: parts.gpuId || null,
-        memoryId: parts.memoryId || null,
-        storageId: parts.storageId || null,
-        storageId2: parts.storageId2 || null,
-        motherboardId: parts.motherboardId || null,
-        powerSupplyId: parts.powerSupplyId || null,
-        caseId: parts.caseId || null,
-        totalPrice,
-        addToProfile: parts.addToProfile || false,
-      },
+  
+    const existingPC = await prisma.personalPC.findFirst({
+      where: { userId },
     });
-
+  
+    let pc;
+    if (existingPC) {
+      pc = await prisma.personalPC.update({
+        where: { id: existingPC.id },
+        data: {
+          cpuId: parts.cpuId || null,
+          gpuId: parts.gpuId || null,
+          memoryId: parts.memoryId || null,
+          storageId: parts.storageId || null,
+          storageId2: parts.storageId2 || null,
+          motherboardId: parts.motherboardId || null,
+          powerSupplyId: parts.powerSupplyId || null,
+          caseId: parts.caseId || null,
+          totalPrice,
+          addToProfile: parts.addToProfile || false,
+        },
+      });
+    } else {
+      pc = await prisma.personalPC.create({
+        data: {
+          userId,
+          cpuId: parts.cpuId || null,
+          gpuId: parts.gpuId || null,
+          memoryId: parts.memoryId || null,
+          storageId: parts.storageId || null,
+          storageId2: parts.storageId2 || null,
+          motherboardId: parts.motherboardId || null,
+          powerSupplyId: parts.powerSupplyId || null,
+          caseId: parts.caseId || null,
+          totalPrice,
+          addToProfile: parts.addToProfile || false,
+        },
+      });
+    }
+  
     return pc;
   }
 
