@@ -75,39 +75,39 @@ export const computerController = new Elysia()
     }
   )
   .post(
-    "/parts/details",
-    async ({ body, jwt, set, request }) => {
-      const payload = await isAuthenticated({ jwt, set, request });
-      if (set.status === 401) {
-        return { message: "Unauthorized" };
-      }
-
-      try {
-        const partDetails = await computerService.getPartDetails(body);
-        return partDetails;
-      } catch (error) {
-        set.status = 400;
-        return {
-          message:
-            error instanceof Error
-              ? error.message
-              : "Failed to fetch part details",
-        };
-      }
-    },
-    {
-      body: t.Object({
-        cpuId: t.Optional(t.Number()),
-        gpuId: t.Optional(t.Number()),
-        memoryId: t.Optional(t.Number()),
-        storageId: t.Optional(t.Number()),
-        storageId2: t.Optional(t.Number()),
-        motherboardId: t.Optional(t.Number()),
-        powerSupplyId: t.Optional(t.Number()),
-        caseId: t.Optional(t.Number()),
-      }),
+  "/parts/details",
+  async ({ body, jwt, set, request }) => {
+    const payload = await isAuthenticated({ jwt, set, request });
+    if (set.status === 401) {
+      return { message: "Unauthorized" };
     }
-  )
+
+    try {
+      const partDetails = await computerService.getPartDetails(body);
+      return partDetails;
+    } catch (error) {
+      set.status = 400;
+      return {
+        message:
+          error instanceof Error
+            ? error.message
+            : "Failed to fetch part details",
+      };
+    }
+  },
+  {
+    body: t.Object({
+      cpuId: t.Optional(t.Union([t.Number(), t.Null()])),
+      gpuId: t.Optional(t.Union([t.Number(), t.Null()])),
+      memoryId: t.Optional(t.Union([t.Number(), t.Null()])),
+      storageId: t.Optional(t.Union([t.Number(), t.Null()])),
+      storageId2: t.Optional(t.Union([t.Number(), t.Null()])),
+      motherboardId: t.Optional(t.Union([t.Number(), t.Null()])),
+      powerSupplyId: t.Optional(t.Union([t.Number(), t.Null()])),
+      caseId: t.Optional(t.Union([t.Number(), t.Null()])),
+    }),
+  }
+)
   .get(
     "/games",
     async ({ query }) => {
