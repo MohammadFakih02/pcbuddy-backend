@@ -39,13 +39,15 @@ model PersonalPC {
   motherboardId Int?
   powerSupplyId Int?
   storageId     Int?
+  storageId2    Int?          
   caseId        Int?
   cpu           Cpu?          @relation(fields: [cpuId], references: [id])
   gpu           Gpu?          @relation(fields: [gpuId], references: [id])
   memory        Memory?       @relation(fields: [memoryId], references: [id])
   motherboard   Motherboard?  @relation(fields: [motherboardId], references: [id])
   powerSupply   PowerSupply?  @relation(fields: [powerSupplyId], references: [id])
-  storage       Storage?      @relation(fields: [storageId], references: [id])
+  storage       Storage?      @relation(name: "PrimaryStorage", fields: [storageId], references: [id])
+  storage2      Storage?      @relation(name: "SecondaryStorage", fields: [storageId2], references: [id])
   case          Case?         @relation(fields: [caseId], references: [id])
   totalPrice    Float?        @default(0)
   buildName     String?
@@ -54,7 +56,6 @@ model PersonalPC {
   usageCount    Int?          @default(0)
   addToProfile  Boolean       @default(false)
 }
-
 enum BuildStatus {
   COMPLETED
   IN_PROGRESS
@@ -153,7 +154,10 @@ model Storage {
   cache        String?
   formFactor   String?
   usageCount   Int?     @default(0)
-  personalPCs  PersonalPC[]
+
+  PrimaryPC PersonalPC[] @relation(name: "PrimaryStorage")
+
+  SecondaryPC PersonalPC[] @relation(name: "SecondaryStorage")
 }
 
 model Motherboard {
