@@ -253,4 +253,45 @@ export class ComputerService {
       limit,
     };
   }
+  async getCpuById(id: number) {
+    return await prisma.cpu.findUnique({
+      where: { id },
+    });
+  }
+  
+  async getGpuById(id: number) {
+    return await prisma.gpu.findUnique({
+      where: { id },
+    });
+  }
+  
+  async getMemoryById(id: number) {
+    return await prisma.memory.findUnique({
+      where: { id },
+    });
+  }
+  
+  async getStorageById(id: number) {
+    return await prisma.storage.findUnique({
+      where: { id },
+    });
+  }
+  
+  async getMotherboardById(id: number) {
+    return await prisma.motherboard.findUnique({
+      where: { id },
+    });
+  }
+  
+  async getPowerSupplyById(id: number) {
+    return await prisma.powerSupply.findUnique({
+      where: { id },
+    });
+  }
+  
+  async getCaseById(id: number) {
+    return await prisma.case.findUnique({
+      where: { id },
+    });
+  }
 }

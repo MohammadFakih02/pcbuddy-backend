@@ -184,4 +184,149 @@ export const computerController = new Elysia()
         url: t.String(),
       }),
     }
-  );
+  )// Get CPU details by ID
+.get(
+  "/parts/cpu/:id",
+  async ({ params: { id }, jwt, set, request }) => {
+    const payload = await isAuthenticated({ jwt, set, request });
+    if (set.status === 401) {
+      return { message: "Unauthorized" };
+    }
+
+    try {
+      const cpu = await computerService.getCpuById(Number(id));
+      return cpu;
+    } catch (error) {
+      set.status = 404;
+      return {
+        message: error instanceof Error ? error.message : "Failed to fetch CPU details",
+      };
+    }
+  }
+)
+
+// Get GPU details by ID
+.get(
+  "/parts/gpu/:id",
+  async ({ params: { id }, jwt, set, request }) => {
+    const payload = await isAuthenticated({ jwt, set, request });
+    if (set.status === 401) {
+      return { message: "Unauthorized" };
+    }
+
+    try {
+      const gpu = await computerService.getGpuById(Number(id));
+      return gpu;
+    } catch (error) {
+      set.status = 404;
+      return {
+        message: error instanceof Error ? error.message : "Failed to fetch GPU details",
+      };
+    }
+  }
+)
+
+// Get Memory details by ID
+.get(
+  "/parts/memory/:id",
+  async ({ params: { id }, jwt, set, request }) => {
+    const payload = await isAuthenticated({ jwt, set, request });
+    if (set.status === 401) {
+      return { message: "Unauthorized" };
+    }
+
+    try {
+      const memory = await computerService.getMemoryById(Number(id));
+      return memory;
+    } catch (error) {
+      set.status = 404;
+      return {
+        message: error instanceof Error ? error.message : "Failed to fetch Memory details",
+      };
+    }
+  }
+)
+
+// Get Storage details by ID
+.get(
+  "/parts/storage/:id",
+  async ({ params: { id }, jwt, set, request }) => {
+    const payload = await isAuthenticated({ jwt, set, request });
+    if (set.status === 401) {
+      return { message: "Unauthorized" };
+    }
+
+    try {
+      const storage = await computerService.getStorageById(Number(id));
+      return storage;
+    } catch (error) {
+      set.status = 404;
+      return {
+        message: error instanceof Error ? error.message : "Failed to fetch Storage details",
+      };
+    }
+  }
+)
+
+// Get Motherboard details by ID
+.get(
+  "/parts/motherboard/:id",
+  async ({ params: { id }, jwt, set, request }) => {
+    const payload = await isAuthenticated({ jwt, set, request });
+    if (set.status === 401) {
+      return { message: "Unauthorized" };
+    }
+
+    try {
+      const motherboard = await computerService.getMotherboardById(Number(id));
+      return motherboard;
+    } catch (error) {
+      set.status = 404;
+      return {
+        message: error instanceof Error ? error.message : "Failed to fetch Motherboard details",
+      };
+    }
+  }
+)
+
+// Get Power Supply details by ID
+.get(
+  "/parts/power-supply/:id",
+  async ({ params: { id }, jwt, set, request }) => {
+    const payload = await isAuthenticated({ jwt, set, request });
+    if (set.status === 401) {
+      return { message: "Unauthorized" };
+    }
+
+    try {
+      const powerSupply = await computerService.getPowerSupplyById(Number(id));
+      return powerSupply;
+    } catch (error) {
+      set.status = 404;
+      return {
+        message: error instanceof Error ? error.message : "Failed to fetch Power Supply details",
+      };
+    }
+  }
+)
+
+// Get Case details by ID
+.get(
+  "/parts/case/:id",
+  async ({ params: { id }, jwt, set, request }) => {
+    const payload = await isAuthenticated({ jwt, set, request });
+    if (set.status === 401) {
+      return { message: "Unauthorized" };
+    }
+
+    try {
+      const pcCase = await computerService.getCaseById(Number(id));
+      return pcCase;
+    } catch (error) {
+      set.status = 404;
+      return {
+        message: error instanceof Error ? error.message : "Failed to fetch Case details",
+      };
+    }
+  }
+)
