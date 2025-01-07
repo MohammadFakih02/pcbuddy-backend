@@ -28,7 +28,7 @@ export const computerController = new Elysia()
 
     return {
       cpus,
-      gpus,
+      gpus: gpus.map(gpu => ({ ...gpu, name: `${gpu.name} ${gpu.chipset}` })),
       memory,
       storage,
       motherboards,
@@ -66,6 +66,7 @@ export const computerController = new Elysia()
         gpuId: t.Optional(t.Union([t.Number(), t.Null()])),
         memoryId: t.Optional(t.Union([t.Number(), t.Null()])),
         storageId: t.Optional(t.Union([t.Number(), t.Null()])),
+        storageId2: t.Optional(t.Union([t.Number(), t.Null()])),
         motherboardId: t.Optional(t.Union([t.Number(), t.Null()])),
         powerSupplyId: t.Optional(t.Union([t.Number(), t.Null()])),
         caseId: t.Optional(t.Union([t.Number(), t.Null()])),
@@ -100,6 +101,7 @@ export const computerController = new Elysia()
         gpuId: t.Optional(t.Number()),
         memoryId: t.Optional(t.Number()),
         storageId: t.Optional(t.Number()),
+        storageId2: t.Optional(t.Number()),
         motherboardId: t.Optional(t.Number()),
         powerSupplyId: t.Optional(t.Number()),
         caseId: t.Optional(t.Number()),
