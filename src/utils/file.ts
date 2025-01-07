@@ -1,4 +1,3 @@
-// file.ts
 import { randomUUID } from 'crypto';
 import { join } from 'path';
 import { unlink } from 'fs/promises';
@@ -6,7 +5,8 @@ import { unlink } from 'fs/promises';
 const uploadDir = join(__dirname, '../../uploads/profile-pictures');
 
 export const saveFile = async (file: File): Promise<string> => {
-  const fileName = `${randomUUID()}-${file.name}`;
+  const sanitizedFileName = file.name.replace(/\s+/g, '');
+  const fileName = `${randomUUID()}-${sanitizedFileName}`;
   const filePath = join(uploadDir, fileName);
 
   const arrayBuffer = await file.arrayBuffer();

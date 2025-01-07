@@ -46,6 +46,7 @@ export class UserService {
 
   async updateProfilePicture(userId: number, profilePicture: string) {
     const user = await prisma.user.findUnique({ where: { id: userId } });
+    
     if (user?.profilePicture) {
       await deleteFile(user.profilePicture);
     }
