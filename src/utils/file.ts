@@ -1,3 +1,4 @@
+// file.ts
 import { randomUUID } from 'crypto';
 import { join } from 'path';
 import { unlink } from 'fs/promises';
@@ -15,7 +16,16 @@ export const saveFile = async (file: File): Promise<string> => {
   return `${backendUrl}/uploads/profile-pictures/${fileName}`;
 };
 
-export const deleteFile = async (filePath: string): Promise<void> => {
-  const absolutePath = join(__dirname, '../../', filePath);
-  await unlink(absolutePath);
+export const deleteFile = async (fileUrl: string | undefined): Promise<void> => {
+  if (!fileUrl) {
+    throw new Error('File URL is undefined');
+  }
+
+  const fileName = fileUrl.split('/').pop();
+  if (!fileName) {
+    throw new Error('Invalid file URL');
+  }
+
+  const filePath = join(uploadDir, fileName);
+  await unlink(filePath);
 };
