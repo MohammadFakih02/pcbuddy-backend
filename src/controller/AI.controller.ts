@@ -32,7 +32,8 @@ export const AIController = new Elysia()
         gameName: t.String(),
       }),
     }
-  )  .post(
+  )
+  .post(
     '/templagegraph',
     async ({ body }: { body: { pcParts: { cpu: string; gpu: string; ram: string } } }) => {
       const { pcParts } = body;
@@ -46,6 +47,47 @@ export const AIController = new Elysia()
           gpu: t.String(),
           ram: t.String(),
         }),
+      }),
+    }
+  )
+  .post(
+    '/checkcompatibility',
+    async ({ body }: { body: { 
+      cpu: string; 
+      gpu: string; 
+      ram: string; 
+      storage: string; 
+      ssd: string; 
+      hdd: string; 
+      motherboard: string; 
+      psu: string; 
+      case: string; 
+    } }) => {
+      const { cpu, gpu, ram, storage, ssd, hdd, motherboard, psu, case: pcCase } = body;
+      const result = await AIService.checkCompatibility({ 
+        cpu, 
+        gpu, 
+        ram, 
+        storage, 
+        ssd, 
+        hdd, 
+        motherboard, 
+        psu, 
+        case: pcCase 
+      });
+      return result;
+    },
+    {
+      body: t.Object({
+        cpu: t.String(),
+        gpu: t.String(),
+        ram: t.String(),
+        storage: t.String(),
+        ssd: t.String(),
+        hdd: t.String(),
+        motherboard: t.String(),
+        psu: t.String(),
+        case: t.String(),
       }),
     }
   );
