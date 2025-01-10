@@ -327,9 +327,11 @@ export const AIService = {
     case: string;
   }) {
     const { cpu, gpu, ram, storage, ssd, hdd, motherboard, psu, case: pcCase } = fullSystem;
-
+    const availableMotherboards = await computerService.getMotherboards();
     const promptText = `
     Given the following PC components, check for any compatibility issues and suggest parts to fix the issues.
+        Available Motherboards:
+    ${availableMotherboards.map(m => m.name).join(", ")}
 
     PC Components:
     - CPU: ${cpu}
