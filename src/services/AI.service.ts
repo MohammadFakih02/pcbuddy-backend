@@ -6,6 +6,13 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 const computerService = new ComputerService();
 
+const formatImageUrl = (url: string | null | undefined): string | null | undefined => {
+  if (url && url.startsWith('//')) {
+    return `https:${url}`;
+  }
+  return url;
+};
+
 export const AIService = {
   async getPC(prompt: string) {
     const availableMotherboards = await computerService.getMotherboards();
@@ -118,14 +125,14 @@ export const AIService = {
       const ssdDetails = matchedSSD ? await computerService.getStorageById(matchedSSD.id) : null;
 
       const matchedParts = {
-        cpu: cpuDetails,
-        gpu: gpuDetails,
-        ram: ramDetails,
-        psu: psuDetails,
-        case: caseDetails,
-        hdd: hddDetails,
-        ssd: ssdDetails,
-        motherboard: motherboardDetails,
+        cpu: cpuDetails ? { ...cpuDetails, imageUrl: formatImageUrl(cpuDetails.imageUrl) } : null,
+        gpu: gpuDetails ? { ...gpuDetails, imageUrl: formatImageUrl(gpuDetails.imageUrl) } : null,
+        memory: ramDetails ? { ...ramDetails, imageUrl: formatImageUrl(ramDetails.imageUrl) } : null,
+        powerSupply: psuDetails ? { ...psuDetails, imageUrl: formatImageUrl(psuDetails.imageUrl) } : null,
+        case: caseDetails ? { ...caseDetails, imageUrl: formatImageUrl(caseDetails.imageUrl) } : null,
+        storage: hddDetails ? { ...hddDetails, imageUrl: formatImageUrl(hddDetails.imageUrl) } : null,
+        storage2: ssdDetails ? { ...ssdDetails, imageUrl: formatImageUrl(ssdDetails.imageUrl) } : null,
+        motherboard: motherboardDetails ? { ...motherboardDetails, imageUrl: formatImageUrl(motherboardDetails.imageUrl) } : null,
       };
 
       return { success: true, response: matchedParts };

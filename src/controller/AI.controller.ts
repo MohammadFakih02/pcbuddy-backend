@@ -14,4 +14,4 @@ export const AIController = new Elysia()
         prompt: t.String(),
       }),
     }
-  );
+  );    
