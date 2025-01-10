@@ -227,4 +227,92 @@ export const AIService = {
       }
     }
   },
+  async getTemplateGraph(pcParts: { cpu: string; gpu: string; ram: string }) {
+    const { cpu, gpu, ram } = pcParts;
+
+    const games = [
+      "Cyberpunk 2077",
+      "Red Dead Redemption 2",
+      "Counter Strike 2",
+      "Fortnite",
+      "Call of Duty: Warzone"
+    ];
+
+    const promptText = `
+    Based on the following PC components, estimate the average FPS for each graphical preset (low, medium, high, ultra) for the following games:
+
+    PC Components:
+    - CPU: ${cpu}
+    - GPU: ${gpu}
+    - RAM: ${ram}
+
+    Games:
+    ${games.join(", ")}
+
+    The AI should return a JSON object in the following format:
+    {
+      "Cyberpunk 2077": {
+        "low": FPS for low preset,
+        "medium": FPS for medium preset,
+        "high": FPS for high preset,
+        "ultra": FPS for ultra preset
+      },
+      "Red Dead Redemption 2": {
+        "low": FPS for low preset,
+        "medium": FPS for medium preset,
+        "high": FPS for high preset,
+        "ultra": FPS for ultra preset
+      },
+      "Counter Strike 2": {
+        "low": FPS for low preset,
+        "medium": FPS for medium preset,
+        "high": FPS for high preset,
+        "ultra": FPS for ultra preset
+      },
+      "Fortnite": {
+        "low": FPS for low preset,
+        "medium": FPS for medium preset,
+        "high": FPS for high preset,
+        "ultra": FPS for ultra preset
+      },
+      "Call of Duty: Warzone": {
+        "low": FPS for low preset,
+        "medium": FPS for medium preset,
+        "high": FPS for high preset,
+        "ultra": FPS for ultra preset
+      }
+    }
+
+    Ensure the response is valid JSON without any additional explanations or text.
+    `;
+
+    try {
+      const result = await model.generateContent(promptText);
+      const response = await result.response;
+      const text = response.text();
+
+      console.log('AI Response:', text);
+
+      // Extract JSON from the response
+      const jsonMatch = text.match(/\{.*\}/s);
+      if (!jsonMatch) {
+        return { success: false, error: 'No valid JSON found in the AI response.' };
+      }
+
+      let jsonResponse;
+      try {
+        jsonResponse = JSON.parse(jsonMatch[0]);
+      } catch (error) {
+        return { success: false, error: 'Failed to parse AI response as JSON.' };
+      }
+
+      return { success: true, response: jsonResponse };
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return { success: false, error: error.message };
+      } else {
+        return { success: false, error: 'Unknown error occurred.' };
+      }
+    }
+  },
 };

@@ -32,4 +32,20 @@ export const AIController = new Elysia()
         gameName: t.String(),
       }),
     }
+  )  .post(
+    '/templagegraph',
+    async ({ body }: { body: { pcParts: { cpu: string; gpu: string; ram: string } } }) => {
+      const { pcParts } = body;
+      const result = await AIService.getTemplateGraph(pcParts);
+      return result;
+    },
+    {
+      body: t.Object({
+        pcParts: t.Object({
+          cpu: t.String(),
+          gpu: t.String(),
+          ram: t.String(),
+        }),
+      }),
+    }
   );
