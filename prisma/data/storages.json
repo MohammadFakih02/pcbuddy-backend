@@ -1113,17 +1113,6 @@
     {
         "name":"Seagate BarraCuda",
         "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"5400",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/f2b81ef4f53b4566edfd5a5c7c60977d.256p.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/jD3H99\/seagate-barracuda-4tb-35-5400rpm-internal-hard-drive-st4000dm004",
         "price":88.89,
@@ -1307,17 +1296,6 @@
         "capacity":500.0,
         "cache":null,
         "formFactor":"M.2-2280"
-    },
-    {
-        "name":"Intel 750",
-        "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/BMcMnQ\/intel-750-series-12-tb-25-solid-state-drive-ssdpe2mw012t4x1",
-        "price":475.0,
-        "manufacturer":"Intel",
-        "capacity":null,
-        "cache":null,
-        "formFactor":"2.5"
     },
     {
         "name":"Intel 750",
@@ -1734,17 +1712,6 @@
         "price":85.0,
         "manufacturer":"Seagate",
         "capacity":160.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
         "cache":"8 MB",
         "formFactor":"3.5"
     },
@@ -3500,17 +3467,6 @@
     {
         "name":"Seagate BarraCuda",
         "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"7200",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/f2b81ef4f53b4566edfd5a5c7c60977d.256p.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/jD3H99\/seagate-barracuda-4tb-35-5400rpm-internal-hard-drive-st4000dm004",
         "price":88.89,
@@ -4884,17 +4840,6 @@
         "formFactor":"M.2-2280"
     },
     {
-        "name":"Toshiba MK3276GSX",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/skMFf7\/toshiba-internal-hard-drive-mk3276gsx",
-        "price":12.99,
-        "manufacturer":"Toshiba",
-        "capacity":320.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
         "name":"Corsair MP600 CORE XT",
         "type":"SSD",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/72ef56a7a1e4daa2e550a57f9abcc9f1.256p.jpg",
@@ -5375,17 +5320,6 @@
         "price":85.0,
         "manufacturer":"Seagate",
         "capacity":160.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
         "cache":"8 MB",
         "formFactor":"3.5"
     },
@@ -9671,17 +9605,6 @@
     {
         "name":"Seagate BarraCuda",
         "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"5400",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/f2b81ef4f53b4566edfd5a5c7c60977d.256p.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/jD3H99\/seagate-barracuda-4tb-35-5400rpm-internal-hard-drive-st4000dm004",
         "price":88.89,
@@ -10017,17 +9940,6 @@
         "price":85.0,
         "manufacturer":"Seagate",
         "capacity":160.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
         "cache":"8 MB",
         "formFactor":"3.5"
     },
@@ -11299,17 +11211,6 @@
     {
         "name":"Seagate BarraCuda",
         "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"7200",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/f2b81ef4f53b4566edfd5a5c7c60977d.256p.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/jD3H99\/seagate-barracuda-4tb-35-5400rpm-internal-hard-drive-st4000dm004",
         "price":88.89,
@@ -11361,17 +11262,6 @@
         "capacity":120.0,
         "cache":null,
         "formFactor":"M.2-2280"
-    },
-    {
-        "name":"Western Digital Green",
-        "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/dzqdnQ\/western-digital-internal-hard-drive-wd10eavs",
-        "price":81.0,
-        "manufacturer":"Western Digital",
-        "capacity":1024.0,
-        "cache":"64 MB",
-        "formFactor":"3.5"
     },
     {
         "name":"Patriot P210",
@@ -12124,17 +12014,6 @@
     {
         "name":"Seagate BarraCuda",
         "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"7200",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/f2b81ef4f53b4566edfd5a5c7c60977d.256p.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/jD3H99\/seagate-barracuda-4tb-35-5400rpm-internal-hard-drive-st4000dm004",
         "price":88.89,
@@ -12757,17 +12636,6 @@
         "manufacturer":"Western Digital",
         "capacity":1024.0,
         "cache":"64 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Western Digital VelociRaptor",
-        "type":"10000",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/GyNp99\/western-digital-internal-hard-drive-wd1500hlfs",
-        "price":204.62,
-        "manufacturer":"Western Digital",
-        "capacity":150.0,
-        "cache":"16 MB",
         "formFactor":"3.5"
     },
     {
@@ -14102,17 +13970,6 @@
         "formFactor":"M.2-2280"
     },
     {
-        "name":"Western Digital Green",
-        "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/dzqdnQ\/western-digital-internal-hard-drive-wd10eavs",
-        "price":81.0,
-        "manufacturer":"Western Digital",
-        "capacity":1024.0,
-        "cache":"64 MB",
-        "formFactor":"3.5"
-    },
-    {
         "name":"Western Digital Gold",
         "type":"7200",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/a311d7aa215ad39a8635831edf9db5ab.256p.jpg",
@@ -14434,17 +14291,6 @@
     {
         "name":"Seagate BarraCuda",
         "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"5400",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/f2b81ef4f53b4566edfd5a5c7c60977d.256p.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/jD3H99\/seagate-barracuda-4tb-35-5400rpm-internal-hard-drive-st4000dm004",
         "price":88.89,
@@ -14582,17 +14428,6 @@
         "price":85.0,
         "manufacturer":"Seagate",
         "capacity":160.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
         "cache":"8 MB",
         "formFactor":"3.5"
     },
@@ -15457,17 +15292,6 @@
     {
         "name":"Seagate BarraCuda",
         "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"5400",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/f2b81ef4f53b4566edfd5a5c7c60977d.256p.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/jD3H99\/seagate-barracuda-4tb-35-5400rpm-internal-hard-drive-st4000dm004",
         "price":88.89,
@@ -15662,17 +15486,6 @@
         "capacity":800.0,
         "cache":null,
         "formFactor":"2.5"
-    },
-    {
-        "name":"Hitachi Ultrastar He8",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/c7KKHx\/hitachi-ultrastar-he8-8-tb-35-7200rpm-internal-hard-drive-huh728080aln604",
-        "price":1087.0,
-        "manufacturer":"Hitachi",
-        "capacity":8192.0,
-        "cache":"128 MB",
-        "formFactor":"3.5"
     },
     {
         "name":"Hitachi Ultrastar He8",
@@ -16678,17 +16491,6 @@
     {
         "name":"Seagate BarraCuda",
         "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"5400",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/f2b81ef4f53b4566edfd5a5c7c60977d.256p.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/jD3H99\/seagate-barracuda-4tb-35-5400rpm-internal-hard-drive-st4000dm004",
         "price":88.89,
@@ -17268,17 +17070,6 @@
         "capacity":512.0,
         "cache":null,
         "formFactor":"M.2-2280"
-    },
-    {
-        "name":"Western Digital SN530",
-        "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/wQC48d\/western-digital-sn530-256-gb-m2-2230-pcie-30-x4-nvme-solid-state-drive-sdbptpz-256g",
-        "price":32.0,
-        "manufacturer":"Western Digital",
-        "capacity":256.0,
-        "cache":null,
-        "formFactor":"M.2-2230"
     },
     {
         "name":"Western Digital SN530",
@@ -18203,17 +17994,6 @@
         "capacity":120.0,
         "cache":null,
         "formFactor":"M.2-2280"
-    },
-    {
-        "name":"Western Digital Green",
-        "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/dzqdnQ\/western-digital-internal-hard-drive-wd10eavs",
-        "price":81.0,
-        "manufacturer":"Western Digital",
-        "capacity":1024.0,
-        "cache":"64 MB",
-        "formFactor":"3.5"
     },
     {
         "name":"Western Digital Ultrastar DC HC520",
@@ -19261,17 +19041,6 @@
         "formFactor":"3.5"
     },
     {
-        "name":"Western Digital Caviar Black",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/tHMFf7\/western-digital-internal-hard-drive-wd5002aalx",
-        "price":79.95,
-        "manufacturer":"Western Digital",
-        "capacity":500.0,
-        "cache":"32 MB",
-        "formFactor":"3.5"
-    },
-    {
         "name":"Western Digital Black SN750",
         "type":"SSD",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/0e711f3edb98f9680cc528271201d8d2.256p.jpg",
@@ -19303,17 +19072,6 @@
         "capacity":120.0,
         "cache":null,
         "formFactor":"M.2-2280"
-    },
-    {
-        "name":"Western Digital Green",
-        "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/dzqdnQ\/western-digital-internal-hard-drive-wd10eavs",
-        "price":81.0,
-        "manufacturer":"Western Digital",
-        "capacity":1024.0,
-        "cache":"64 MB",
-        "formFactor":"3.5"
     },
     {
         "name":"Patriot P400 Lite",
@@ -19940,17 +19698,6 @@
         "manufacturer":"Western Digital",
         "capacity":1024.0,
         "cache":"64 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Western Digital VelociRaptor",
-        "type":"10000",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/GyNp99\/western-digital-internal-hard-drive-wd1500hlfs",
-        "price":204.62,
-        "manufacturer":"Western Digital",
-        "capacity":150.0,
-        "cache":"16 MB",
         "formFactor":"3.5"
     },
     {
@@ -22462,17 +22209,6 @@
         "formFactor":"M.2-2280"
     },
     {
-        "name":"Western Digital Green",
-        "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/dzqdnQ\/western-digital-internal-hard-drive-wd10eavs",
-        "price":81.0,
-        "manufacturer":"Western Digital",
-        "capacity":1024.0,
-        "cache":"64 MB",
-        "formFactor":"3.5"
-    },
-    {
         "name":"Seagate BarraCuda Pro",
         "type":"7200",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/416Zxqx0iAL.jpg",
@@ -23584,17 +23320,6 @@
         "formFactor":"M.2-2280"
     },
     {
-        "name":"Western Digital Green",
-        "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/dzqdnQ\/western-digital-internal-hard-drive-wd10eavs",
-        "price":81.0,
-        "manufacturer":"Western Digital",
-        "capacity":1024.0,
-        "cache":"64 MB",
-        "formFactor":"3.5"
-    },
-    {
         "name":"Samsung 960 Pro",
         "type":"SSD",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/4b2cc1a1e4dd3c64185902374eda1ccf.256p.jpg",
@@ -23988,17 +23713,6 @@
         "manufacturer":"Western Digital",
         "capacity":4096.0,
         "cache":"128 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Western Digital Caviar Black",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/tHMFf7\/western-digital-internal-hard-drive-wd5002aalx",
-        "price":79.95,
-        "manufacturer":"Western Digital",
-        "capacity":500.0,
-        "cache":"32 MB",
         "formFactor":"3.5"
     },
     {
@@ -25960,17 +25674,6 @@
         "formFactor":"M.2-2280"
     },
     {
-        "name":"Western Digital Green",
-        "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/dzqdnQ\/western-digital-internal-hard-drive-wd10eavs",
-        "price":81.0,
-        "manufacturer":"Western Digital",
-        "capacity":1024.0,
-        "cache":"64 MB",
-        "formFactor":"3.5"
-    },
-    {
         "name":"Western Digital Blue",
         "type":"SSD",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/a3b09866e3716566572bf9a13792cc85.256p.jpg",
@@ -26199,17 +25902,6 @@
         "manufacturer":"Western Digital",
         "capacity":4096.0,
         "cache":"128 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Western Digital Caviar Black",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/tHMFf7\/western-digital-internal-hard-drive-wd5002aalx",
-        "price":79.95,
-        "manufacturer":"Western Digital",
-        "capacity":500.0,
-        "cache":"32 MB",
         "formFactor":"3.5"
     },
     {
@@ -26462,17 +26154,6 @@
         "price":85.0,
         "manufacturer":"Seagate",
         "capacity":160.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
         "cache":"8 MB",
         "formFactor":"3.5"
     },
@@ -27216,17 +26897,6 @@
     {
         "name":"Seagate BarraCuda",
         "type":"5900",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"5900",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/f2b81ef4f53b4566edfd5a5c7c60977d.256p.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/jD3H99\/seagate-barracuda-4tb-35-5400rpm-internal-hard-drive-st4000dm004",
         "price":88.89,
@@ -27300,17 +26970,6 @@
         "capacity":120.0,
         "cache":null,
         "formFactor":"M.2-2280"
-    },
-    {
-        "name":"Western Digital Green",
-        "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/dzqdnQ\/western-digital-internal-hard-drive-wd10eavs",
-        "price":81.0,
-        "manufacturer":"Western Digital",
-        "capacity":1024.0,
-        "cache":"64 MB",
-        "formFactor":"3.5"
     },
     {
         "name":"Seagate IronWolf NAS",
@@ -29029,17 +28688,6 @@
         "formFactor":"M.2-2280"
     },
     {
-        "name":"Western Digital Green",
-        "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/dzqdnQ\/western-digital-internal-hard-drive-wd10eavs",
-        "price":81.0,
-        "manufacturer":"Western Digital",
-        "capacity":1024.0,
-        "cache":"64 MB",
-        "formFactor":"3.5"
-    },
-    {
         "name":"Western Digital Black SN750",
         "type":"SSD",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/0e711f3edb98f9680cc528271201d8d2.256p.jpg",
@@ -29438,17 +29086,6 @@
     {
         "name":"Seagate BarraCuda",
         "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"5400",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/f2b81ef4f53b4566edfd5a5c7c60977d.256p.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/jD3H99\/seagate-barracuda-4tb-35-5400rpm-internal-hard-drive-st4000dm004",
         "price":88.89,
@@ -29566,17 +29203,6 @@
         "capacity":120.0,
         "cache":null,
         "formFactor":"M.2-2280"
-    },
-    {
-        "name":"Western Digital Green",
-        "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/dzqdnQ\/western-digital-internal-hard-drive-wd10eavs",
-        "price":81.0,
-        "manufacturer":"Western Digital",
-        "capacity":1024.0,
-        "cache":"64 MB",
-        "formFactor":"3.5"
     },
     {
         "name":"Seagate Enterprise",
@@ -30063,17 +29689,6 @@
         "formFactor":"M.2-2280"
     },
     {
-        "name":"Samsung Spinpoint M8",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/dLrcCJ\/samsung-internal-hard-drive-st1000lm024",
-        "price":38.36,
-        "manufacturer":"Samsung",
-        "capacity":1024.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
         "name":"ADATA XPG SX6000",
         "type":"SSD",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/51v1c8566WL.jpg",
@@ -30470,17 +30085,6 @@
         "formFactor":"2.5"
     },
     {
-        "name":"Hitachi 7K1000.C",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/Qfzv6h\/hitachi-internal-hard-drive-0f10383",
-        "price":498.0,
-        "manufacturer":"Hitachi",
-        "capacity":1024.0,
-        "cache":"32 MB",
-        "formFactor":"3.5"
-    },
-    {
         "name":"Mushkin Source HC",
         "type":"SSD",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/31KeULdwSLL.jpg",
@@ -30857,28 +30461,6 @@
     {
         "name":"Western Digital Scorpio Blue",
         "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/93JwrH\/western-digital-internal-hard-drive-wd2500bevt",
-        "price":29.95,
-        "manufacturer":"Western Digital",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Western Digital Scorpio Blue",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/kKtCmG\/western-digital-internal-hard-drive-wdbabc3200ancnrsn",
-        "price":29.95,
-        "manufacturer":"Western Digital",
-        "capacity":320.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Western Digital Scorpio Blue",
-        "type":"5400",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/41shCSj79uL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/Hd7wrH\/western-digital-internal-hard-drive-wd7500bpvt",
         "price":55.0,
@@ -31152,17 +30734,6 @@
         "formFactor":"3.5"
     },
     {
-        "name":"Western Digital Caviar Black",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/tHMFf7\/western-digital-internal-hard-drive-wd5002aalx",
-        "price":79.95,
-        "manufacturer":"Western Digital",
-        "capacity":500.0,
-        "cache":"32 MB",
-        "formFactor":"3.5"
-    },
-    {
         "name":"TEAMGROUP GX1",
         "type":"SSD",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/571629ef1cd25eccd5d257c13cf695f0.256p.jpg",
@@ -31198,34 +30769,12 @@
     {
         "name":"Western Digital VelociRaptor",
         "type":"10000",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/GyNp99\/western-digital-internal-hard-drive-wd1500hlfs",
-        "price":204.62,
-        "manufacturer":"Western Digital",
-        "capacity":150.0,
-        "cache":"16 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Western Digital VelociRaptor",
-        "type":"10000",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/51-fGDp1EiL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/fmTmP6\/western-digital-internal-hard-drive-wd3000glfs",
         "price":149.94,
         "manufacturer":"Western Digital",
         "capacity":300.0,
         "cache":"16 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Samsung Spinpoint F1 DT",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/Mqfp99\/samsung-internal-hard-drive-hd103uj",
-        "price":99.99,
-        "manufacturer":"Samsung",
-        "capacity":1024.0,
-        "cache":"32 MB",
         "formFactor":"3.5"
     },
     {
@@ -31957,28 +31506,6 @@
     {
         "name":"Western Digital Scorpio Blue",
         "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/93JwrH\/western-digital-internal-hard-drive-wd2500bevt",
-        "price":29.95,
-        "manufacturer":"Western Digital",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Western Digital Scorpio Blue",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/kKtCmG\/western-digital-internal-hard-drive-wdbabc3200ancnrsn",
-        "price":29.95,
-        "manufacturer":"Western Digital",
-        "capacity":320.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Western Digital Scorpio Blue",
-        "type":"5400",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/41shCSj79uL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/Hd7wrH\/western-digital-internal-hard-drive-wd7500bpvt",
         "price":55.0,
@@ -32362,17 +31889,6 @@
         "formFactor":"M.2-2280"
     },
     {
-        "name":"Hitachi Ultrastar 7K6000",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/r9Jkcf\/hitachi-internal-hard-drive-0f23005",
-        "price":87.73,
-        "manufacturer":"Hitachi",
-        "capacity":4096.0,
-        "cache":"128 MB",
-        "formFactor":"3.5"
-    },
-    {
         "name":"Patriot P300",
         "type":"SSD",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/bbe3d900dc2abf2a0828e4860619a58e.256p.jpg",
@@ -32534,17 +32050,6 @@
         "price":85.0,
         "manufacturer":"Seagate",
         "capacity":160.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
         "cache":"8 MB",
         "formFactor":"3.5"
     },
@@ -32754,17 +32259,6 @@
         "price":85.0,
         "manufacturer":"Seagate",
         "capacity":160.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
         "cache":"8 MB",
         "formFactor":"3.5"
     },
@@ -33497,17 +32991,6 @@
     {
         "name":"Seagate BarraCuda",
         "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"7200",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/f2b81ef4f53b4566edfd5a5c7c60977d.256p.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/jD3H99\/seagate-barracuda-4tb-35-5400rpm-internal-hard-drive-st4000dm004",
         "price":88.89,
@@ -33657,17 +33140,6 @@
         "manufacturer":"Western Digital",
         "capacity":750.0,
         "cache":"16 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Hitachi Ultrastar He8",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/c7KKHx\/hitachi-ultrastar-he8-8-tb-35-7200rpm-internal-hard-drive-huh728080aln604",
-        "price":1087.0,
-        "manufacturer":"Hitachi",
-        "capacity":8192.0,
-        "cache":"128 MB",
         "formFactor":"3.5"
     },
     {
@@ -33957,17 +33429,6 @@
         "formFactor":"M.2-2280"
     },
     {
-        "name":"Hitachi Ultrastar 7K3000",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/LQTmP6\/hitachi-internal-hard-drive-0f12455",
-        "price":83.42,
-        "manufacturer":"Hitachi",
-        "capacity":2048.0,
-        "cache":"64 MB",
-        "formFactor":"3.5"
-    },
-    {
         "name":"Seagate Exos X18",
         "type":"7200",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/17826badb30b589cf4071fb3b2ef2f69.256p.jpg",
@@ -34102,17 +33563,6 @@
     {
         "name":"Seagate BarraCuda",
         "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"7200",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/f2b81ef4f53b4566edfd5a5c7c60977d.256p.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/jD3H99\/seagate-barracuda-4tb-35-5400rpm-internal-hard-drive-st4000dm004",
         "price":88.89,
@@ -34240,17 +33690,6 @@
         "manufacturer":"Western Digital",
         "capacity":1024.0,
         "cache":"64 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Western Digital VelociRaptor",
-        "type":"10000",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/GyNp99\/western-digital-internal-hard-drive-wd1500hlfs",
-        "price":204.62,
-        "manufacturer":"Western Digital",
-        "capacity":150.0,
-        "cache":"16 MB",
         "formFactor":"3.5"
     },
     {
@@ -34702,17 +34141,6 @@
         "manufacturer":"Seagate",
         "capacity":2048.0,
         "cache":"16 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate Constellation ES",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/88V48d\/seagate-internal-hard-drive-st2000nm0001",
-        "price":44.0,
-        "manufacturer":"Seagate",
-        "capacity":2048.0,
-        "cache":"64 MB",
         "formFactor":"3.5"
     },
     {
@@ -35642,28 +35070,6 @@
     {
         "name":"Western Digital Scorpio Blue",
         "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/93JwrH\/western-digital-internal-hard-drive-wd2500bevt",
-        "price":29.95,
-        "manufacturer":"Western Digital",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Western Digital Scorpio Blue",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/kKtCmG\/western-digital-internal-hard-drive-wdbabc3200ancnrsn",
-        "price":29.95,
-        "manufacturer":"Western Digital",
-        "capacity":320.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Western Digital Scorpio Blue",
-        "type":"5400",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/41shCSj79uL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/Hd7wrH\/western-digital-internal-hard-drive-wd7500bpvt",
         "price":55.0,
@@ -35682,28 +35088,6 @@
         "capacity":250.0,
         "cache":"8 MB",
         "formFactor":"2.5"
-    },
-    {
-        "name":"Hitachi 7K1000.C",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/Qfzv6h\/hitachi-internal-hard-drive-0f10383",
-        "price":498.0,
-        "manufacturer":"Hitachi",
-        "capacity":1024.0,
-        "cache":"32 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Hitachi Ultrastar 7K3000",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/LQTmP6\/hitachi-internal-hard-drive-0f12455",
-        "price":83.42,
-        "manufacturer":"Hitachi",
-        "capacity":2048.0,
-        "cache":"64 MB",
-        "formFactor":"3.5"
     },
     {
         "name":"Seagate Enterprise Capacity",
@@ -35944,17 +35328,6 @@
         "price":85.0,
         "manufacturer":"Seagate",
         "capacity":160.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
         "cache":"8 MB",
         "formFactor":"3.5"
     },
@@ -36522,17 +35895,6 @@
     {
         "name":"Western Digital VelociRaptor",
         "type":"10000",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/GyNp99\/western-digital-internal-hard-drive-wd1500hlfs",
-        "price":204.62,
-        "manufacturer":"Western Digital",
-        "capacity":150.0,
-        "cache":"16 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Western Digital VelociRaptor",
-        "type":"10000",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/51-fGDp1EiL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/fmTmP6\/western-digital-internal-hard-drive-wd3000glfs",
         "price":149.94,
@@ -36551,17 +35913,6 @@
         "capacity":120.0,
         "cache":null,
         "formFactor":"M.2-2280"
-    },
-    {
-        "name":"Western Digital Green",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/dzqdnQ\/western-digital-internal-hard-drive-wd10eavs",
-        "price":81.0,
-        "manufacturer":"Western Digital",
-        "capacity":1024.0,
-        "cache":"64 MB",
-        "formFactor":"3.5"
     },
     {
         "name":"Western Digital Purple",
@@ -37089,17 +36440,6 @@
         "manufacturer":"Western Digital",
         "capacity":1024.0,
         "cache":"16 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Intel 750",
-        "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/BMcMnQ\/intel-750-series-12-tb-25-solid-state-drive-ssdpe2mw012t4x1",
-        "price":475.0,
-        "manufacturer":"Intel",
-        "capacity":null,
-        "cache":null,
         "formFactor":"2.5"
     },
     {
@@ -38302,17 +37642,6 @@
         "formFactor":"3.5"
     },
     {
-        "name":"Western Digital Caviar Black",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/tHMFf7\/western-digital-internal-hard-drive-wd5002aalx",
-        "price":79.95,
-        "manufacturer":"Western Digital",
-        "capacity":500.0,
-        "cache":"32 MB",
-        "formFactor":"3.5"
-    },
-    {
         "name":"Intel DC S3520",
         "type":"SSD",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/17ce9f59766c5175e99737a2d71dfd46.256p.jpg",
@@ -38332,17 +37661,6 @@
         "manufacturer":"Western Digital",
         "capacity":1024.0,
         "cache":"64 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Western Digital VelociRaptor",
-        "type":"10000",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/GyNp99\/western-digital-internal-hard-drive-wd1500hlfs",
-        "price":204.62,
-        "manufacturer":"Western Digital",
-        "capacity":150.0,
-        "cache":"16 MB",
         "formFactor":"3.5"
     },
     {
@@ -39063,17 +38381,6 @@
     {
         "name":"Seagate BarraCuda",
         "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"7200",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/f2b81ef4f53b4566edfd5a5c7c60977d.256p.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/jD3H99\/seagate-barracuda-4tb-35-5400rpm-internal-hard-drive-st4000dm004",
         "price":88.89,
@@ -39267,17 +38574,6 @@
         "manufacturer":"Seagate",
         "capacity":18432.0,
         "cache":"256 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Samsung Spinpoint F1 DT",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/Mqfp99\/samsung-internal-hard-drive-hd103uj",
-        "price":99.99,
-        "manufacturer":"Samsung",
-        "capacity":1024.0,
-        "cache":"32 MB",
         "formFactor":"3.5"
     },
     {
@@ -39701,17 +38997,6 @@
     {
         "name":"Seagate BarraCuda",
         "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"7200",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/f2b81ef4f53b4566edfd5a5c7c60977d.256p.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/jD3H99\/seagate-barracuda-4tb-35-5400rpm-internal-hard-drive-st4000dm004",
         "price":88.89,
@@ -39817,17 +39102,6 @@
         "manufacturer":"Seagate",
         "capacity":2048.0,
         "cache":"16 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate Constellation ES",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/88V48d\/seagate-internal-hard-drive-st2000nm0001",
-        "price":44.0,
-        "manufacturer":"Seagate",
-        "capacity":2048.0,
-        "cache":"64 MB",
         "formFactor":"3.5"
     },
     {
@@ -40755,17 +40029,6 @@
         "formFactor":"M.2-2280"
     },
     {
-        "name":"Western Digital Green",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/dzqdnQ\/western-digital-internal-hard-drive-wd10eavs",
-        "price":81.0,
-        "manufacturer":"Western Digital",
-        "capacity":1024.0,
-        "cache":"64 MB",
-        "formFactor":"3.5"
-    },
-    {
         "name":"Western Digital Blue",
         "type":"7200",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/a3b09866e3716566572bf9a13792cc85.256p.jpg",
@@ -41010,17 +40273,6 @@
     {
         "name":"Western Digital VelociRaptor",
         "type":"10000",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/GyNp99\/western-digital-internal-hard-drive-wd1500hlfs",
-        "price":204.62,
-        "manufacturer":"Western Digital",
-        "capacity":150.0,
-        "cache":"16 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Western Digital VelociRaptor",
-        "type":"10000",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/51-fGDp1EiL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/fmTmP6\/western-digital-internal-hard-drive-wd3000glfs",
         "price":149.94,
@@ -41159,17 +40411,6 @@
         "manufacturer":"Intel",
         "capacity":600.0,
         "cache":null,
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Samsung Spinpoint M",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/qfTmP6\/samsung-internal-hard-drive-hm160hi",
-        "price":34.95,
-        "manufacturer":"Samsung",
-        "capacity":160.0,
-        "cache":"8 MB",
         "formFactor":"2.5"
     },
     {
@@ -41681,17 +40922,6 @@
     {
         "name":"Seagate Constellation ES",
         "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/88V48d\/seagate-internal-hard-drive-st2000nm0001",
-        "price":44.0,
-        "manufacturer":"Seagate",
-        "capacity":2048.0,
-        "cache":"64 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate Constellation ES",
-        "type":"7200",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/41fGMuGqjzL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/M3phP6\/seagate-internal-hard-drive-st31000524ns",
         "price":99.0,
@@ -41721,17 +40951,6 @@
         "capacity":512.0,
         "cache":null,
         "formFactor":"M.2-2280"
-    },
-    {
-        "name":"Western Digital SN530",
-        "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/wQC48d\/western-digital-sn530-256-gb-m2-2230-pcie-30-x4-nvme-solid-state-drive-sdbptpz-256g",
-        "price":32.0,
-        "manufacturer":"Western Digital",
-        "capacity":256.0,
-        "cache":null,
-        "formFactor":"M.2-2230"
     },
     {
         "name":"Western Digital SN530",
@@ -42451,28 +41670,6 @@
     {
         "name":"Western Digital Scorpio Blue",
         "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/93JwrH\/western-digital-internal-hard-drive-wd2500bevt",
-        "price":29.95,
-        "manufacturer":"Western Digital",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Western Digital Scorpio Blue",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/kKtCmG\/western-digital-internal-hard-drive-wdbabc3200ancnrsn",
-        "price":29.95,
-        "manufacturer":"Western Digital",
-        "capacity":320.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Western Digital Scorpio Blue",
-        "type":"5400",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/41shCSj79uL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/Hd7wrH\/western-digital-internal-hard-drive-wd7500bpvt",
         "price":55.0,
@@ -42501,17 +41698,6 @@
         "manufacturer":"Western Digital",
         "capacity":1024.0,
         "cache":"64 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Western Digital VelociRaptor",
-        "type":"10000",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/GyNp99\/western-digital-internal-hard-drive-wd1500hlfs",
-        "price":204.62,
-        "manufacturer":"Western Digital",
-        "capacity":150.0,
-        "cache":"16 MB",
         "formFactor":"3.5"
     },
     {
@@ -42842,17 +42028,6 @@
         "manufacturer":"HP",
         "capacity":1024.0,
         "cache":null,
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Hitachi Ultrastar C10K900",
-        "type":"10000",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/XkxfrH\/hitachi-internal-hard-drive-huc109090css600",
-        "price":55.0,
-        "manufacturer":"Hitachi",
-        "capacity":900.0,
-        "cache":"64 MB",
         "formFactor":"2.5"
     },
     {
@@ -43254,17 +42429,6 @@
     {
         "name":"Samsung Spinpoint F1 DT",
         "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/Mqfp99\/samsung-internal-hard-drive-hd103uj",
-        "price":99.99,
-        "manufacturer":"Samsung",
-        "capacity":1024.0,
-        "cache":"32 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Samsung Spinpoint F1 DT",
-        "type":"7200",
         "imageUrl":"https:\/\/images-na.ssl-images-amazon.com\/images\/I\/51UJ1DxcI7L.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/D6fp99\/samsung-internal-hard-drive-hd642jj",
         "price":69.98,
@@ -43272,17 +42436,6 @@
         "capacity":640.0,
         "cache":"16 MB",
         "formFactor":"3.5"
-    },
-    {
-        "name":"Samsung Spinpoint M7",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/r2DwrH\/samsung-internal-hard-drive-hm320ii",
-        "price":65.0,
-        "manufacturer":"Samsung",
-        "capacity":320.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
     },
     {
         "name":"Seagate BarraCuda",
@@ -43369,17 +42522,6 @@
         "price":85.0,
         "manufacturer":"Seagate",
         "capacity":160.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
         "cache":"8 MB",
         "formFactor":"3.5"
     },
@@ -43771,17 +42913,6 @@
     {
         "name":"Seagate Barracuda ES.2",
         "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/YBMTwP\/seagate-barracuda-es2-250-gb-35-7200rpm-internal-hard-drive-st3250310ns",
-        "price":79.98,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
-        "cache":"32 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate Barracuda ES.2",
-        "type":"7200",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/41kvOXadtbL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/C8Bv6h\/seagate-barracuda-es2-750-gb-35-7200rpm-internal-hard-drive-st3750330ns",
         "price":76.39,
@@ -43789,28 +42920,6 @@
         "capacity":750.0,
         "cache":"32 MB",
         "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate Barracuda XT",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/RTckcf\/seagate-internal-hard-drive-st32000641as",
-        "price":170.78,
-        "manufacturer":"Seagate",
-        "capacity":2048.0,
-        "cache":"64 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Toshiba MK2576GSX",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/YkQypg\/toshiba-internal-hard-drive-mk2576gsx",
-        "price":37.0,
-        "manufacturer":"Toshiba",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
     },
     {
         "name":"Intel 520",
@@ -44739,17 +43848,6 @@
     {
         "name":"Western Digital SN530",
         "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/wQC48d\/western-digital-sn530-256-gb-m2-2230-pcie-30-x4-nvme-solid-state-drive-sdbptpz-256g",
-        "price":32.0,
-        "manufacturer":"Western Digital",
-        "capacity":256.0,
-        "cache":null,
-        "formFactor":"M.2-2230"
-    },
-    {
-        "name":"Western Digital SN530",
-        "type":"SSD",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/519+zM8HWRL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/Ch6p99\/western-digital-sn530-1024-tb-m2-2230-pcie-30-x4-nvme-solid-state-drive-sdbptpz-1t00",
         "price":323.03,
@@ -45245,17 +44343,6 @@
     {
         "name":"Seagate BarraCuda",
         "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"7200",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/f2b81ef4f53b4566edfd5a5c7c60977d.256p.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/jD3H99\/seagate-barracuda-4tb-35-5400rpm-internal-hard-drive-st4000dm004",
         "price":88.89,
@@ -45333,34 +44420,12 @@
     {
         "name":"Seagate Constellation ES",
         "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/88V48d\/seagate-internal-hard-drive-st2000nm0001",
-        "price":44.0,
-        "manufacturer":"Seagate",
-        "capacity":2048.0,
-        "cache":"64 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate Constellation ES",
-        "type":"7200",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/41fGMuGqjzL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/M3phP6\/seagate-internal-hard-drive-st31000524ns",
         "price":99.0,
         "manufacturer":"Seagate",
         "capacity":1024.0,
         "cache":"32 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Western Digital Caviar SE16",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vK9KHx\/western-digital-internal-hard-drive-wd3200ksrtl",
-        "price":79.98,
-        "manufacturer":"Western Digital",
-        "capacity":320.0,
-        "cache":"16 MB",
         "formFactor":"3.5"
     },
     {
@@ -45991,28 +45056,6 @@
         "formFactor":"M.2-2280"
     },
     {
-        "name":"Addlink S91",
-        "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/Q3Hqqs\/addlink-s91-2-tb-m2-2230-pcie-40-x4-nvme-solid-state-drive-ad2tbs91m2p",
-        "price":256.99,
-        "manufacturer":"Addlink",
-        "capacity":2048.0,
-        "cache":null,
-        "formFactor":"M.2-2230"
-    },
-    {
-        "name":"Addlink S91",
-        "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/KJtLrH\/addlink-s91-1-tb-m2-2230-pcie-40-x4-nvme-solid-state-drive-ad1tbs91m2p",
-        "price":92.44,
-        "manufacturer":"Addlink",
-        "capacity":1024.0,
-        "cache":null,
-        "formFactor":"M.2-2230"
-    },
-    {
         "name":"OWC Mercury Electra 6G",
         "type":"SSD",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/ecd29833531b614542ccb8347cb8cd26.256p.jpg",
@@ -46101,17 +45144,6 @@
         "formFactor":"3.5"
     },
     {
-        "name":"Hitachi 7K1000",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/RZmLrH\/hitachi-internal-hard-drive-hds721075kla330",
-        "price":39.99,
-        "manufacturer":"Hitachi",
-        "capacity":1024.0,
-        "cache":"32 MB",
-        "formFactor":"3.5"
-    },
-    {
         "name":"Intel X25-M",
         "type":"SSD",
         "imageUrl":"https:\/\/images-na.ssl-images-amazon.com\/images\/I\/51Gd2g%2BT5aL.jpg",
@@ -46142,17 +45174,6 @@
         "manufacturer":"Western Digital",
         "capacity":4096.0,
         "cache":"128 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Western Digital Caviar Black",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/tHMFf7\/western-digital-internal-hard-drive-wd5002aalx",
-        "price":79.95,
-        "manufacturer":"Western Digital",
-        "capacity":500.0,
-        "cache":"32 MB",
         "formFactor":"3.5"
     },
     {
@@ -47533,28 +46554,6 @@
     {
         "name":"Western Digital Scorpio Blue",
         "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/93JwrH\/western-digital-internal-hard-drive-wd2500bevt",
-        "price":29.95,
-        "manufacturer":"Western Digital",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Western Digital Scorpio Blue",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/kKtCmG\/western-digital-internal-hard-drive-wdbabc3200ancnrsn",
-        "price":29.95,
-        "manufacturer":"Western Digital",
-        "capacity":320.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Western Digital Scorpio Blue",
-        "type":"5400",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/41shCSj79uL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/Hd7wrH\/western-digital-internal-hard-drive-wd7500bpvt",
         "price":55.0,
@@ -48048,17 +47047,6 @@
         "formFactor":"3.5"
     },
     {
-        "name":"Hitachi 7K1000.C",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/Qfzv6h\/hitachi-internal-hard-drive-0f10383",
-        "price":498.0,
-        "manufacturer":"Hitachi",
-        "capacity":1024.0,
-        "cache":"32 MB",
-        "formFactor":"3.5"
-    },
-    {
         "name":"Western Digital Scorpio Black",
         "type":"7200",
         "imageUrl":"\/\/cdna.pcpartpicker.com\/static\/forever\/images\/product\/c49268a8641d1b4781d25782b96de87d.256p.jpg",
@@ -48088,17 +47076,6 @@
         "price":81.51,
         "manufacturer":"Hitachi",
         "capacity":250.0,
-        "cache":"16 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Hitachi Travelstar 7K750",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/3GCwrH\/hitachi-internal-hard-drive-hts727575a9e364",
-        "price":76.73,
-        "manufacturer":"Hitachi",
-        "capacity":750.0,
         "cache":"16 MB",
         "formFactor":"2.5"
     },
@@ -49095,17 +48072,6 @@
     {
         "name":"Hitachi Ultrastar He8",
         "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/c7KKHx\/hitachi-ultrastar-he8-8-tb-35-7200rpm-internal-hard-drive-huh728080aln604",
-        "price":1087.0,
-        "manufacturer":"Hitachi",
-        "capacity":8192.0,
-        "cache":"128 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Hitachi Ultrastar He8",
-        "type":"7200",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/41dRGDRQhRL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/Vqs8TW\/hitachi-internal-hard-drive-0f23668",
         "price":309.0,
@@ -50083,28 +49049,6 @@
         "formFactor":"3.5"
     },
     {
-        "name":"Addlink S91",
-        "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/Q3Hqqs\/addlink-s91-2-tb-m2-2230-pcie-40-x4-nvme-solid-state-drive-ad2tbs91m2p",
-        "price":256.99,
-        "manufacturer":"Addlink",
-        "capacity":2048.0,
-        "cache":null,
-        "formFactor":"M.2-2230"
-    },
-    {
-        "name":"Addlink S91",
-        "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/KJtLrH\/addlink-s91-1-tb-m2-2230-pcie-40-x4-nvme-solid-state-drive-ad1tbs91m2p",
-        "price":92.44,
-        "manufacturer":"Addlink",
-        "capacity":1024.0,
-        "cache":null,
-        "formFactor":"M.2-2230"
-    },
-    {
         "name":"Titanium Micro TH7175",
         "type":"SSD",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/31XHKPc0uHL.jpg",
@@ -50250,28 +49194,6 @@
     {
         "name":"Western Digital Scorpio Blue",
         "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/93JwrH\/western-digital-internal-hard-drive-wd2500bevt",
-        "price":29.95,
-        "manufacturer":"Western Digital",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Western Digital Scorpio Blue",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/kKtCmG\/western-digital-internal-hard-drive-wdbabc3200ancnrsn",
-        "price":29.95,
-        "manufacturer":"Western Digital",
-        "capacity":320.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Western Digital Scorpio Blue",
-        "type":"5400",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/41shCSj79uL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/Hd7wrH\/western-digital-internal-hard-drive-wd7500bpvt",
         "price":55.0,
@@ -50376,17 +49298,6 @@
         "price":85.0,
         "manufacturer":"Seagate",
         "capacity":160.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
         "cache":"8 MB",
         "formFactor":"3.5"
     },
@@ -50580,17 +49491,6 @@
     {
         "name":"Seagate Constellation ES",
         "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/88V48d\/seagate-internal-hard-drive-st2000nm0001",
-        "price":44.0,
-        "manufacturer":"Seagate",
-        "capacity":2048.0,
-        "cache":"64 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate Constellation ES",
-        "type":"7200",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/41fGMuGqjzL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/M3phP6\/seagate-internal-hard-drive-st31000524ns",
         "price":99.0,
@@ -50717,17 +49617,6 @@
         "price":85.0,
         "manufacturer":"Seagate",
         "capacity":160.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
         "cache":"8 MB",
         "formFactor":"3.5"
     },
@@ -50987,17 +49876,6 @@
     {
         "name":"Seagate Constellation ES",
         "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/88V48d\/seagate-internal-hard-drive-st2000nm0001",
-        "price":44.0,
-        "manufacturer":"Seagate",
-        "capacity":2048.0,
-        "cache":"64 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate Constellation ES",
-        "type":"7200",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/41fGMuGqjzL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/M3phP6\/seagate-internal-hard-drive-st31000524ns",
         "price":99.0,
@@ -51037,17 +49915,6 @@
         "manufacturer":"Seagate",
         "capacity":2048.0,
         "cache":"16 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate Constellation ES",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/88V48d\/seagate-internal-hard-drive-st2000nm0001",
-        "price":44.0,
-        "manufacturer":"Seagate",
-        "capacity":2048.0,
-        "cache":"64 MB",
         "formFactor":"3.5"
     },
     {
@@ -51124,17 +49991,6 @@
         "price":124.08,
         "manufacturer":"Seagate",
         "capacity":6144.0,
-        "cache":"128 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Hitachi Ultrastar He8",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/c7KKHx\/hitachi-ultrastar-he8-8-tb-35-7200rpm-internal-hard-drive-huh728080aln604",
-        "price":1087.0,
-        "manufacturer":"Hitachi",
-        "capacity":8192.0,
         "cache":"128 MB",
         "formFactor":"3.5"
     },
@@ -51920,17 +50776,6 @@
         "formFactor":"M.2-2280"
     },
     {
-        "name":"Hitachi Ultrastar 7K6000",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/r9Jkcf\/hitachi-internal-hard-drive-0f23005",
-        "price":87.73,
-        "manufacturer":"Hitachi",
-        "capacity":4096.0,
-        "cache":"128 MB",
-        "formFactor":"3.5"
-    },
-    {
         "name":"Toshiba N300 Pro",
         "type":"7200",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/41CzCuM2S-L.jpg",
@@ -52305,17 +51150,6 @@
         "formFactor":"M.2-2280"
     },
     {
-        "name":"Seagate Momentus XT",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/JVNp99\/seagate-internal-hard-drive-st750lx003",
-        "price":55.0,
-        "manufacturer":"Seagate",
-        "capacity":750.0,
-        "cache":"32 MB",
-        "formFactor":"2.5"
-    },
-    {
         "name":"Western Digital Scorpio Blue",
         "type":"5400",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/41tyH2hXn+L.jpg",
@@ -52323,28 +51157,6 @@
         "price":89.0,
         "manufacturer":"Western Digital",
         "capacity":80.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Western Digital Scorpio Blue",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/93JwrH\/western-digital-internal-hard-drive-wd2500bevt",
-        "price":29.95,
-        "manufacturer":"Western Digital",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Western Digital Scorpio Blue",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/kKtCmG\/western-digital-internal-hard-drive-wdbabc3200ancnrsn",
-        "price":29.95,
-        "manufacturer":"Western Digital",
-        "capacity":320.0,
         "cache":"8 MB",
         "formFactor":"2.5"
     },
@@ -52587,17 +51399,6 @@
         "price":85.0,
         "manufacturer":"Seagate",
         "capacity":160.0,
-        "cache":"8 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate BarraCuda",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/vKtCmG\/seagate-internal-hard-drive-st3250312as",
-        "price":54.9,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
         "cache":"8 MB",
         "formFactor":"3.5"
     },
@@ -52923,28 +51724,6 @@
     {
         "name":"Western Digital Scorpio Blue",
         "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/93JwrH\/western-digital-internal-hard-drive-wd2500bevt",
-        "price":29.95,
-        "manufacturer":"Western Digital",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Western Digital Scorpio Blue",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/kKtCmG\/western-digital-internal-hard-drive-wdbabc3200ancnrsn",
-        "price":29.95,
-        "manufacturer":"Western Digital",
-        "capacity":320.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Western Digital Scorpio Blue",
-        "type":"5400",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/41shCSj79uL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/Hd7wrH\/western-digital-internal-hard-drive-wd7500bpvt",
         "price":55.0,
@@ -52963,17 +51742,6 @@
         "capacity":250.0,
         "cache":"8 MB",
         "formFactor":"2.5"
-    },
-    {
-        "name":"Hitachi 7K1000.C",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/Qfzv6h\/hitachi-internal-hard-drive-0f10383",
-        "price":498.0,
-        "manufacturer":"Hitachi",
-        "capacity":1024.0,
-        "cache":"32 MB",
-        "formFactor":"3.5"
     },
     {
         "name":"Intel X25-M",
@@ -53060,28 +51828,6 @@
         "price":89.0,
         "manufacturer":"Western Digital",
         "capacity":80.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Western Digital Scorpio Blue",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/93JwrH\/western-digital-internal-hard-drive-wd2500bevt",
-        "price":29.95,
-        "manufacturer":"Western Digital",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Western Digital Scorpio Blue",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/kKtCmG\/western-digital-internal-hard-drive-wdbabc3200ancnrsn",
-        "price":29.95,
-        "manufacturer":"Western Digital",
-        "capacity":320.0,
         "cache":"8 MB",
         "formFactor":"2.5"
     },
@@ -53315,17 +52061,6 @@
         "capacity":960.0,
         "cache":null,
         "formFactor":"2.5"
-    },
-    {
-        "name":"Hitachi Ultrastar 7K6000",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/r9Jkcf\/hitachi-internal-hard-drive-0f23005",
-        "price":87.73,
-        "manufacturer":"Hitachi",
-        "capacity":4096.0,
-        "cache":"128 MB",
-        "formFactor":"3.5"
     },
     {
         "name":"Intel 535",
@@ -54430,17 +53165,6 @@
     {
         "name":"Hitachi Ultrastar He8",
         "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/c7KKHx\/hitachi-ultrastar-he8-8-tb-35-7200rpm-internal-hard-drive-huh728080aln604",
-        "price":1087.0,
-        "manufacturer":"Hitachi",
-        "capacity":8192.0,
-        "cache":"128 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Hitachi Ultrastar He8",
-        "type":"7200",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/41dRGDRQhRL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/Vqs8TW\/hitachi-internal-hard-drive-0f23668",
         "price":309.0,
@@ -54837,17 +53561,6 @@
     {
         "name":"Western Digital SN530",
         "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/wQC48d\/western-digital-sn530-256-gb-m2-2230-pcie-30-x4-nvme-solid-state-drive-sdbptpz-256g",
-        "price":32.0,
-        "manufacturer":"Western Digital",
-        "capacity":256.0,
-        "cache":null,
-        "formFactor":"M.2-2230"
-    },
-    {
-        "name":"Western Digital SN530",
-        "type":"SSD",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/519+zM8HWRL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/Ch6p99\/western-digital-sn530-1024-tb-m2-2230-pcie-30-x4-nvme-solid-state-drive-sdbptpz-1t00",
         "price":323.03,
@@ -55035,28 +53748,6 @@
     {
         "name":"Western Digital Scorpio Blue",
         "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/93JwrH\/western-digital-internal-hard-drive-wd2500bevt",
-        "price":29.95,
-        "manufacturer":"Western Digital",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Western Digital Scorpio Blue",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/kKtCmG\/western-digital-internal-hard-drive-wdbabc3200ancnrsn",
-        "price":29.95,
-        "manufacturer":"Western Digital",
-        "capacity":320.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Western Digital Scorpio Blue",
-        "type":"5400",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/41shCSj79uL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/Hd7wrH\/western-digital-internal-hard-drive-wd7500bpvt",
         "price":55.0,
@@ -55084,28 +53775,6 @@
         "price":89.0,
         "manufacturer":"Western Digital",
         "capacity":80.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Western Digital Scorpio Blue",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/93JwrH\/western-digital-internal-hard-drive-wd2500bevt",
-        "price":29.95,
-        "manufacturer":"Western Digital",
-        "capacity":250.0,
-        "cache":"8 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Western Digital Scorpio Blue",
-        "type":"5400",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/kKtCmG\/western-digital-internal-hard-drive-wdbabc3200ancnrsn",
-        "price":29.95,
-        "manufacturer":"Western Digital",
-        "capacity":320.0,
         "cache":"8 MB",
         "formFactor":"2.5"
     },
@@ -55184,17 +53853,6 @@
         "manufacturer":"Western Digital",
         "capacity":320.0,
         "cache":"16 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Hitachi 7K1000.C",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/Qfzv6h\/hitachi-internal-hard-drive-0f10383",
-        "price":498.0,
-        "manufacturer":"Hitachi",
-        "capacity":1024.0,
-        "cache":"32 MB",
         "formFactor":"3.5"
     },
     {
@@ -55393,17 +54051,6 @@
         "manufacturer":"Western Digital",
         "capacity":320.0,
         "cache":"16 MB",
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Seagate Momentus XT",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/JVNp99\/seagate-internal-hard-drive-st750lx003",
-        "price":55.0,
-        "manufacturer":"Seagate",
-        "capacity":750.0,
-        "cache":"32 MB",
         "formFactor":"2.5"
     },
     {
@@ -55640,17 +54287,6 @@
     {
         "name":"Seagate Constellation ES",
         "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/88V48d\/seagate-internal-hard-drive-st2000nm0001",
-        "price":44.0,
-        "manufacturer":"Seagate",
-        "capacity":2048.0,
-        "cache":"64 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate Constellation ES",
-        "type":"7200",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/41fGMuGqjzL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/M3phP6\/seagate-internal-hard-drive-st31000524ns",
         "price":99.0,
@@ -55690,17 +54326,6 @@
         "manufacturer":"Seagate",
         "capacity":2048.0,
         "cache":"16 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate Constellation ES",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/88V48d\/seagate-internal-hard-drive-st2000nm0001",
-        "price":44.0,
-        "manufacturer":"Seagate",
-        "capacity":2048.0,
-        "cache":"64 MB",
         "formFactor":"3.5"
     },
     {
@@ -55959,17 +54584,6 @@
     {
         "name":"Intel 750",
         "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/BMcMnQ\/intel-750-series-12-tb-25-solid-state-drive-ssdpe2mw012t4x1",
-        "price":475.0,
-        "manufacturer":"Intel",
-        "capacity":null,
-        "cache":null,
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Intel 750",
-        "type":"SSD",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/4186Edg9veL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/Ln7CmG\/intel-750-series-800gb-25-solid-state-drive-ssdpe2mw800g4x1",
         "price":359.97,
@@ -55992,17 +54606,6 @@
     {
         "name":"Intel 750",
         "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/BMcMnQ\/intel-750-series-12-tb-25-solid-state-drive-ssdpe2mw012t4x1",
-        "price":475.0,
-        "manufacturer":"Intel",
-        "capacity":null,
-        "cache":null,
-        "formFactor":"2.5"
-    },
-    {
-        "name":"Intel 750",
-        "type":"SSD",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/4186Edg9veL.jpg",
         "productUrl":"https:\/\/pcpartpicker.com\/product\/Ln7CmG\/intel-750-series-800gb-25-solid-state-drive-ssdpe2mw800g4x1",
         "price":359.97,
@@ -56021,17 +54624,6 @@
         "capacity":null,
         "cache":null,
         "formFactor":"PCIe"
-    },
-    {
-        "name":"Intel 750",
-        "type":"SSD",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/BMcMnQ\/intel-750-series-12-tb-25-solid-state-drive-ssdpe2mw012t4x1",
-        "price":475.0,
-        "manufacturer":"Intel",
-        "capacity":null,
-        "cache":null,
-        "formFactor":"2.5"
     },
     {
         "name":"Intel 750",
@@ -56232,28 +54824,6 @@
         "formFactor":"2.5"
     },
     {
-        "name":"Hitachi 0F22941",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/B897YJ\/hitachi-4tb-35-7200rpm-internal-hard-drive-0f22941",
-        "price":175.0,
-        "manufacturer":"Hitachi",
-        "capacity":4096.0,
-        "cache":"128 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Hitachi Ultrastar He8",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/c7KKHx\/hitachi-ultrastar-he8-8-tb-35-7200rpm-internal-hard-drive-huh728080aln604",
-        "price":1087.0,
-        "manufacturer":"Hitachi",
-        "capacity":8192.0,
-        "cache":"128 MB",
-        "formFactor":"3.5"
-    },
-    {
         "name":"Hitachi Ultrastar He8",
         "type":"7200",
         "imageUrl":"https:\/\/m.media-amazon.com\/images\/I\/41dRGDRQhRL.jpg",
@@ -56272,17 +54842,6 @@
         "price":360.5,
         "manufacturer":"Hitachi",
         "capacity":6144.0,
-        "cache":"128 MB",
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Hitachi Ultrastar He8",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/c7KKHx\/hitachi-ultrastar-he8-8-tb-35-7200rpm-internal-hard-drive-huh728080aln604",
-        "price":1087.0,
-        "manufacturer":"Hitachi",
-        "capacity":8192.0,
         "cache":"128 MB",
         "formFactor":"3.5"
     },
@@ -56713,17 +55272,6 @@
         "manufacturer":"Toshiba",
         "capacity":16384.0,
         "cache":null,
-        "formFactor":"3.5"
-    },
-    {
-        "name":"Seagate Barracuda ES.2",
-        "type":"7200",
-        "imageUrl":"\/static\/forever\/img\/no-image.png",
-        "productUrl":"https:\/\/pcpartpicker.com\/product\/YBMTwP\/seagate-barracuda-es2-250-gb-35-7200rpm-internal-hard-drive-st3250310ns",
-        "price":79.98,
-        "manufacturer":"Seagate",
-        "capacity":250.0,
-        "cache":"32 MB",
         "formFactor":"3.5"
     },
     {
