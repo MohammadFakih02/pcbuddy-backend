@@ -173,5 +173,58 @@ export const AIService = {
     })), fuseOptions);
 
     return fusePSUs.search(psuName)[0]?.item;
-  }
+  },
+  async getPerformance(pcParts: { cpu: string; gpu: string; ram: string }, gameName: string) {
+    const { cpu, gpu, ram } = pcParts;
+
+    const promptText = `
+    Based on the following PC components and game, estimate the average FPS for each graphical preset (low, medium, high, ultra).
+
+    PC Components:
+    - CPU: ${cpu}
+    - GPU: ${gpu}
+    - RAM: ${ram}
+
+    Game: ${gameName}
+
+    The AI should return a JSON object in the following format:
+    {
+      "low": FPS for low preset,
+      "medium": FPS for medium preset,
+      "high": FPS for high preset,
+      "ultra": FPS for ultra preset
+    }
+
+    Ensure the response is valid JSON without any additional explanations or text.
+    `;
+
+    try {
+      const result = await model.generateContent(promptText);
+      const response = await result.response;
+      const text = response.text();
+
+      console.log('AI Response:', text);
+
+      // Extract JSON from the response
+      const jsonMatch = text.match(/\{.*\}/s);
+      if (!jsonMatch) {
+        return { success: false, error: 'No valid JSON found in the AI response.' };
+      }
+
+      let jsonResponse;
+      try {
+        jsonResponse = JSON.parse(jsonMatch[0]);
+      } catch (error) {
+        return { success: false, error: 'Failed to parse AI response as JSON.' };
+      }
+
+      return { success: true, response: jsonResponse };
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return { success: false, error: error.message };
+      } else {
+        return { success: false, error: 'Unknown error occurred.' };
+      }
+    }
+  },
 };
