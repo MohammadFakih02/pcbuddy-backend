@@ -54,6 +54,7 @@ export class ComputerService {
       select: {
         id: true,
         name: true,
+        wattage:true,
       },
     });
   }
