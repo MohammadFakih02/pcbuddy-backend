@@ -30,11 +30,11 @@ export const AIService = {
     - Suggest a PC build with the following components:
       - CPU name
       - GPU name
-      - RAM name
-      - PSU name
+      - RAM name (do not include modules or speed)
+      - PSU name (do not include efficiency)
       - Case name
-      - HDD name
-      - SSD name 
+      - HDD name (include capacity in GB)
+      - SSD name (include capacity in GB)
       - Motherboard name (must be from the Available Motherboards list)
 
     Return the response in the following format:
@@ -45,8 +45,8 @@ export const AIService = {
         "ram": "name of the RAM",
         "psu": "name of the PSU",
         "case": "name of the case",
-        "hdd": "name of the HDD",
-        "ssd": "name of the SSD",
+        "hdd": "name of the HDD with capacity in GB",
+        "ssd": "name of the SSD with capacity in GB",
         "motherboard": "name of the motherboard"
     }
 
@@ -83,9 +83,15 @@ export const AIService = {
       const fuseCPUs = new Fuse(availableCPUs, fuseOptions);
       const fuseGPUs = new Fuse(availableGPUs, fuseOptions);
       const fuseMemory = new Fuse(availableMemory, fuseOptions);
-      const fusePowerSupplies = new Fuse(availablePowerSupplies, fuseOptions);
+      const fusePowerSupplies = new Fuse(availablePowerSupplies.map(p => ({
+        ...p,
+        name: `${p.name} ${p.wattage}W`
+      })), fuseOptions);
       const fuseCases = new Fuse(availableCases, fuseOptions);
-      const fuseStorage = new Fuse(availableStorage, fuseOptions);
+      const fuseStorage = new Fuse(availableStorage.map(s => ({
+        ...s,
+        name: `${s.name} ${s.capacity}GB`
+      })), fuseOptions);
 
       // Match parts
       const matchedMotherboard = fuseMotherboards.search(jsonResponse.motherboard)[0]?.item;
@@ -131,4 +137,34 @@ export const AIService = {
       }
     }
   },
+
+  async fuzzyMatchStorage(storageName: string, availableStorage: any[]) {
+    const fuseOptions = {
+      includeScore: true,
+      threshold: 0.3,
+      keys: ['name']
+    };
+
+    const fuseStorage = new Fuse(availableStorage.map(s => ({
+      ...s,
+      name: `${s.name} ${s.capacity}GB`
+    })), fuseOptions);
+
+    return fuseStorage.search(storageName)[0]?.item;
+  },
+
+  async fuzzyMatchPSU(psuName: string, availablePSUs: any[]) {
+    const fuseOptions = {
+      includeScore: true,
+      threshold: 0.3,
+      keys: ['name']
+    };
+
+    const fusePSUs = new Fuse(availablePSUs.map(p => ({
+      ...p,
+      name: `${p.name} ${p.wattage}W`
+    })), fuseOptions);
+
+    return fusePSUs.search(psuName)[0]?.item;
+  }
 };
