@@ -520,5 +520,73 @@ export const AIService = {
         return { success: false, error: 'Unknown error occurred.' };
       }
     }
-  }
+  },
+  
+  async ratePC(fullSystem: {
+    cpu: string;
+    gpu: string;
+    ram: string;
+    storage: string;
+    ssd: string;
+    hdd: string;
+    motherboard: string;
+    psu: string;
+    case: string;
+  }) {
+    const { cpu, gpu, ram, storage, ssd, hdd, motherboard, psu, case: pcCase } = fullSystem;
+
+    const promptText = `
+    Given the following PC components, rate the CPU, GPU, and overall system on a scale of 1 to 10.
+    The rating should be based on performance, compatibility, and value for money.
+
+    PC Components:
+    - CPU: ${cpu}
+    - GPU: ${gpu}
+    - RAM: ${ram}
+    - Storage: ${storage}
+    - SSD: ${ssd}
+    - HDD: ${hdd}
+    - Motherboard: ${motherboard}
+    - PSU: ${psu}
+    - Case: ${pcCase}
+
+    The AI should return a JSON object in the following format:
+    {
+      "cpu": CPU rating (out of 10),
+      "gpu": GPU rating (out of 10),
+      "overall": Overall system rating (out of 10)
+    }
+
+    Ensure the response is valid JSON without any additional explanations or text.
+    `;
+
+    try {
+      const result = await model.generateContent(promptText);
+      const response = await result.response;
+      const text = response.text();
+
+      console.log('AI Response:', text);
+
+      // Extract JSON from the response
+      const jsonMatch = text.match(/\{.*\}/s);
+      if (!jsonMatch) {
+        return { success: false, error: 'No valid JSON found in the AI response.' };
+      }
+
+      let jsonResponse;
+      try {
+        jsonResponse = JSON.parse(jsonMatch[0]);
+      } catch (error) {
+        return { success: false, error: 'Failed to parse AI response as JSON.' };
+      }
+
+      return { success: true, response: jsonResponse };
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return { success: false, error: error.message };
+      } else {
+        return { success: false, error: 'Unknown error occurred.' };
+      }
+    }
+  },
 }
