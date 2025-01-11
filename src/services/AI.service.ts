@@ -6,11 +6,21 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 const computerService = new ComputerService();
 
+// Helper function to format image URLs
 const formatImageUrl = (url: string | null | undefined): string | null | undefined => {
   if (url && url.startsWith('//')) {
     return `https:${url}`;
   }
   return url;
+};
+
+// Helper function to format part details with image URLs
+const formatPartDetails = (part: any) => {
+  if (!part) return null;
+  return {
+    ...part,
+    imageUrl: formatImageUrl(part.imageUrl),
+  };
 };
 
 export const AIService = {
@@ -124,15 +134,16 @@ export const AIService = {
       const hddDetails = matchedHDD ? await computerService.getStorageById(matchedHDD.id) : null;
       const ssdDetails = matchedSSD ? await computerService.getStorageById(matchedSSD.id) : null;
 
+      // Format all image URLs
       const matchedParts = {
-        cpu: cpuDetails ? { ...cpuDetails, imageUrl: formatImageUrl(cpuDetails.imageUrl) } : null,
-        gpu: gpuDetails ? { ...gpuDetails, imageUrl: formatImageUrl(gpuDetails.imageUrl) } : null,
-        memory: ramDetails ? { ...ramDetails, imageUrl: formatImageUrl(ramDetails.imageUrl) } : null,
-        powerSupply: psuDetails ? { ...psuDetails, imageUrl: formatImageUrl(psuDetails.imageUrl) } : null,
-        case: caseDetails ? { ...caseDetails, imageUrl: formatImageUrl(caseDetails.imageUrl) } : null,
-        storage: hddDetails ? { ...hddDetails, imageUrl: formatImageUrl(hddDetails.imageUrl) } : null,
-        storage2: ssdDetails ? { ...ssdDetails, imageUrl: formatImageUrl(ssdDetails.imageUrl) } : null,
-        motherboard: motherboardDetails ? { ...motherboardDetails, imageUrl: formatImageUrl(motherboardDetails.imageUrl) } : null,
+        cpu: formatPartDetails(cpuDetails),
+        gpu: formatPartDetails(gpuDetails),
+        memory: formatPartDetails(ramDetails),
+        powerSupply: formatPartDetails(psuDetails),
+        case: formatPartDetails(caseDetails),
+        storage: formatPartDetails(hddDetails),
+        storage2: formatPartDetails(ssdDetails),
+        motherboard: formatPartDetails(motherboardDetails),
       };
 
       return { success: true, response: matchedParts };
@@ -174,6 +185,7 @@ export const AIService = {
 
     return fusePSUs.search(psuName)[0]?.item;
   },
+
   async getPerformance(pcParts: { cpu: string; gpu: string; ram: string }, gameName: string) {
     const { cpu, gpu, ram } = pcParts;
 
@@ -227,6 +239,7 @@ export const AIService = {
       }
     }
   },
+
   async getTemplateGraph(pcParts: { cpu: string; gpu: string; ram: string }) {
     const { cpu, gpu, ram } = pcParts;
 
@@ -316,199 +329,196 @@ export const AIService = {
     }
   },
 
-
-async checkCompatibility(fullSystem: {
-  cpu: string;
-  gpu: string;
-  ram: string;
-  storage: string;
-  ssd: string;
-  hdd: string;
-  motherboard: string;
-  psu: string;
-  case: string;
-}) {
-  const { cpu, gpu, ram, storage, ssd, hdd, motherboard, psu, case: pcCase } = fullSystem;
-  const availableMotherboards = await computerService.getMotherboards();
-  const promptText = `
-  Given the following PC components, check for any compatibility issues and suggest parts to fix the issues.
-      Available Motherboards:
-  ${availableMotherboards.map(m => m.name).join(", ")}
-
-  PC Components:
-  - CPU: ${cpu}
-  - GPU: ${gpu}
-  - RAM: ${ram}
-  - Storage: ${storage}
-  - SSD: ${ssd}
-  - HDD: ${hdd}
-  - Motherboard: ${motherboard}
-  - PSU: ${psu}
-  - Case: ${pcCase}
-
-  The AI should:
-  - Check for compatibility issues between the components.
-  - Identify the parts causing the issues.
-  - Suggest alternative parts to fix the issues.
-
-  For each suggested part, include both the part name and type in the following format:
-  {
-    "name": "Suggested part name",
-    "type": "Part type (e.g., CPU, Motherboard, GPU, etc.)"
-  }
-
-  Return the response in the following JSON format:
-  {
-    "compatibilityIssues": [
-      {
-        "issue": "Description of the compatibility issue",
-        "causingParts": ["Part causing the issue"],
-        "suggestedParts": [
-          { "name": "Suggested part name", "type": "Part type" }
-        ]
-      }
-    ]
-  }
-
-  Ensure the response is valid JSON without any additional explanations or text.
-  `;
-
-  try {
-    const result = await model.generateContent(promptText);
-    const response = await result.response;
-    const text = response.text();
-
-    console.log('AI Response:', text);
-
-    // Extract JSON from the response
-    const jsonMatch = text.match(/\{.*\}/s);
-    if (!jsonMatch) {
-      return { success: false, error: 'No valid JSON found in the AI response.' };
-    }
-
-    let jsonResponse;
-    try {
-      jsonResponse = JSON.parse(jsonMatch[0]);
-    } catch (error) {
-      return { success: false, error: 'Failed to parse AI response as JSON.' };
-    }
-
-    // Define the maximum number of suggested parts
-    const maxSuggestedParts = 4;
-
-    // Fetch all available parts for fuzzy matching
+  async checkCompatibility(fullSystem: {
+    cpu: string;
+    gpu: string;
+    ram: string;
+    storage: string;
+    ssd: string;
+    hdd: string;
+    motherboard: string;
+    psu: string;
+    case: string;
+  }) {
+    const { cpu, gpu, ram, storage, ssd, hdd, motherboard, psu, case: pcCase } = fullSystem;
     const availableMotherboards = await computerService.getMotherboards();
-    const availableCPUs = await computerService.getCPUs();
-    const availableGPUs = await computerService.getGPUs();
-    const availableMemory = await computerService.getMemory();
-    const availablePowerSupplies = await computerService.getPowerSupplies();
-    const availableCases = await computerService.getCases();
-    const availableStorage = await computerService.getStorage();
-
-    // Fuzzy matching setup
-    const fuseOptions = {
-      includeScore: true,
-      threshold: 0.3,
-      keys: ['name']
-    };
-
-    const fuseMotherboards = new Fuse(availableMotherboards, fuseOptions);
-    const fuseCPUs = new Fuse(availableCPUs, fuseOptions);
-    const fuseGPUs = new Fuse(availableGPUs, fuseOptions);
-    const fuseMemory = new Fuse(availableMemory, fuseOptions);
-    const fusePowerSupplies = new Fuse(availablePowerSupplies.map(p => ({
-      ...p,
-      name: `${p.name} ${p.wattage}W`
-    })), fuseOptions);
-    const fuseCases = new Fuse(availableCases, fuseOptions);
-    const fuseStorage = new Fuse(availableStorage.map(s => ({
-      ...s,
-      name: `${s.name} ${s.capacity}GB`
-    })), fuseOptions);
-
-    // Function to perform fuzzy matching and fetch detailed part information
-    const getMatchedPartDetails = async (partName: string, partType: string) => {
-      let fuse;
-      let matchedPartDetails = null;
-
-      // Choose the appropriate Fuse instance based on part type
-      switch (partType.toLowerCase()) {
-        case 'cpu':
-          fuse = fuseCPUs;
-          break;
-        case 'gpu':
-          fuse = fuseGPUs;
-          break;
-        case 'ram':
-          fuse = fuseMemory;
-          break;
-        case 'psu':
-          fuse = fusePowerSupplies;
-          break;
-        case 'case':
-          fuse = fuseCases;
-          break;
-        case 'motherboard':
-          fuse = fuseMotherboards;
-          break;
-        case 'ssd':
-        case 'hdd':
-          fuse = fuseStorage;
-          break;
-        default:
-          return null;
-      }
-
-      const matchedPart = fuse.search(partName)[0]?.item;
-      if (matchedPart) {
-        // Fetch details for the matched part
-        if (fuse === fuseMotherboards) {
-          matchedPartDetails = await computerService.getMotherboardById(matchedPart.id);
-        } else if (fuse === fuseCPUs) {
-          matchedPartDetails = await computerService.getCpuById(matchedPart.id);
-        } else if (fuse === fuseGPUs) {
-          matchedPartDetails = await computerService.getGpuById(matchedPart.id);
-        } else if (fuse === fuseMemory) {
-          matchedPartDetails = await computerService.getMemoryById(matchedPart.id);
-        } else if (fuse === fusePowerSupplies) {
-          matchedPartDetails = await computerService.getPowerSupplyById(matchedPart.id);
-        } else if (fuse === fuseCases) {
-          matchedPartDetails = await computerService.getCaseById(matchedPart.id);
-        } else if (fuse === fuseStorage) {
-          matchedPartDetails = await computerService.getStorageById(matchedPart.id);
+    const promptText = `
+    Given the following PC components, check for any compatibility issues and suggest parts to fix the issues.
+        Available Motherboards:
+    ${availableMotherboards.map(m => m.name).join(", ")}
+  
+    PC Components:
+    - CPU: ${cpu}
+    - GPU: ${gpu}
+    - RAM: ${ram}
+    - Storage: ${storage}
+    - SSD: ${ssd}
+    - HDD: ${hdd}
+    - Motherboard: ${motherboard}
+    - PSU: ${psu}
+    - Case: ${pcCase}
+  
+    The AI should:
+    - Check for compatibility issues between the components.
+    - Identify the parts causing the issues.
+    - Suggest alternative parts to fix the issues.
+  
+    For each suggested part, include both the part name and type in the following format:
+    {
+      "name": "Suggested part name",
+      "type": "Part type (e.g., CPU, Motherboard, GPU, etc.)"
+    }
+  
+    Return the response in the following JSON format:
+    {
+      "compatibilityIssues": [
+        {
+          "issue": "Description of the compatibility issue",
+          "causingParts": ["Part causing the issue"],
+          "suggestedParts": [
+            { "name": "Suggested part name", "type": "Part type" }
+          ]
         }
+      ]
+    }
+  
+    Ensure the response is valid JSON without any additional explanations or text.
+    `;
+  
+    try {
+      const result = await model.generateContent(promptText);
+      const response = await result.response;
+      const text = response.text();
+  
+      console.log('AI Response:', text);
+  
+      // Extract JSON from the response
+      const jsonMatch = text.match(/\{.*\}/s);
+      if (!jsonMatch) {
+        return { success: false, error: 'No valid JSON found in the AI response.' };
       }
-
-      return matchedPartDetails ? { ...matchedPartDetails, type: partType, imageUrl: formatImageUrl(matchedPartDetails.imageUrl) } : null;
-    };
-
-    const compatibilityIssuesWithDetails = await Promise.all(
-      jsonResponse.compatibilityIssues.map(async (issue: any) => {
-        const suggestedPartsWithDetails = await Promise.all(
-          issue.suggestedParts.slice(0, maxSuggestedParts).map(async (suggestedPart: any) => {
-            const { name, type } = suggestedPart;
-            const matchedPartDetails = await getMatchedPartDetails(name, type);
-
-            return matchedPartDetails ? { ...matchedPartDetails, type } : null;
-          })
-        );
-
-        return {
-          ...issue,
-          suggestedParts: suggestedPartsWithDetails.filter((part) => part !== null),
-        };
-      })
-    );
-
-    return { success: true, response: { compatibilityIssues: compatibilityIssuesWithDetails } };
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      return { success: false, error: error.message };
-    } else {
-      return { success: false, error: 'Unknown error occurred.' };
+  
+      let jsonResponse;
+      try {
+        jsonResponse = JSON.parse(jsonMatch[0]);
+      } catch (error) {
+        return { success: false, error: 'Failed to parse AI response as JSON.' };
+      }
+  
+      // Define the maximum number of suggested parts
+      const maxSuggestedParts = 4;
+  
+      // Fetch all available parts for fuzzy matching
+      const availableMotherboards = await computerService.getMotherboards();
+      const availableCPUs = await computerService.getCPUs();
+      const availableGPUs = await computerService.getGPUs();
+      const availableMemory = await computerService.getMemory();
+      const availablePowerSupplies = await computerService.getPowerSupplies();
+      const availableCases = await computerService.getCases();
+      const availableStorage = await computerService.getStorage();
+  
+      // Fuzzy matching setup
+      const fuseOptions = {
+        includeScore: true,
+        threshold: 0.3,
+        keys: ['name']
+      };
+  
+      const fuseMotherboards = new Fuse(availableMotherboards, fuseOptions);
+      const fuseCPUs = new Fuse(availableCPUs, fuseOptions);
+      const fuseGPUs = new Fuse(availableGPUs, fuseOptions);
+      const fuseMemory = new Fuse(availableMemory, fuseOptions);
+      const fusePowerSupplies = new Fuse(availablePowerSupplies.map(p => ({
+        ...p,
+        name: `${p.name} ${p.wattage}W`
+      })), fuseOptions);
+      const fuseCases = new Fuse(availableCases, fuseOptions);
+      const fuseStorage = new Fuse(availableStorage.map(s => ({
+        ...s,
+        name: `${s.name} ${s.capacity}GB`
+      })), fuseOptions);
+  
+      // Function to perform fuzzy matching and fetch detailed part information
+      const getMatchedPartDetails = async (partName: string, partType: string) => {
+        let fuse;
+        let matchedPartDetails = null;
+  
+        // Choose the appropriate Fuse instance based on part type
+        switch (partType.toLowerCase()) {
+          case 'cpu':
+            fuse = fuseCPUs;
+            break;
+          case 'gpu':
+            fuse = fuseGPUs;
+            break;
+          case 'ram':
+            fuse = fuseMemory;
+            break;
+          case 'psu':
+            fuse = fusePowerSupplies;
+            break;
+          case 'case':
+            fuse = fuseCases;
+            break;
+          case 'motherboard':
+            fuse = fuseMotherboards;
+            break;
+          case 'ssd':
+          case 'hdd':
+            fuse = fuseStorage;
+            break;
+          default:
+            return null;
+        }
+  
+        const matchedPart = fuse.search(partName)[0]?.item;
+        if (matchedPart) {
+          // Fetch details for the matched part
+          if (fuse === fuseMotherboards) {
+            matchedPartDetails = await computerService.getMotherboardById(matchedPart.id);
+          } else if (fuse === fuseCPUs) {
+            matchedPartDetails = await computerService.getCpuById(matchedPart.id);
+          } else if (fuse === fuseGPUs) {
+            matchedPartDetails = await computerService.getGpuById(matchedPart.id);
+          } else if (fuse === fuseMemory) {
+            matchedPartDetails = await computerService.getMemoryById(matchedPart.id);
+          } else if (fuse === fusePowerSupplies) {
+            matchedPartDetails = await computerService.getPowerSupplyById(matchedPart.id);
+          } else if (fuse === fuseCases) {
+            matchedPartDetails = await computerService.getCaseById(matchedPart.id);
+          } else if (fuse === fuseStorage) {
+            matchedPartDetails = await computerService.getStorageById(matchedPart.id);
+          }
+        }
+  
+        return matchedPartDetails ? formatPartDetails(matchedPartDetails) : null;
+      };
+  
+      const compatibilityIssuesWithDetails = await Promise.all(
+        jsonResponse.compatibilityIssues.map(async (issue: any) => {
+          const suggestedPartsWithDetails = await Promise.all(
+            issue.suggestedParts.slice(0, maxSuggestedParts).map(async (suggestedPart: any) => {
+              const { name, type } = suggestedPart;
+              const matchedPartDetails = await getMatchedPartDetails(name, type);
+  
+              return matchedPartDetails ? { ...matchedPartDetails, type } : null;
+            })
+          );
+  
+          return {
+            ...issue,
+            suggestedParts: suggestedPartsWithDetails.filter((part) => part !== null),
+          };
+        })
+      );
+  
+      return { success: true, response: { compatibilityIssues: compatibilityIssuesWithDetails } };
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return { success: false, error: error.message };
+      } else {
+        return { success: false, error: 'Unknown error occurred.' };
+      }
     }
   }
 }
-
-  
-};
