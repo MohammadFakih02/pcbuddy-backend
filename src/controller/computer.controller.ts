@@ -43,7 +43,7 @@ export const computerController = new Elysia()
       if (set.status === 401) {
         return { message: "Unauthorized" };
       }
-
+  
       try {
         const pc = await computerService.savePCConfiguration(
           payload.userId,
@@ -71,6 +71,7 @@ export const computerController = new Elysia()
         powerSupplyId: t.Optional(t.Union([t.Number(), t.Null()])),
         caseId: t.Optional(t.Union([t.Number(), t.Null()])),
         addToProfile: t.Optional(t.Boolean()),
+        rating: t.Optional(t.Union([t.Number(), t.Null()])), // Add rating field
       }),
     }
   )
@@ -328,5 +329,35 @@ export const computerController = new Elysia()
         message: error instanceof Error ? error.message : "Failed to fetch Case details",
       };
     }
+  }
+)
+
+.post(
+  "/pc/rate",
+  async ({ body, jwt, set, request }) => {
+    const payload = await isAuthenticated({ jwt, set, request });
+    if (set.status === 401) {
+      return { message: "Unauthorized" };
+    }
+
+    try {
+      const { pcId, rating } = body;
+      const updatedPC = await computerService.updatePCRating(payload.userId, pcId, rating);
+      return updatedPC;
+    } catch (error) {
+      set.status = 400;
+      return {
+        message:
+          error instanceof Error
+            ? error.message
+            : "Failed to update PC rating",
+      };
+    }
+  },
+  {
+    body: t.Object({
+      pcId: t.Number(),
+      rating: t.Number(),
+    }),
   }
 )

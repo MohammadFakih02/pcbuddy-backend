@@ -103,13 +103,14 @@ export class ComputerService {
     powerSupplyId?: number | null;
     caseId?: number | null;
     addToProfile?: boolean;
+    rating?: number | null; // Add rating field
   }) {
     const totalPrice = await this.calculateTotalPrice(parts);
-
+  
     const existingPC = await prisma.personalPC.findFirst({
       where: { userId },
     });
-
+  
     let pc;
     if (existingPC) {
       pc = await prisma.personalPC.update({
@@ -125,6 +126,7 @@ export class ComputerService {
           caseId: parts.caseId || null,
           totalPrice,
           addToProfile: parts.addToProfile || false,
+          rating: parts.rating || null, // Update rating
         },
       });
     } else {
@@ -141,11 +143,31 @@ export class ComputerService {
           caseId: parts.caseId || null,
           totalPrice,
           addToProfile: parts.addToProfile || false,
+          rating: parts.rating || null, // Set rating
         },
       });
     }
-
+  
     return pc;
+  }
+
+  async updatePCRating(userId: number, pcId: number, rating: number) {
+    const pc = await prisma.personalPC.findFirst({
+      where: { id: pcId, userId },
+    });
+  
+    if (!pc) {
+      throw new Error('PC configuration not found for this user');
+    }
+  
+    const updatedPC = await prisma.personalPC.update({
+      where: { id: pcId },
+      data: {
+        rating,
+      },
+    });
+  
+    return updatedPC;
   }
 
   async getPartDetails(partIds: {
