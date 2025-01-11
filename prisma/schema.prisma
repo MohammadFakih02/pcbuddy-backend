@@ -51,6 +51,7 @@ model PersonalPC {
   case          Case?         @relation(fields: [caseId], references: [id])
   totalPrice    Float?        @default(0)
   buildName     String?
+  rating        Float?
   updatedAt     DateTime      @updatedAt
   buildStatus   BuildStatus   @default(COMPLETED)
   usageCount    Int?          @default(0)
