@@ -13,6 +13,7 @@
     "@elysiajs/static": "^1.2.0",
     "@google/generative-ai": "^0.21.0",
     "@prisma/client": "^6.1.0",
+    "axios": "^1.7.9",
     "elysia": "^1.2.9",
     "elysia-rate-limit": "^4.1.0",
     "fuse.js": "^7.0.0",

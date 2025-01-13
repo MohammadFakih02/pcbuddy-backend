@@ -131,4 +131,24 @@ export const AIController = new Elysia()
         case: t.String(),
       }),
     }
-  );
+  )
+  .post(
+    '/getassemblyguide',
+    async ({ body }: { body: { pcParts: { cpu: string; gpu: string; ram: string; motherboard: string; psu: string; case: string } } }) => {
+      const { pcParts } = body;
+      const result = await AIService.getAssemblyGuideAndImages(pcParts);
+      return result;
+    },
+    {
+      body: t.Object({
+        pcParts: t.Object({
+          cpu: t.String(),
+          gpu: t.String(),
+          ram: t.String(),
+          motherboard: t.String(),
+          psu: t.String(),
+          case: t.String(),
+        }),
+      }),
+    }
+  )
