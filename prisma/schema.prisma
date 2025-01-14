@@ -22,10 +22,34 @@ model User {
   bio             String?
   adminLogs       AdminLog[]   @relation("AdminActions")
   userLogs        AdminLog[]   @relation("UserActions")
+  chatsAsUser     Chat[]       @relation("ChatsAsUser")
+  chatsAsEngineer Chat[]       @relation("ChatsAsEngineer")
+  messages        Message[]
+}
+
+model Chat {
+  id          Int        @id @default(autoincrement())
+  userId      Int
+  engineerId  Int
+  createdAt   DateTime   @default(now())
+  messages    Message[]
+  user        User       @relation(fields: [userId], references: [id], name: "ChatsAsUser")
+  engineer    User       @relation(fields: [engineerId], references: [id], name: "ChatsAsEngineer")
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  chatId    Int
+  senderId  Int
+  content   String
+  createdAt DateTime @default(now())
+  chat      Chat     @relation(fields: [chatId], references: [id])
+  sender    User     @relation(fields: [senderId], references: [id])
 }
 
 enum Role {
   USER
+  ENGINEER
   ADMIN
 }
 
