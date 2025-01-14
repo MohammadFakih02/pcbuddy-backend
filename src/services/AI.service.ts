@@ -32,9 +32,8 @@ export const AIService = {
   async getAssemblyGuideAndImages(pcParts: { cpu: string; gpu: string; ram: string; motherboard: string; psu: string; case: string }) {
     const { cpu, gpu, ram, motherboard, psu, case: pcCase } = pcParts;
   
-    // Step 1: Generate assembly guide using Gemini API
     const promptText = `
-    Provide a detailed step-by-step guide on how to assemble a PC with the following components:
+    Provide a detailed and step-by-step guide for assembling a PC with the following components:
     - CPU: ${cpu}
     - GPU: ${gpu}
     - RAM: ${ram}
@@ -42,75 +41,148 @@ export const AIService = {
     - PSU: ${psu}
     - Case: ${pcCase}
   
-    The guide should include instructions on how to install each component, cable management tips, and any precautions to take during the assembly process.
+    Include:
+    1. Step-by-step instructions with explicit details for each component's installation.
+    2. A list of necessary tools for assembly.
+    3. Cable management tips.
+    4. Common pitfalls and precautions to avoid damage.
+    5. Detailed explanations of terms and processes for beginners.
+  
+    Format the response as a JSON object with the following structure:
+  {
+    "tools": ["list", "of", "tools"],
+    "steps": [
+      {
+        "title": "Step 1: Install the CPU",
+        "description": [
+          "1. Open the CPU socket lever on the motherboard.",
+          "2. Carefully align the CPU's gold triangles with the corresponding markings on the socket.",
+          "3. Gently lower the CPU into the socket.",
+          "4. Close the lever securely.",
+          "5. Do not force the CPU in; if it doesn't fit easily, double-check the alignment."
+        ],
+        "images": [],
+        "imagePrompts": []
+      },
+      {
+        "title": "Step 2: Install the CPU Cooler",
+        "description": [
+          "1. Apply a small pea-sized amount of thermal paste to the center of the CPU.",
+          "2. Carefully align the cooler with the CPU and gently lower it into place.",
+          "3. Secure the cooler using the provided mounting hardware."
+        ],
+        "images": [],
+        "imagePrompts": []
+      }
+    ],
+    "cableManagementTips": "Tips for managing cables...",
+    "commonPitfalls": "Common mistakes to avoid..."
+  }
+  
+    For each step, generate 2-3 search prompts that are specific to the topic but focus on the **action** being performed. The prompts should:
+    - Describe the action (e.g., "installing a CPU," "connecting power cables").
+    - Include contextual details about the step (e.g., "inside a PC case," "on a motherboard").
+    - Use descriptive terms like "close-up," "step-by-step," or "diagram" to ensure the images are clear and relevant.
+    - Avoid using overly specific component names (e.g., "Intel Core i7 CPU") unless absolutely necessary.
+  
+    Example prompts:
+    - "Close-up of installing a CPU on a motherboard inside a PC case"
+    - "Step-by-step diagram of installing RAM on a motherboard"
+    - "Connecting power cables to a motherboard inside a PC case"
+  
+    Add these prompts to the "imagePrompts" field for each step.
+    Ensure the response is valid JSON and does not contain any additional text or formatting outside the JSON object.
     `;
   
     try {
-      // Call Gemini API
-      const result = await model.generateContent(promptText);
-      const response = await result.response;
-      const assemblyGuide = response.text();
+        const result = await model.generateContent(promptText);
+        const response = await result.response;
+        const responseText = await response.text();
   
-      // Step 2: Generate search prompts for images
-      const searchPrompts = [
-        `${cpu} installation tutorial`,
-        `${gpu} installation guide`,
-        `${ram} installation steps`,
-        `${motherboard} installation tutorial`,
-        `${psu} installation guide`,
-        `${pcCase} build tutorial`,
-        `cable management in ${pcCase}`,
-        `how to connect PSU to ${motherboard}`,
-      ];
+        let assemblyGuide;
+        try {
+            assemblyGuide = JSON.parse(responseText);
+        } catch (parseError) {
+            console.error('Failed to parse AI response as JSON. Attempting to fix...');
   
-      // Step 3: Fetch images using Google Custom Search API
-      const imageUrls = await Promise.all(
-        searchPrompts.map(async (prompt) => {
-          const searchResponse = await axios.get(
-            `https://www.googleapis.com/customsearch/v1`,
-            {
-              params: {
-                q: prompt,
-                cx: GOOGLE_CSE_ID,
-                key: GOOGLE_API_KEY,
-                searchType: 'image',
-                num: 1,
-                imgSize: 'large',
-              },
+            const jsonMatch = responseText.match(/\{.*\}/s);
+            if (jsonMatch) {
+                try {
+                    assemblyGuide = JSON.parse(jsonMatch[0]);
+                } catch (fallbackError) {
+                    console.error('Failed to fix JSON:', fallbackError);
+                    throw new Error('AI response is not valid JSON and could not be fixed.');
+                }
+            } else {
+                throw new Error('AI response does not contain valid JSON.');
             }
-          );
+        }
   
-          // Filter out non-image results and return only image URLs
-          return searchResponse.data.items
-            .filter((item: any) => item.mime.startsWith('image/')) // Ensure it's an image
-            .map((item: any) => item.link); // Extract image URLs
-        })
-      );
   
-      // Flatten the array of image URLs
-      const flattenedImageUrls = imageUrls.flat();
+        for (const step of assemblyGuide.steps) {
+            const stepPrompts = step.imagePrompts;
   
-      return {
-        success: true,
-        assemblyGuide,
-        imageUrls: flattenedImageUrls,
-      };
+  
+            const imageUrls = await Promise.all(
+                stepPrompts.map(async (prompt: string) => {
+                    try {
+                        const searchResponse = await axios.get(
+                            `https://www.googleapis.com/customsearch/v1`,
+                            {
+                                params: {
+                                    q: prompt,
+                                    cx: GOOGLE_CSE_ID,
+                                    key: GOOGLE_API_KEY,
+                                    searchType: 'image',
+                                    num: 1
+                                },
+                            }
+                        );
+  
+                        if (searchResponse.data.items) {
+                            return searchResponse.data.items
+                                .filter((item: any) => item.mime.startsWith('image/'))
+                                .map((item: any) => item.link);
+                        } else {
+                            console.error('No items found in API response for prompt:', prompt);
+                            return [];
+                        }
+                    } catch (error) {
+                        console.error(`Error fetching images for prompt: ${prompt}`, error);
+                        return [];
+                    }
+                })
+            );
+  
+            step.images = imageUrls.flat();
+        }
+  
+        return {
+            success: true,
+            data: {
+                tools: assemblyGuide.tools,
+                steps: assemblyGuide.steps,
+                cableManagementTips: assemblyGuide.cableManagementTips,
+                commonPitfalls: assemblyGuide.commonPitfalls
+            }
+        };
     } catch (error) {
-      if (error instanceof Error) {
-        console.error('Error:', error.message);
-        return {
-          success: false,
-          error: error.message,
-        };
-      } else {
-        console.error('Unknown error occurred:', error);
-        return {
-          success: false,
-          error: 'An unknown error occurred.',
-        };
-      }
+        if (error instanceof Error) {
+            console.error('Error:', error.message);
+            return {
+                success: false,
+                error: error.message,
+            };
+        } else {
+            console.error('Unknown error occurred:', error);
+            return {
+                success: false,
+                error: 'An unknown error occurred.',
+            };
+        }
     }
   },
+  
 
 
   async getPC(prompt: string) {
