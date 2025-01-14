@@ -27,6 +27,7 @@ model User {
 enum Role {
   USER
   ADMIN
+  ENGINEER
 }
 
 model PersonalPC {
@@ -57,6 +58,7 @@ model PersonalPC {
   usageCount    Int?          @default(0)
   addToProfile  Boolean       @default(false)
 }
+
 enum BuildStatus {
   COMPLETED
   IN_PROGRESS
