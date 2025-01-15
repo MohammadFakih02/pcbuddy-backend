@@ -24,6 +24,7 @@ model User {
   userLogs        AdminLog[]   @relation("UserActions")
   chatsAsUser     Chat[]       @relation("ChatsAsUser")
   chatsAsEngineer Chat[]       @relation("ChatsAsEngineer")
+  isOnline        Boolean      @default(false)
   messages        Message[]
 }
 
@@ -32,9 +33,15 @@ model Chat {
   userId      Int
   engineerId  Int
   createdAt   DateTime   @default(now())
+  status      ChatStatus @default(ACTIVE) // Add this field
   messages    Message[]
   user        User       @relation(fields: [userId], references: [id], name: "ChatsAsUser")
   engineer    User       @relation(fields: [engineerId], references: [id], name: "ChatsAsEngineer")
+}
+
+enum ChatStatus {
+  ACTIVE
+  CLOSED
 }
 
 model Message {
