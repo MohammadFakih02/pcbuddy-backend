@@ -217,18 +217,18 @@ export class ComputerService {
         case: true,
       },
     });
-
+  
     if (!pc) {
       throw new Error('No PC configuration found for this user');
     }
-
+  
     const formatImageUrl = (url: string | null | undefined): string | null | undefined => {
       if (url && url.startsWith('//')) {
         return `https:${url}`;
       }
       return url;
     };
-
+  
     return {
       ...pc,
       cpu: pc.cpu ? { id: pc.cpu.id, name: pc.cpu.name, price: pc.cpu.price, imageUrl: formatImageUrl(pc.cpu.imageUrl) } : null,
@@ -239,6 +239,7 @@ export class ComputerService {
       motherboard: pc.motherboard ? { id: pc.motherboard.id, name: pc.motherboard.name, price: pc.motherboard.price, imageUrl: formatImageUrl(pc.motherboard.imageUrl) } : null,
       powerSupply: pc.powerSupply ? { id: pc.powerSupply.id, name: pc.powerSupply.name, price: pc.powerSupply.price, imageUrl: formatImageUrl(pc.powerSupply.imageUrl) } : null,
       case: pc.case ? { id: pc.case.id, name: pc.case.name, price: pc.case.price, imageUrl: formatImageUrl(pc.case.imageUrl) } : null,
+      rating: pc.rating,
     };
   }
 
