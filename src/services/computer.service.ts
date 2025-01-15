@@ -103,7 +103,7 @@ export class ComputerService {
     powerSupplyId?: number | null;
     caseId?: number | null;
     addToProfile?: boolean;
-    rating?: number | null; // Add rating field
+    rating?: number | null;
   }) {
     const totalPrice = await this.calculateTotalPrice(parts);
   
@@ -126,7 +126,7 @@ export class ComputerService {
           caseId: parts.caseId || null,
           totalPrice,
           addToProfile: parts.addToProfile || false,
-          rating: parts.rating || null, // Update rating
+          rating: parts.rating || null,
         },
       });
     } else {
@@ -143,7 +143,7 @@ export class ComputerService {
           caseId: parts.caseId || null,
           totalPrice,
           addToProfile: parts.addToProfile || false,
-          rating: parts.rating || null, // Set rating
+          rating: parts.rating || null,
         },
       });
     }
