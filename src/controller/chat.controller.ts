@@ -3,14 +3,17 @@ import { PrismaClient } from '@prisma/client'
 import { ServerWebSocket } from 'bun'
 
 interface WSMessage {
-  type: 'message' | 'status' | 'switch_chat'
+  type: 'message' | 'status' | 'switch_chat' | 'chat_history'
   content: string
   chatId?: number
+  messages?: any[]
 }
 
 interface WSData {
   userId: number
 }
+
+const MAX_CHATS_PER_ENGINEER = 5
 
 class ChatControllerClass {
   private prisma: PrismaClient
@@ -23,7 +26,30 @@ class ChatControllerClass {
     this.engineerChats = new Map()
   }
 
-  // Handle WebSocket message
+  async findAvailableEngineer() {
+    const engineers = await this.prisma.user.findMany({
+      where: {
+        role: 'ENGINEER',
+        isOnline: true
+      },
+      include: {
+        chatsAsEngineer: {
+          where: {
+            status: 'ACTIVE'
+          }
+        }
+      }
+    })
+
+    for (const engineer of engineers) {
+      if (engineer.chatsAsEngineer.length < MAX_CHATS_PER_ENGINEER) {
+        return engineer
+      }
+    }
+
+    return null
+  }
+
   async handleMessage(ws: ServerWebSocket<WSData>, message: string) {
     try {
       const data: WSMessage = JSON.parse(message)
@@ -62,10 +88,15 @@ class ChatControllerClass {
         })
 
         if (chat && chat.engineerId === engineerId) {
+          const messages = await this.prisma.message.findMany({
+            where: { chatId: data.chatId },
+            orderBy: { createdAt: 'asc' }
+          })
+
           ws.send(JSON.stringify({
-            type: 'status',
-            content: `Switched to chat with user ${chat.userId}`,
-            chatId: chat.id
+            type: 'chat_history',
+            chatId: data.chatId,
+            messages: messages
           }))
         } else {
           ws.send(JSON.stringify({
@@ -80,7 +111,6 @@ class ChatControllerClass {
     }
   }
 
-  // Handle new WebSocket connection
   async handleConnection(ws: ServerWebSocket<WSData>) {
     try {
       const userId = ws.data.userId
@@ -96,12 +126,52 @@ class ChatControllerClass {
       })
 
       if (user?.role === 'USER') {
-        const availableEngineer = await this.prisma.user.findFirst({
+        const existingChat = await this.prisma.chat.findFirst({
           where: {
-            role: 'ENGINEER',
-            isOnline: true
+            userId: userId,
+            status: 'ACTIVE'
+          },
+          include: {
+            engineer: true
           }
         })
+
+        if (existingChat) {
+          const engineer = existingChat.engineer
+          const engineerOnline = this.connections.has(engineer.id)
+
+          if (engineerOnline) {
+            ws.send(JSON.stringify({
+              type: 'status',
+              content: `Reconnected to engineer ${engineer.id}`,
+              chatId: existingChat.id
+            }))
+
+            const engineerWs = this.connections.get(engineer.id)
+            if (engineerWs) {
+              engineerWs.send(JSON.stringify({
+                type: 'status',
+                content: `User ${userId} reconnected`,
+                chatId: existingChat.id
+              }))
+            }
+
+            const messages = await this.prisma.message.findMany({
+              where: { chatId: existingChat.id },
+              orderBy: { createdAt: 'asc' }
+            })
+
+            ws.send(JSON.stringify({
+              type: 'chat_history',
+              chatId: existingChat.id,
+              messages: messages
+            }))
+
+            return
+          }
+        }
+
+        const availableEngineer = await this.findAvailableEngineer()
 
         if (availableEngineer) {
           const chat = await this.prisma.chat.create({
@@ -139,7 +209,6 @@ class ChatControllerClass {
     }
   }
 
-  // Handle WebSocket disconnection
   async handleDisconnection(ws: ServerWebSocket<WSData>) {
     try {
       const userId = ws.data.userId
@@ -180,7 +249,6 @@ class ChatControllerClass {
     }
   }
 
-  // Get engineer's active chats
   async getEngineerChats(engineerId: number) {
     return await this.prisma.chat.findMany({
       where: {
@@ -208,19 +276,17 @@ class ChatControllerClass {
 
 const chatControllerInstance = new ChatControllerClass()
 
-// Export the controller as an Elysia plugin
 export const chatController = new Elysia({ prefix: '/chat' })
   .get('/engineer/:engineerId/chats', async ({ params: { engineerId } }) => {
     return await chatControllerInstance.getEngineerChats(Number(engineerId))
   })
 
-// Create WebSocket server
 const wsServer = Bun.serve<WSData>({
-  port: 3001, // You might want to make this configurable via env
+  port: 1989,
   fetch(req, server) {
     const url = new URL(req.url)
     const userId = Number(url.pathname.split('/').pop())
-    
+
     if (isNaN(userId)) {
       return new Response('Invalid user ID', { status: 400 })
     }
@@ -244,4 +310,4 @@ const wsServer = Bun.serve<WSData>({
   }
 })
 
-console.log('WebSocket server running on port 3001')
+console.log('WebSocket server running on port 1989')
