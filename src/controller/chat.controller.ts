@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client'
 import { ServerWebSocket } from 'bun'
 
 interface WSMessage {
-  type: 'message' | 'status'
+  type: 'message' | 'status' | 'switch_chat'
   content: string
   chatId?: number
 }
@@ -53,6 +53,25 @@ class ChatControllerClass {
               chatId: data.chatId
             }))
           }
+        }
+      } else if (data.type === 'switch_chat' && data.chatId) {
+        const engineerId = userId
+        const chat = await this.prisma.chat.findUnique({
+          where: { id: data.chatId },
+          include: { user: true }
+        })
+
+        if (chat && chat.engineerId === engineerId) {
+          ws.send(JSON.stringify({
+            type: 'status',
+            content: `Switched to chat with user ${chat.userId}`,
+            chatId: chat.id
+          }))
+        } else {
+          ws.send(JSON.stringify({
+            type: 'error',
+            content: 'Invalid chat ID or unauthorized access'
+          }))
         }
       }
     } catch (error) {
