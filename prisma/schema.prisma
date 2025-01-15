@@ -34,6 +34,7 @@ model Chat {
   engineerId  Int
   createdAt   DateTime   @default(now())
   status      ChatStatus @default(ACTIVE) // Add this field
+  lastActivityAt DateTime @default(now())
   messages    Message[]
   user        User       @relation(fields: [userId], references: [id], name: "ChatsAsUser")
   engineer    User       @relation(fields: [engineerId], references: [id], name: "ChatsAsEngineer")
