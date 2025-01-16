@@ -67,4 +67,14 @@ export class UserService {
   
     return updatedUser;
   }
+
+    async getUsersCount() {
+        return await prisma.user.count();
+    }
+
+    async getActiveUsers() {
+        return await prisma.user.count({
+            where: { isOnline: true },
+        });
+    }
 }
