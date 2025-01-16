@@ -34,11 +34,12 @@ model Chat {
   userId      Int
   engineerId  Int
   createdAt   DateTime   @default(now())
-  status      ChatStatus @default(ACTIVE) // Add this field
+  status      ChatStatus @default(ACTIVE)
   lastActivityAt DateTime @default(now())
   messages    Message[]
   user        User       @relation(fields: [userId], references: [id], name: "ChatsAsUser")
   engineer    User       @relation(fields: [engineerId], references: [id], name: "ChatsAsEngineer")
+  reported    Boolean    @default(false)
 }
 
 enum ChatStatus {
@@ -96,15 +97,16 @@ enum BuildStatus {
   SAVED
 }
 
-model AdminLog {
-  id          Int      @id @default(autoincrement())
-  action      String 
-  adminId     Int
-  admin       User     @relation("AdminActions", fields: [adminId], references: [id])
-  userId      Int?
-  user        User?    @relation("UserActions", fields: [userId], references: [id])
-  createdAt   DateTime @default(now())
-}
+ model AdminLog {
+     id          Int      @id @default(autoincrement())
+     action      String
+     adminId     Int
+     admin       User     @relation("AdminActions", fields: [adminId], references: [id])
+     userId      Int?
+     user        User?    @relation("UserActions", fields: [userId], references: [id])
+     createdAt   DateTime @default(now())
+     details     String?
+ }
 
 model Cpu {
   id                        Int      @id @default(autoincrement())
