@@ -1,5 +1,12 @@
 import { prisma } from '../prisma';
 
+const formatImageUrl = (url: string | null | undefined): string | null | undefined => {
+    if (url && url.startsWith('//')) {
+        return `https:${url}`;
+    }
+    return url;
+};
+
 export class ComputerService {
   async getCPUs() {
     return await prisma.cpu.findMany({
@@ -170,77 +177,72 @@ export class ComputerService {
     return updatedPC;
   }
 
-  async getPartDetails(partIds: {
-    cpuId?: number | null;
-    gpuId?: number | null;
-    memoryId?: number | null;
-    storageId?: number | null;
-    storageId2?: number | null;
-    motherboardId?: number | null;
-    powerSupplyId?: number | null;
-    caseId?: number | null;
-  }) {
-    const [cpu, gpu, memory, storage, storage2, motherboard, powerSupply, pcCase] = await Promise.all([
-      partIds.cpuId ? prisma.cpu.findUnique({ where: { id: partIds.cpuId } }) : Promise.resolve(null),
-      partIds.gpuId ? prisma.gpu.findUnique({ where: { id: partIds.gpuId } }) : Promise.resolve(null),
-      partIds.memoryId ? prisma.memory.findUnique({ where: { id: partIds.memoryId } }) : Promise.resolve(null),
-      partIds.storageId ? prisma.storage.findUnique({ where: { id: partIds.storageId } }) : Promise.resolve(null),
-      partIds.storageId2 ? prisma.storage.findUnique({ where: { id: partIds.storageId2 } }) : Promise.resolve(null), // Second storage
-      partIds.motherboardId ? prisma.motherboard.findUnique({ where: { id: partIds.motherboardId } }) : Promise.resolve(null),
-      partIds.powerSupplyId ? prisma.powerSupply.findUnique({ where: { id: partIds.powerSupplyId } }) : Promise.resolve(null),
-      partIds.caseId ? prisma.case.findUnique({ where: { id: partIds.caseId } }) : Promise.resolve(null),
-    ]);
-  
-    return {
-      cpu,
-      gpu: gpu ? { ...gpu, name: `${gpu.name} ${gpu.chipset}` } : null,
-      memory,
-      storage: storage ? { ...storage, name: `${storage.name} ${storage.capacity}GB` } : null,
-      storage2: storage2 ? { ...storage2, name: `${storage2.name} ${storage2.capacity}GB` } : null,
-      motherboard,
-      powerSupply,
-      case: pcCase,
-    };
+    async getPartDetails(partIds: {
+        cpuId?: number | null;
+        gpuId?: number | null;
+        memoryId?: number | null;
+        storageId?: number | null;
+        storageId2?: number | null;
+        motherboardId?: number | null;
+        powerSupplyId?: number | null;
+        caseId?: number | null;
+    }) {
+        const [cpu, gpu, memory, storage, storage2, motherboard, powerSupply, pcCase] = await Promise.all([
+            partIds.cpuId ? prisma.cpu.findUnique({ where: { id: partIds.cpuId } }) : Promise.resolve(null),
+            partIds.gpuId ? prisma.gpu.findUnique({ where: { id: partIds.gpuId } }) : Promise.resolve(null),
+            partIds.memoryId ? prisma.memory.findUnique({ where: { id: partIds.memoryId } }) : Promise.resolve(null),
+            partIds.storageId ? prisma.storage.findUnique({ where: { id: partIds.storageId } }) : Promise.resolve(null),
+            partIds.storageId2 ? prisma.storage.findUnique({ where: { id: partIds.storageId2 } }) : Promise.resolve(null), // Second storage
+            partIds.motherboardId ? prisma.motherboard.findUnique({ where: { id: partIds.motherboardId } }) : Promise.resolve(null),
+            partIds.powerSupplyId ? prisma.powerSupply.findUnique({ where: { id: partIds.powerSupplyId } }) : Promise.resolve(null),
+            partIds.caseId ? prisma.case.findUnique({ where: { id: partIds.caseId } }) : Promise.resolve(null),
+        ]);
+    
+        return {
+          cpu: cpu ? {...cpu, imageUrl: formatImageUrl(cpu.imageUrl)} : null,
+          gpu: gpu ? { ...gpu, name: `${gpu.name} ${gpu.chipset}`, imageUrl: formatImageUrl(gpu.imageUrl)} : null,
+          memory: memory ?  {...memory, imageUrl: formatImageUrl(memory.imageUrl)} : null,
+          storage: storage ? { ...storage, name: `${storage.name} ${storage.capacity}GB`, imageUrl: formatImageUrl(storage.imageUrl) } : null,
+          storage2: storage2 ? { ...storage2, name: `${storage2.name} ${storage2.capacity}GB`, imageUrl: formatImageUrl(storage2.imageUrl) } : null,
+          motherboard: motherboard ? {...motherboard, imageUrl: formatImageUrl(motherboard.imageUrl)} : null,
+          powerSupply: powerSupply ? {...powerSupply, imageUrl: formatImageUrl(powerSupply.imageUrl)} : null,
+          case: pcCase ? {...pcCase, imageUrl: formatImageUrl(pcCase.imageUrl)}: null,
+        };
   }
 
   async getUserPc(userId: number) {
-    const pc = await prisma.personalPC.findFirst({
-      where: { userId },
-      include: {
-        cpu: true,
-        gpu: true,
-        memory: true,
-        storage: true,
-        storage2: true,
-        motherboard: true,
-        powerSupply: true,
-        case: true,
-      },
-    });
-  
-    if (!pc) {
-      throw new Error('No PC configuration found for this user');
-    }
-  
-    const formatImageUrl = (url: string | null | undefined): string | null | undefined => {
-      if (url && url.startsWith('//')) {
-        return `https:${url}`;
+      const pc = await prisma.personalPC.findFirst({
+          where: { userId },
+          include: {
+              cpu: true,
+              gpu: true,
+              memory: true,
+              storage: true,
+              storage2: true,
+              motherboard: true,
+              powerSupply: true,
+              case: true,
+          },
+      });
+
+      if (!pc) {
+          throw new Error('No PC configuration found for this user');
       }
-      return url;
-    };
-  
-    return {
-      ...pc,
-      cpu: pc.cpu ? { id: pc.cpu.id, name: pc.cpu.name, price: pc.cpu.price, imageUrl: formatImageUrl(pc.cpu.imageUrl) } : null,
-      gpu: pc.gpu ? { id: pc.gpu.id, name: `${pc.gpu.name} ${pc.gpu.chipset}`, price: pc.gpu.price, imageUrl: formatImageUrl(pc.gpu.imageUrl) } : null,
-      memory: pc.memory ? { id: pc.memory.id, name: pc.memory.name, price: pc.memory.price, imageUrl: formatImageUrl(pc.memory.imageUrl) } : null,
-      storage: pc.storage ? { id: pc.storage.id, name: `${pc.storage.name} ${pc.storage.capacity}GB`, price: pc.storage.price, imageUrl: formatImageUrl(pc.storage.imageUrl) } : null,
-      storage2: pc.storage2 ? { id: pc.storage2.id, name: `${pc.storage2.name} ${pc.storage2.capacity}GB`, price: pc.storage2.price, imageUrl: formatImageUrl(pc.storage2.imageUrl) } : null,
-      motherboard: pc.motherboard ? { id: pc.motherboard.id, name: pc.motherboard.name, price: pc.motherboard.price, imageUrl: formatImageUrl(pc.motherboard.imageUrl) } : null,
-      powerSupply: pc.powerSupply ? { id: pc.powerSupply.id, name: pc.powerSupply.name, price: pc.powerSupply.price, imageUrl: formatImageUrl(pc.powerSupply.imageUrl) } : null,
-      case: pc.case ? { id: pc.case.id, name: pc.case.name, price: pc.case.price, imageUrl: formatImageUrl(pc.case.imageUrl) } : null,
-      rating: pc.rating,
-    };
+
+
+
+      return {
+          ...pc,
+          cpu: pc.cpu ? { id: pc.cpu.id, name: pc.cpu.name, price: pc.cpu.price, imageUrl: formatImageUrl(pc.cpu.imageUrl), productUrl: pc.cpu.productUrl } : null,
+          gpu: pc.gpu ? { id: pc.gpu.id, name: `${pc.gpu.name} ${pc.gpu.chipset}`, price: pc.gpu.price, imageUrl: formatImageUrl(pc.gpu.imageUrl), productUrl: pc.gpu.productUrl } : null,
+          memory: pc.memory ? { id: pc.memory.id, name: pc.memory.name, price: pc.memory.price, imageUrl: formatImageUrl(pc.memory.imageUrl), productUrl: pc.memory.productUrl } : null,
+          storage: pc.storage ? { id: pc.storage.id, name: `${pc.storage.name} ${pc.storage.capacity}GB`, price: pc.storage.price, imageUrl: formatImageUrl(pc.storage.imageUrl), productUrl: pc.storage.productUrl } : null,
+            storage2: pc.storage2 ? { id: pc.storage2.id, name: `${pc.storage2.name} ${pc.storage2.capacity}GB`, price: pc.storage2.price, imageUrl: formatImageUrl(pc.storage2.imageUrl), productUrl: pc.storage2.productUrl } : null,
+          motherboard: pc.motherboard ? { id: pc.motherboard.id, name: pc.motherboard.name, price: pc.motherboard.price, imageUrl: formatImageUrl(pc.motherboard.imageUrl), productUrl: pc.motherboard.productUrl } : null,
+          powerSupply: pc.powerSupply ? { id: pc.powerSupply.id, name: pc.powerSupply.name, price: pc.powerSupply.price, imageUrl: formatImageUrl(pc.powerSupply.imageUrl), productUrl: pc.powerSupply.productUrl } : null,
+          case: pc.case ? { id: pc.case.id, name: pc.case.name, price: pc.case.price, imageUrl: formatImageUrl(pc.case.imageUrl), productUrl: pc.case.productUrl } : null,
+          rating: pc.rating,
+      };
   }
 
   async getGames(search: string, page: number, limit: number) {
@@ -277,45 +279,52 @@ export class ComputerService {
       limit,
     };
   }
-  async getCpuById(id: number) {
-    return await prisma.cpu.findUnique({
-      where: { id },
-    });
-  }
+   async getCpuById(id: number) {
+        const cpu =  await prisma.cpu.findUnique({
+            where: { id },
+        });
+       return cpu ? {...cpu, imageUrl: formatImageUrl(cpu.imageUrl)} : null;
+   }
   
-  async getGpuById(id: number) {
-    return await prisma.gpu.findUnique({
-      where: { id },
-    });
-  }
+    async getGpuById(id: number) {
+        const gpu = await prisma.gpu.findUnique({
+            where: { id },
+        });
+       return gpu ? { ...gpu, name: `${gpu.name} ${gpu.chipset}`, imageUrl: formatImageUrl(gpu.imageUrl)} : null;
+    }
   
-  async getMemoryById(id: number) {
-    return await prisma.memory.findUnique({
-      where: { id },
-    });
-  }
+    async getMemoryById(id: number) {
+        const memory = await prisma.memory.findUnique({
+            where: { id },
+        });
+        return memory ? {...memory, imageUrl: formatImageUrl(memory.imageUrl)} : null;
+    }
   
-  async getStorageById(id: number) {
-    return await prisma.storage.findUnique({
-      where: { id },
-    });
-  }
+    async getStorageById(id: number) {
+        const storage = await prisma.storage.findUnique({
+            where: { id },
+        });
+         return storage ? { ...storage, name: `${storage.name} ${storage.capacity}GB`, imageUrl: formatImageUrl(storage.imageUrl) } : null;
+    }
   
-  async getMotherboardById(id: number) {
-    return await prisma.motherboard.findUnique({
-      where: { id },
-    });
-  }
+    async getMotherboardById(id: number) {
+        const motherboard = await prisma.motherboard.findUnique({
+            where: { id },
+        });
+       return motherboard ? {...motherboard, imageUrl: formatImageUrl(motherboard.imageUrl)} : null;
+    }
   
-  async getPowerSupplyById(id: number) {
-    return await prisma.powerSupply.findUnique({
-      where: { id },
-    });
-  }
+    async getPowerSupplyById(id: number) {
+        const powerSupply =  await prisma.powerSupply.findUnique({
+            where: { id },
+        });
+       return powerSupply ? {...powerSupply, imageUrl: formatImageUrl(powerSupply.imageUrl)} : null;
+    }
   
-  async getCaseById(id: number) {
-    return await prisma.case.findUnique({
-      where: { id },
-    });
-  }
+    async getCaseById(id: number) {
+        const pcCase =  await prisma.case.findUnique({
+            where: { id },
+        });
+        return pcCase ? {...pcCase, imageUrl: formatImageUrl(pcCase.imageUrl)}: null
+    }
 }

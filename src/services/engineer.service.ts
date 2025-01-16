@@ -1,5 +1,11 @@
 import { prisma } from "../prisma";
 
+const formatImageUrl = (url: string | null | undefined): string | null | undefined => {
+    if (url && url.startsWith('//')) {
+        return `https:${url}`;
+    }
+    return url;
+};
 export class EngineerService {
 
   async calculateTotalPrice(parts: {
@@ -140,7 +146,7 @@ export class EngineerService {
       motherboardId?: number | null;
       powerSupplyId?: number | null;
       caseId?: number | null;
-       rating?: number | null;
+      rating?: number | null;
     }, userId: number, prebuiltId?: number | null,
   ) {
       const totalPrice = await this.calculateTotalPrice(parts);
@@ -197,7 +203,7 @@ export class EngineerService {
              storage2: true, // Include secondary storage details
             case: true, // Include case details
       }
-    })
+    }).then(prebuilts => prebuilts.map(prebuilt => ({...prebuilt, case: prebuilt.case ? {...prebuilt.case, imageUrl: formatImageUrl(prebuilt.case.imageUrl)}: null })))
   }
 
    async fetchAllPrebuilts() {
@@ -213,6 +219,6 @@ export class EngineerService {
                  storage2: true,
                 case: true,
             },
-        });
+        }).then(prebuilts => prebuilts.map(prebuilt => ({...prebuilt, case: prebuilt.case ? {...prebuilt.case, imageUrl: formatImageUrl(prebuilt.case.imageUrl)}: null })))
     }
 }
