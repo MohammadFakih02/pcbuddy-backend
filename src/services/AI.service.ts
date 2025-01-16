@@ -255,16 +255,21 @@ export const AIService = {
     return handleAIResponse(promptText);
   },
 
-  async getTemplateGraph(pcParts: { cpu: string; gpu: string; ram: string }) {
-    const { cpu, gpu, ram } = pcParts;
+    async getTemplateGraph(pcParts: { cpu: string; gpu: string; ram: string }, applications: string[] | null) {
+        const { cpu, gpu, ram } = pcParts;
 
-    const games = [
-      "Cyberpunk 2077",
-      "Red Dead Redemption 2",
-      "Counter Strike 2",
-      "Fortnite",
-      "Call of Duty: Warzone"
-    ];
+        const defaultGames = [
+            "Cyberpunk 2077",
+            "Red Dead Redemption 2",
+            "Counter Strike 2",
+            "Fortnite",
+            "Call of Duty: Warzone"
+        ];
+
+      
+        const games = applications && applications.length > 0
+            ? applications
+            : defaultGames;
 
     const promptText = `
     Based on the following PC components, estimate the **highest possible average FPS** for each graphical preset (low, medium, high, ultra) for the following games. Prioritize higher FPS numbers while maintaining realistic expectations based on the hardware.
@@ -279,36 +284,17 @@ export const AIService = {
 
     The AI should return a JSON object in the following format:
     {
-      "Cyberpunk 2077": {
+      ${games
+        .map(
+          (game) => `
+      "${game}": {
         "low": FPS for low preset,
         "medium": FPS for medium preset,
         "high": FPS for high preset,
         "ultra": FPS for ultra preset
-      },
-      "Red Dead Redemption 2": {
-        "low": FPS for low preset,
-        "medium": FPS for medium preset,
-        "high": FPS for high preset,
-        "ultra": FPS for ultra preset
-      },
-      "Counter Strike 2": {
-        "low": FPS for low preset,
-        "medium": FPS for medium preset,
-        "high": FPS for high preset,
-        "ultra": FPS for ultra preset
-      },
-      "Fortnite": {
-        "low": FPS for low preset,
-        "medium": FPS for medium preset,
-        "high": FPS for high preset,
-        "ultra": FPS for ultra preset
-      },
-      "Call of Duty: Warzone": {
-        "low": FPS for low preset,
-        "medium": FPS for medium preset,
-        "high": FPS for high preset,
-        "ultra": FPS for ultra preset
-      }
+      }`
+        )
+        .join(",")}
     }
 
     Ensure the response is valid JSON without any additional explanations or text.
@@ -321,8 +307,9 @@ export const AIService = {
     5. Provide significantly higher FPS numbers for lower presets and slightly lower but still high FPS for ultra presets.
     `;
 
-    return handleAIResponse(promptText);
-  },
+        return handleAIResponse(promptText);
+    },
+
 
   async checkCompatibility(fullSystem: {
     cpu: string;
