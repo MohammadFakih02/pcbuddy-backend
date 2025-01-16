@@ -45,8 +45,8 @@ export const engineerController = new Elysia({ prefix: "/engineer" })
         powerSupplyId: t.Optional(t.Union([t.Number(), t.Null()])),
         caseId: t.Optional(t.Union([t.Number(), t.Null()])),
         rating: t.Optional(t.Union([t.Number(), t.Null()])),
-        prebuiltId: t.Optional(t.Union([t.Number(), t.Null()])),
-          userId: t.Optional(t.Union([t.Number(), t.Null()])),
+         prebuiltId: t.Optional(t.Union([t.Number(), t.Null()])),
+         userId: t.Optional(t.Union([t.Number(), t.Null()])),
       }),
     }
   )

@@ -9,6 +9,7 @@ import { rateLimit } from 'elysia-rate-limit';
 import cors from '@elysiajs/cors';
 import { AIController } from './controller/AI.controller';
 import { chatController } from './controller/chat.controller';
+import { engineerController } from './controller/engineer.controller';
 
 const app = new Elysia()
   .use(cors())
@@ -24,6 +25,7 @@ const app = new Elysia()
   .use(adminController)
   .use(AIController)
   .use(chatController)
+  .use(engineerController)
   .use(
     staticPlugin({
       assets: './uploads',

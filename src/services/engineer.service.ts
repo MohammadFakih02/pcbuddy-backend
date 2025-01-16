@@ -140,7 +140,7 @@ export class EngineerService {
       motherboardId?: number | null;
       powerSupplyId?: number | null;
       caseId?: number | null;
-      rating?: number | null;
+       rating?: number | null;
     }, userId: number, prebuiltId?: number | null,
   ) {
       const totalPrice = await this.calculateTotalPrice(parts);
