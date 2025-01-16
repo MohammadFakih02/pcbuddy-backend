@@ -130,61 +130,89 @@ export class EngineerService {
     return pc;
   }
 
-  async fetchAllPCsForEngineer(userId: number) {
-    // First, check if the user is an engineer
-    const user = await prisma.user.findUnique({
-      where: {
-        id: userId,
-        role: "ENGINEER", // Ensure the user has the ENGINEER role
-      },
-    });
+  async savePrebuiltConfiguration(
+    parts: {
+      cpuId?: number | null;
+      gpuId?: number | null;
+      memoryId?: number | null;
+      storageId?: number | null;
+      storageId2?: number | null;
+      motherboardId?: number | null;
+      powerSupplyId?: number | null;
+      caseId?: number | null;
+      rating?: number | null;
+    }, userId: number, prebuiltId?: number | null,
+  ) {
+      const totalPrice = await this.calculateTotalPrice(parts);
+    let prebuilt;
 
-    if (!user) {
-      throw new Error("User is not an engineer or does not exist.");
+     if (prebuiltId) {
+        prebuilt = await prisma.prebuiltPC.update({
+          where: { id: prebuiltId, engineerId: userId },
+           data: {
+               cpuId: parts.cpuId || null,
+               gpuId: parts.gpuId || null,
+               memoryId: parts.memoryId || null,
+               storageId: parts.storageId || null,
+               storageId2: parts.storageId2 || null,
+               motherboardId: parts.motherboardId || null,
+               powerSupplyId: parts.powerSupplyId || null,
+               caseId: parts.caseId || null,
+               totalPrice,
+               rating: parts.rating || null,
+           }
+       })
+     } else {
+         prebuilt = await prisma.prebuiltPC.create({
+            data: {
+                 engineerId: userId,
+                cpuId: parts.cpuId || null,
+                gpuId: parts.gpuId || null,
+                memoryId: parts.memoryId || null,
+                storageId: parts.storageId || null,
+                storageId2: parts.storageId2 || null,
+                motherboardId: parts.motherboardId || null,
+                powerSupplyId: parts.powerSupplyId || null,
+                caseId: parts.caseId || null,
+                totalPrice,
+                rating: parts.rating || null,
+            },
+        });
     }
-
-    // Fetch all PCs for the engineer
-    const engineerPCs = await prisma.personalPC.findMany({
-      where: {
-        userId, // Filter by the provided userId
-      },
-      include: {
-        user: true, // Include user details
-        cpu: true, // Include CPU details
-        gpu: true, // Include GPU details
-        memory: true, // Include memory details
-        motherboard: true, // Include motherboard details
-        powerSupply: true, // Include power supply details
-        storage: true, // Include primary storage details
-        storage2: true, // Include secondary storage details
-        case: true, // Include case details
-      },
-    });
-
-    return engineerPCs;
+    return prebuilt;
   }
 
-  async fetchAllEngineerPCs() {
-    // Fetch all PCs created by users with the ENGINEER role
-    const engineerPCs = await prisma.personalPC.findMany({
-        where: {
-            user: {
-                role: 'ENGINEER', // Filter PCs created by engineers
-            },
-        },
-        include: {
-            user: true,
+  async fetchAllPrebuiltsForEngineer(engineerId: number) {
+    return await prisma.prebuiltPC.findMany({
+      where: {
+        engineerId,
+      },
+      include: {
             cpu: true,
             gpu: true,
             memory: true,
             motherboard: true, // Include motherboard details
             powerSupply: true, // Include power supply details
             storage: true, // Include primary storage details
+             storage2: true, // Include secondary storage details
             case: true, // Include case details
-            storage2: true, // Include secondary storage details
-        },
-    });
+      }
+    })
+  }
 
-    return engineerPCs;
-}
+   async fetchAllPrebuilts() {
+        return await prisma.prebuiltPC.findMany({
+            include: {
+                engineer: true,
+                cpu: true,
+                gpu: true,
+                memory: true,
+                motherboard: true,
+                powerSupply: true,
+                storage: true,
+                 storage2: true,
+                case: true,
+            },
+        });
+    }
 }
