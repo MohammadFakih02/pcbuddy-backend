@@ -63,16 +63,14 @@ class ChatControllerClass {
         return null;
     }
 
-
     async handleMessage(ws: ServerWebSocket<WSData>, message: string) {
         console.log(`[S] Handling message:`, message);
         try {
             const data: WSMessage = JSON.parse(message);
             const userId = ws.data.userId;
-
+    
             if (data.type === 'message' && data.chatId) {
                 console.log(`[S] User ${userId} sent a message to chat ${data.chatId}: ${data.content}`);
-                console.log(`[S] Attempting to create message with chatId: ${data.chatId}`);
                 await this.prisma.message.create({
                     data: {
                         content: data.content,
@@ -80,15 +78,16 @@ class ChatControllerClass {
                         senderId: userId,
                     },
                 });
-
+    
                 const chat = await this.prisma.chat.findUnique({
                     where: { id: data.chatId },
                     include: { user: true, engineer: true },
                 });
-
+    
                 if (chat) {
                     const recipientId = userId === chat.userId ? chat.engineerId : chat.userId;
                     const recipientWs = this.connections.get(recipientId);
+    
                     if (recipientWs) {
                         console.log(`[S] Forwarding message to recipient ${recipientId}`);
                         recipientWs.send(
@@ -97,40 +96,54 @@ class ChatControllerClass {
                                 content: data.content,
                                 chatId: data.chatId,
                                 senderId: userId,
-                                timestamp: new Date().toISOString()
+                                timestamp: new Date().toISOString(),
                             })
                         );
+                    } else {
+                        console.log(`[S] Recipient ${recipientId} is not connected`);
                     }
                 }
             } else if (data.type === 'switch_chat' && data.chatId) {
-                console.log(`[S] Engineer ${userId} switched to chat ${data.chatId}`);
-                const engineerId = userId;
+                console.log(`[S] User ${userId} switched to chat ${data.chatId}`);
                 const chat = await this.prisma.chat.findUnique({
                     where: { id: data.chatId },
-                    include: { user: true },
+                    include: { user: true, engineer: true },
                 });
-
-                if (chat && chat.engineerId === engineerId) {
-                    const messages = await this.prisma.message.findMany({
-                        where: { chatId: data.chatId },
-                        orderBy: { createdAt: 'asc' },
+    
+                if (chat) {
+                    const user = await this.prisma.user.findUnique({
+                        where: { id: userId },
                     });
-
-                    ws.send(
-                        JSON.stringify({
-                            type: 'chat_history',
-                            chatId: data.chatId,
-                            messages: messages,
-                        })
-                    );
-                } else {
-                    console.log(`[S] Invalid chat ID or unauthorized access for engineer ${engineerId}`);
-                    ws.send(
-                        JSON.stringify({
-                            type: 'error',
-                            content: 'Invalid chat ID or unauthorized access',
-                        })
-                    );
+    
+                    if (user?.role === 'ENGINEER' && chat.engineerId === userId) {
+                        // Engineer switching to their own chat
+                        const messages = await this.prisma.message.findMany({
+                            where: { chatId: data.chatId },
+                            orderBy: { createdAt: 'asc' },
+                        });
+    
+                        ws.send(
+                            JSON.stringify({
+                                type: 'chat_history',
+                                chatId: data.chatId,
+                                messages: messages,
+                            })
+                        );
+                    } else if (user?.role === 'USER' && chat.userId === userId) {
+                        // User switching to their own chat
+                        const messages = await this.prisma.message.findMany({
+                            where: { chatId: data.chatId },
+                            orderBy: { createdAt: 'asc' },
+                        });
+    
+                        ws.send(
+                            JSON.stringify({
+                                type: 'chat_history',
+                                chatId: data.chatId,
+                                messages: messages,
+                            })
+                        );
+                    }
                 }
             }
         } catch (error) {
