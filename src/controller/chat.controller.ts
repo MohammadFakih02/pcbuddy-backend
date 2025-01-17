@@ -8,6 +8,7 @@ interface WSMessage {
     chatId?: number;
     messages?: any[];
     reconnectionId?: number;
+     senderId?: number;
 }
 
 interface WSData {
@@ -71,6 +72,7 @@ class ChatControllerClass {
 
             if (data.type === 'message' && data.chatId) {
                 console.log(`[S] User ${userId} sent a message to chat ${data.chatId}: ${data.content}`);
+                console.log(`[S] Attempting to create message with chatId: ${data.chatId}`);
                 await this.prisma.message.create({
                     data: {
                         content: data.content,
@@ -94,6 +96,8 @@ class ChatControllerClass {
                                 type: 'message',
                                 content: data.content,
                                 chatId: data.chatId,
+                                senderId: userId,
+                                timestamp: new Date().toISOString()
                             })
                         );
                     }
@@ -318,105 +322,105 @@ class ChatControllerClass {
                 const activeChats = await this.prisma.chat.findMany({
                     where: {
                         OR: [{ userId: userId }, { engineerId: userId }],
-                        status: 'ACTIVE',
-                    },
-                });
-
-                for (const chat of activeChats) {
-                    const otherPartyId = userId === chat.userId ? chat.engineerId : chat.userId;
-                    const otherPartyOnline = this.connections.has(otherPartyId);
-
-                    if (!otherPartyOnline) {
-                        console.log(`[S] Closing chat ${chat.id} as the other party is offline`);
-                        await this.prisma.chat.update({
-                            where: { id: chat.id },
-                            data: { status: 'CLOSED' },
-                        });
-                        this.closedChats.set(userId, { chatId: chat.id, closedAt: Date.now() });
-
-                        if (this.engineerChats.has(chat.engineerId)) {
-                            this.engineerChats.get(chat.engineerId)?.delete(chat.id);
-                        }
-                    }
-                }
-                this.disconnectTimeouts.delete(userId);
-            } catch (error) {
-                console.error('[S] Error in WebSocket close:', error);
-            }
-        }, DISCONNECT_TIMEOUT) as NodeJS.Timeout;
-
-        this.disconnectTimeouts.set(userId, timeout);
-    }
-
-    async getEngineerChats(engineerId: number) {
-        console.log(`[S] Fetching active chats for engineer ${engineerId}`);
-        return await this.prisma.chat.findMany({
-            where: {
-                engineerId: engineerId,
-                status: 'ACTIVE',
-            },
-            include: {
-                user: {
-                    select: {
-                        id: true,
-                        username: true,
-                        profilePicture: true,
-                    },
-                },
-                messages: {
-                    orderBy: {
-                        createdAt: 'desc',
-                    },
-                    take: 1,
-                },
-            },
-        });
-    }
-}
-
-const chatControllerInstance = new ChatControllerClass();
-
-export const chatController = new Elysia({ prefix: '/chat' }).get(
-    '/engineer/:engineerId/chats',
-    async ({ params: { engineerId } }) => {
-        return await chatControllerInstance.getEngineerChats(Number(engineerId));
-    }
-);
-
-const wsServer = Bun.serve<WSData>({
-    port: 1989,
-    fetch(req, server) {
-        const url = new URL(req.url);
-        const userId = Number(url.pathname.split('/').pop());
-        const reconnectionId = Number(url.searchParams.get('reconnectionId'));
-
-        if (isNaN(userId)) {
-            console.log('Invalid user ID in WebSocket request');
-            return new Response('Invalid user ID', { status: 400 });
-        }
-
-        console.log(`[S] Incoming WebSocket connection request from user ${userId} with reconnectionId: ${reconnectionId}`);
-        const upgraded = server.upgrade(req, { data: { userId, reconnectionId } });
-        if (!upgraded) {
-            console.log('WebSocket upgrade failed');
-            return new Response('Expected a WebSocket connection', { status: 400 });
-        }
-        return undefined;
-    },
-    websocket: {
-        message(ws, message) {
-            console.log(`[S] Received message from user ${ws.data.userId}:`, message);
-            return chatControllerInstance.handleMessage(ws, message as string);
-        },
-        open(ws) {
-            console.log(`[S] WebSocket connection opened for user ${ws.data.userId}`);
-            return chatControllerInstance.handleConnection(ws);
-        },
-        close(ws) {
-            console.log(`[S] WebSocket connection closed for user ${ws.data.userId}`);
-            return chatControllerInstance.handleDisconnection(ws);
-        },
-    },
-});
-
-console.log('WebSocket server running on port 1989');
+                                   status: 'ACTIVE',
+                               },
+                           });
+           
+                           for (const chat of activeChats) {
+                               const otherPartyId = userId === chat.userId ? chat.engineerId : chat.userId;
+                               const otherPartyOnline = this.connections.has(otherPartyId);
+           
+                               if (!otherPartyOnline) {
+                                   console.log(`[S] Closing chat ${chat.id} as the other party is offline`);
+                                   await this.prisma.chat.update({
+                                       where: { id: chat.id },
+                                       data: { status: 'CLOSED' },
+                                   });
+                                   this.closedChats.set(userId, { chatId: chat.id, closedAt: Date.now() });
+           
+                                   if (this.engineerChats.has(chat.engineerId)) {
+                                       this.engineerChats.get(chat.engineerId)?.delete(chat.id);
+                                   }
+                               }
+                           }
+                           this.disconnectTimeouts.delete(userId);
+                       } catch (error) {
+                           console.error('[S] Error in WebSocket close:', error);
+                       }
+                   }, DISCONNECT_TIMEOUT) as NodeJS.Timeout;
+           
+                   this.disconnectTimeouts.set(userId, timeout);
+               }
+           
+               async getEngineerChats(engineerId: number) {
+                   console.log(`[S] Fetching active chats for engineer ${engineerId}`);
+                   return await this.prisma.chat.findMany({
+                       where: {
+                           engineerId: engineerId,
+                           status: 'ACTIVE',
+                       },
+                       include: {
+                           user: {
+                               select: {
+                                   id: true,
+                                   username: true,
+                                   profilePicture: true,
+                               },
+                           },
+                           messages: {
+                               orderBy: {
+                                   createdAt: 'desc',
+                               },
+                               take: 1,
+                           },
+                       },
+                   });
+               }
+           }
+           
+           const chatControllerInstance = new ChatControllerClass();
+           
+           export const chatController = new Elysia({ prefix: '/chat' }).get(
+               '/engineer/:engineerId/chats',
+               async ({ params: { engineerId } }) => {
+                   return await chatControllerInstance.getEngineerChats(Number(engineerId));
+               }
+           );
+           
+           const wsServer = Bun.serve<WSData>({
+               port: 1989,
+               fetch(req, server) {
+                   const url = new URL(req.url);
+                   const userId = Number(url.pathname.split('/').pop());
+                   const reconnectionId = Number(url.searchParams.get('reconnectionId'));
+           
+                   if (isNaN(userId)) {
+                       console.log('Invalid user ID in WebSocket request');
+                       return new Response('Invalid user ID', { status: 400 });
+                   }
+           
+                   console.log(`[S] Incoming WebSocket connection request from user ${userId} with reconnectionId: ${reconnectionId}`);
+                   const upgraded = server.upgrade(req, { data: { userId, reconnectionId } });
+                   if (!upgraded) {
+                       console.log('WebSocket upgrade failed');
+                       return new Response('Expected a WebSocket connection', { status: 400 });
+                   }
+                   return undefined;
+               },
+               websocket: {
+                   message(ws, message) {
+                       console.log(`[S] Received message from user ${ws.data.userId}:`, message);
+                       return chatControllerInstance.handleMessage(ws, message as string);
+                   },
+                   open(ws) {
+                       console.log(`[S] WebSocket connection opened for user ${ws.data.userId}`);
+                       return chatControllerInstance.handleConnection(ws);
+                   },
+                   close(ws) {
+                       console.log(`[S] WebSocket connection closed for user ${ws.data.userId}`);
+                       return chatControllerInstance.handleDisconnection(ws);
+                   },
+               },
+           });
+           
+           console.log('WebSocket server running on port 1989');
