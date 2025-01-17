@@ -69,6 +69,125 @@ const getMatchedPartDetails = async (partName: string, partType: string, availab
 };
 
 export const AIService = {
+  async assessLaptop(laptopName: string, details?: string) {
+    const promptText = `
+    Given the following laptop name and optional details, provide an assessment of the laptop including specs, details, expected FPS on some popular games, and thermal performance.
+
+    Laptop Name: "${laptopName}"
+    Optional Details: "${details || 'No additional details provided'}"
+
+    The AI should:
+    1. Determine the specifications of the laptop, including CPU, GPU, RAM, storage, and display.
+    2. Evaluate the performance of the laptop, giving an overall performance rating out of 10, CPU rating out of 10 and GPU rating out of 10.
+    3. Estimate the average FPS on the following games at low, medium, high, and ultra settings:
+       - Cyberpunk 2077
+       - Red Dead Redemption 2
+       - Counter Strike 2
+       - Fortnite
+       - Call of Duty: Warzone
+    4. Rate the thermal performance of the laptop (e.g., Excellent, Good, Average, Poor) based on its hardware and design.
+    5. Provide an overall summary of the laptop's strengths and weaknesses.
+
+    The response should be structured in a JSON object with the following format:
+    {
+        "laptopName": "Laptop Name",
+        "specs": {
+            "cpu": "CPU Name",
+            "gpu": "GPU Name",
+            "ram": "RAM Amount and Type",
+            "storage": "Storage Type and Capacity",
+            "display": "Display Resolution and Refresh Rate"
+        },
+        "ratings": {
+          "overall": "Overall system rating (out of 10)",
+          "cpu": "CPU rating (out of 10)",
+          "gpu": "GPU rating (out of 10)",
+        },
+       "fps": {
+            "Cyberpunk 2077": {
+                "low": "FPS for low preset",
+                "medium": "FPS for medium preset",
+                "high": "FPS for high preset",
+                "ultra": "FPS for ultra preset"
+            },
+            "Red Dead Redemption 2": {
+                "low": "FPS for low preset",
+                "medium": "FPS for medium preset",
+                "high": "FPS for high preset",
+                "ultra": "FPS for ultra preset"
+            },
+             "Counter Strike 2": {
+                "low": "FPS for low preset",
+                "medium": "FPS for medium preset",
+                "high": "FPS for high preset",
+                "ultra": "FPS for ultra preset"
+            },
+             "Fortnite": {
+                "low": "FPS for low preset",
+                "medium": "FPS for medium preset",
+                "high": "FPS for high preset",
+                "ultra": "FPS for ultra preset"
+            },
+             "Call of Duty: Warzone": {
+                "low": "FPS for low preset",
+                "medium": "FPS for medium preset",
+                "high": "FPS for high preset",
+                "ultra": "FPS for ultra preset"
+            }
+        },
+        "thermalPerformance": "Thermal performance rating (e.g., Excellent, Good, Average, Poor)",
+        "summary": "Summary of laptop's strengths and weaknesses."
+    }
+
+    Ensure the response is a valid JSON object and does not contain any additional text or formatting outside the JSON object.
+  `;
+
+  const result = await handleAIResponse(promptText);
+  if (!result.success) return result;
+
+  // Ensure the FPS data is in the correct format
+  const fpsData = result.response.fps;
+  const formattedFpsData = {
+    "Cyberpunk 2077": {
+      low: parseInt(fpsData["Cyberpunk 2077"].low),
+      medium: parseInt(fpsData["Cyberpunk 2077"].medium),
+      high: parseInt(fpsData["Cyberpunk 2077"].high),
+      ultra: parseInt(fpsData["Cyberpunk 2077"].ultra),
+    },
+    "Red Dead Redemption 2": {
+      low: parseInt(fpsData["Red Dead Redemption 2"].low),
+      medium: parseInt(fpsData["Red Dead Redemption 2"].medium),
+      high: parseInt(fpsData["Red Dead Redemption 2"].high),
+      ultra: parseInt(fpsData["Red Dead Redemption 2"].ultra),
+    },
+    "Counter Strike 2": {
+      low: parseInt(fpsData["Counter Strike 2"].low),
+      medium: parseInt(fpsData["Counter Strike 2"].medium),
+      high: parseInt(fpsData["Counter Strike 2"].high),
+      ultra: parseInt(fpsData["Counter Strike 2"].ultra),
+    },
+    "Fortnite": {
+      low: parseInt(fpsData["Fortnite"].low),
+      medium: parseInt(fpsData["Fortnite"].medium),
+      high: parseInt(fpsData["Fortnite"].high),
+      ultra: parseInt(fpsData["Fortnite"].ultra),
+    },
+    "Call of Duty: Warzone": {
+      low: parseInt(fpsData["Call of Duty: Warzone"].low),
+      medium: parseInt(fpsData["Call of Duty: Warzone"].medium),
+      high: parseInt(fpsData["Call of Duty: Warzone"].high),
+      ultra: parseInt(fpsData["Call of Duty: Warzone"].ultra),
+    },
+  };
+
+  return {
+    success: true,
+    response: {
+      ...result.response,
+      fps: formattedFpsData,
+    },
+  };
+},
   async getAssemblyGuideAndImages(pcParts: { cpu: string; gpu: string; ram: string; motherboard: string; psu: string; case: string }) {
     const { cpu, gpu, ram, motherboard, psu, case: pcCase } = pcParts;
 

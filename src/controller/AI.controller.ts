@@ -157,3 +157,17 @@ export const AIController = new Elysia()
             }),
         }
     )
+    .post(
+        '/assesslaptop',
+        async ({ body }: { body: { laptopName: string, details?: string} }) => {
+            const { laptopName, details } = body;
+            const result = await AIService.assessLaptop(laptopName, details);
+            return result;
+        },
+        {
+          body: t.Object({
+            laptopName: t.String(),
+            details: t.Optional(t.String())
+          })
+        }
+    )
