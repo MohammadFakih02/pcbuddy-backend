@@ -61,7 +61,7 @@ export class ComputerService {
       select: {
         id: true,
         name: true,
-        wattage:true,
+        wattage: true,
       },
     });
   }
@@ -90,7 +90,7 @@ export class ComputerService {
       parts.gpuId ? prisma.gpu.findUnique({ where: { id: parts.gpuId }, select: { price: true } }) : Promise.resolve(null),
       parts.memoryId ? prisma.memory.findUnique({ where: { id: parts.memoryId }, select: { price: true } }) : Promise.resolve(null),
       parts.storageId ? prisma.storage.findUnique({ where: { id: parts.storageId }, select: { price: true } }) : Promise.resolve(null),
-      parts.storageId2 ? prisma.storage.findUnique({ where: { id: parts.storageId2 }, select: { price: true } }) : Promise.resolve(null), // Second storage
+      parts.storageId2 ? prisma.storage.findUnique({ where: { id: parts.storageId2 }, select: { price: true } }) : Promise.resolve(null),
       parts.motherboardId ? prisma.motherboard.findUnique({ where: { id: parts.motherboardId }, select: { price: true } }) : Promise.resolve(null),
       parts.powerSupplyId ? prisma.powerSupply.findUnique({ where: { id: parts.powerSupplyId }, select: { price: true } }) : Promise.resolve(null),
       parts.caseId ? prisma.case.findUnique({ where: { id: parts.caseId }, select: { price: true } }) : Promise.resolve(null),
@@ -113,11 +113,14 @@ export class ComputerService {
     rating?: number | null;
   }) {
     const totalPrice = await this.calculateTotalPrice(parts);
-  
+
     const existingPC = await prisma.personalPC.findFirst({
       where: { userId },
     });
-  
+
+    // Increment usageCount for each part used in the build
+    await this.incrementUsageCount(parts);
+
     let pc;
     if (existingPC) {
       pc = await prisma.personalPC.update({
@@ -154,10 +157,44 @@ export class ComputerService {
         },
       });
     }
-  
+
     return pc;
   }
 
+  private async incrementUsageCount(parts: {
+    cpuId?: number | null;
+    gpuId?: number | null;
+    memoryId?: number | null;
+    storageId?: number | null;
+    storageId2?: number | null;
+    motherboardId?: number | null;
+    powerSupplyId?: number | null;
+    caseId?: number | null;
+  }) {
+    const incrementPartUsage = async (model: string, id: number | null | undefined) => {
+      if (id) {
+        await (prisma as any)[model].update({
+          where: { id },
+          data: {
+            usageCount: {
+              increment: 1,
+            },
+          },
+        });
+      }
+    };
+
+    await Promise.all([
+      incrementPartUsage('cpu', parts.cpuId),
+      incrementPartUsage('gpu', parts.gpuId),
+      incrementPartUsage('memory', parts.memoryId),
+      incrementPartUsage('storage', parts.storageId),
+      incrementPartUsage('storage', parts.storageId2),
+      incrementPartUsage('motherboard', parts.motherboardId),
+      incrementPartUsage('powerSupply', parts.powerSupplyId),
+      incrementPartUsage('case', parts.caseId),
+    ]);
+  }
   async updatePCRating(userId: number, pcId: number, rating: number) {
     const pc = await prisma.personalPC.findFirst({
       where: { id: pcId, userId },
