@@ -1,0 +1,317 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              Int          @id @default(autoincrement())
+  username        String       @unique
+  email           String       @unique
+  role            Role         @default(USER)
+  profilePicture  String?
+  banned          Boolean      @default(false)
+  password        String
+  createdAt       DateTime     @default(now())
+  lastLogin       DateTime?
+  personalPCs     PersonalPC[]
+  name            String?
+  bio             String?
+  adminLogs       AdminLog[]   @relation("AdminActions")
+  userLogs        AdminLog[]   @relation("UserActions")
+  chatsAsUser     Chat[]       @relation("ChatsAsUser")
+  chatsAsEngineer Chat[]       @relation("ChatsAsEngineer")
+  isOnline        Boolean      @default(false)
+  messages        Message[]
+  prebuiltPCs     PrebuiltPC[]  @relation
+}
+
+model Chat {
+  id          Int        @id @default(autoincrement())
+  userId      Int
+  engineerId  Int
+  createdAt   DateTime   @default(now())
+  status      ChatStatus @default(ACTIVE)
+  lastActivityAt DateTime @default(now())
+  messages    Message[]
+  user        User       @relation(fields: [userId], references: [id], name: "ChatsAsUser")
+  engineer    User       @relation(fields: [engineerId], references: [id], name: "ChatsAsEngineer")
+  reported    Boolean    @default(false)
+}
+
+enum ChatStatus {
+  ACTIVE
+  CLOSED
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  chatId    Int
+  senderId  Int
+  content   String
+  createdAt DateTime @default(now())
+  chat      Chat     @relation(fields: [chatId], references: [id])
+  sender    User     @relation(fields: [senderId], references: [id])
+}
+
+enum Role {
+  USER
+  ENGINEER
+  ADMIN
+}
+
+model PersonalPC {
+  id            Int           @id @default(autoincrement())
+  userId        Int
+  user          User          @relation(fields: [userId], references: [id])
+  cpuId         Int?
+  gpuId         Int?
+  memoryId      Int?
+  motherboardId Int?
+  powerSupplyId Int?
+  storageId     Int?
+  storageId2    Int?          
+  caseId        Int?
+  cpu           Cpu?          @relation(fields: [cpuId], references: [id])
+  gpu           Gpu?          @relation(fields: [gpuId], references: [id])
+  memory        Memory?       @relation(fields: [memoryId], references: [id])
+  motherboard   Motherboard?  @relation(fields: [motherboardId], references: [id])
+  powerSupply   PowerSupply?  @relation(fields: [powerSupplyId], references: [id])
+  storage       Storage?      @relation(name: "PrimaryStorage", fields: [storageId], references: [id])
+  storage2      Storage?      @relation(name: "SecondaryStorage", fields: [storageId2], references: [id])
+  case          Case?         @relation(fields: [caseId], references: [id])
+  totalPrice    Float?        @default(0)
+  buildName     String?
+  rating        Float?
+  updatedAt     DateTime      @updatedAt
+  buildStatus   BuildStatus   @default(COMPLETED)
+  usageCount    Int?          @default(0)
+  addToProfile  Boolean       @default(false)
+}
+enum BuildStatus {
+  COMPLETED
+  IN_PROGRESS
+  SAVED
+}
+
+ model AdminLog {
+     id          Int      @id @default(autoincrement())
+     action      String
+     adminId     Int
+     admin       User     @relation("AdminActions", fields: [adminId], references: [id])
+     userId      Int?
+     user        User?    @relation("UserActions", fields: [userId], references: [id])
+     createdAt   DateTime @default(now())
+     details     String?
+ }
+
+model Cpu {
+  id                        Int      @id @default(autoincrement())
+  name                      String
+  imageUrl                  String?
+  productUrl                String?
+  price                     Float?
+  manufacturer              String?
+  series                    String?
+  microarchitecture         String?
+  socket                    String?
+  coreCount                 Int?
+  performanceCoreClock      Float?
+  performanceCoreBoostClock Float?
+  efficiencyCoreClock       Float?
+  efficiencyCoreBoostClock  Float?
+  l2Cache                   String?
+  l3Cache                   String?
+  tdp                       Int?
+  integratedGraphics        String?
+  maxSupportedMemory        Float?
+  simultaneousMultithreading Boolean?
+  usageCount                Int?     @default(0)
+  personalPCs               PersonalPC[]
+    prebuiltPCs         PrebuiltPC[]
+}
+
+model Gpu {
+  id                     Int      @id @default(autoincrement())
+  name                   String
+  imageUrl               String?
+  productUrl             String?
+  price                  Float?
+  manufacturer           String?
+  partNumber             String?
+  chipset                String?
+  memory                 Float?
+  memoryType             String?
+  coreClock              String?
+  boostClock             String?
+  effectiveMemoryClock   String?
+  color                  String?
+  frameSync              String?
+  length                 Float?
+  tdp                    Int?
+  caseExpansionSlotWidth Int?
+  totalSlotWidth         Int?
+  externalPower          String?
+  usageCount             Int?     @default(0)
+  personalPCs            PersonalPC[]
+   prebuiltPCs           PrebuiltPC[]
+}
+
+model Memory {
+  id                 Int      @id @default(autoincrement())
+  name               String
+  imageUrl           String?
+  productUrl         String?
+  price              Float?
+  manufacturer       String?
+  speed              String?
+  modules            String?
+  pricePerGb         Float?
+  color              String?
+  firstWordLatency   Float?
+  casLatency         Float?
+  voltage            Float?
+  timing             String?
+  heatSpreader       Boolean?
+  usageCount         Int?     @default(0)
+  personalPCs        PersonalPC[]
+   prebuiltPCs       PrebuiltPC[]
+}
+
+model Storage {
+  id           Int      @id @default(autoincrement())
+  name         String
+  type         String?
+  imageUrl     String?
+  productUrl   String?
+  price        Float?
+  manufacturer String?
+  capacity     Float?
+  cache        String?
+  formFactor   String?
+  usageCount   Int?     @default(0)
+    PrimaryPC PersonalPC[] @relation(name: "PrimaryStorage")
+     SecondaryPC PersonalPC[] @relation(name: "SecondaryStorage")
+      PrebuiltPrimary PrebuiltPC[] @relation(name: "PrebuiltPrimaryStorage")
+      PrebuiltSecondary PrebuiltPC[] @relation(name: "PrebuiltSecondaryStorage")
+}
+
+model Motherboard {
+  id                   Int      @id @default(autoincrement())
+  name                 String
+  imageUrl             String?
+  productUrl           String?
+  price                Float?
+  manufacturer         String?
+  chipset              String?
+  memoryMax            Int?
+  memoryType           String?
+  memorySlots          Int?
+  memorySpeed          String?
+  pcieX16Slots         Int?
+  m2Slots              String?
+  sata6Gbps            Int?
+  onboardEthernet      String?
+  usb20Headers         Int?
+  usb32Gen1Headers     Int?
+  usb32Gen2Headers     Int?
+  usb32Gen2x2Headers   Int?
+  wirelessNetworking   String?
+  socket               String?
+  formFactor           String?
+  usageCount           Int?     @default(0)
+  personalPCs          PersonalPC[]
+   prebuiltPCs          PrebuiltPC[]
+}
+
+model PowerSupply {
+  id                              Int      @id @default(autoincrement())
+  name                            String
+  imageUrl                        String?
+  productUrl                      String?
+  price                           Float?
+  type                            String?
+  efficiency                      String?
+  wattage                         Int?
+  modular                         Boolean?
+  color                           String?
+  manufacturer                    String?
+  partNumber                      String?
+  length                          Float?
+  atx4PinConnectors               Int?
+  eps8PinConnectors               Int?
+  pcie12Plus4Pin12VHPWRConnectors Int?
+  pcie12PinConnectors             Int?
+  pcie8PinConnectors              Int?
+  pcie6Plus2PinConnectors         Int?
+  pcie6PinConnectors              Int?
+  sataConnectors                  Int?
+  molex4PinConnectors             Int? 
+  usageCount                      Int?     @default(0)
+  personalPCs                     PersonalPC[]
+    prebuiltPCs                    PrebuiltPC[]
+}
+
+model Case {
+  id                    Int      @id @default(autoincrement())
+  name                  String
+  imageUrl              String?
+  productUrl            String?
+  price                 Float?
+  manufacturer          String?
+  partNumber            String?
+  type                  String?
+  color                 String?
+  powerSupply           String?
+  sidePanel             String?
+  powerSupplyShroud     Boolean?
+  frontPanelUsb         String?
+  motherboardFormFactor String?
+  maxVideoCardLength    Float?
+  driveBays             String?
+  expansionSlots        String?
+  dimensions            String?
+  usageCount            Int?     @default(0)
+  personalPCs           PersonalPC[]
+  prebuiltPCs          PrebuiltPC[]
+}
+
+model Game {
+  id            Int      @id @default(autoincrement())
+  name          String   @unique
+  memory        Float?
+  graphicsCard  String?
+  cpu           String?
+  fileSize      Float?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model PrebuiltPC {
+    id        Int      @id @default(autoincrement())
+    engineerId   Int
+    engineer      User       @relation(fields: [engineerId], references: [id])
+    cpuId       Int?
+    gpuId       Int?
+    memoryId    Int?
+    motherboardId Int?
+    powerSupplyId Int?
+    storageId   Int?
+    storageId2   Int?
+    caseId      Int?
+    cpu         Cpu?          @relation(fields: [cpuId], references: [id])
+    gpu         Gpu?          @relation(fields: [gpuId], references: [id])
+    memory      Memory?       @relation(fields: [memoryId], references: [id])
+    motherboard   Motherboard?  @relation(fields: [motherboardId], references: [id])
+    powerSupply   PowerSupply?  @relation(fields: [powerSupplyId], references: [id])
+     storage       Storage?      @relation(name: "PrebuiltPrimaryStorage", fields: [storageId], references: [id])
+     storage2      Storage?      @relation(name: "PrebuiltSecondaryStorage", fields: [storageId2], references: [id])
+    case          Case?         @relation(fields: [caseId], references: [id])
+    totalPrice   Float?        @default(0)
+    createdAt   DateTime @default(now())
+   updatedAt  DateTime @updatedAt
+    rating       Float?
+}
