@@ -37,7 +37,6 @@ class ChatControllerClass {
     }
 
     async findAvailableEngineer() {
-        console.log('Finding available engineer...');
         const engineers = await this.prisma.user.findMany({
             where: {
                 role: 'ENGINEER',
@@ -54,23 +53,19 @@ class ChatControllerClass {
 
         for (const engineer of engineers) {
             if (engineer.chatsAsEngineer.length < MAX_CHATS_PER_ENGINEER) {
-                console.log(`Found available engineer: ${engineer.id}`);
                 return engineer;
             }
         }
 
-        console.log('No available engineers found.');
         return null;
     }
 
     async handleMessage(ws: ServerWebSocket<WSData>, message: string) {
-        console.log(`[S] Handling message:`, message);
         try {
             const data: WSMessage = JSON.parse(message);
             const userId = ws.data.userId;
     
             if (data.type === 'message' && data.chatId) {
-                console.log(`[S] User ${userId} sent a message to chat ${data.chatId}: ${data.content}`);
                 await this.prisma.message.create({
                     data: {
                         content: data.content,
@@ -89,7 +84,6 @@ class ChatControllerClass {
                     const recipientWs = this.connections.get(recipientId);
     
                     if (recipientWs) {
-                        console.log(`[S] Forwarding message to recipient ${recipientId}`);
                         recipientWs.send(
                             JSON.stringify({
                                 type: 'message',
@@ -100,11 +94,9 @@ class ChatControllerClass {
                             })
                         );
                     } else {
-                        console.log(`[S] Recipient ${recipientId} is not connected`);
                     }
                 }
             } else if (data.type === 'switch_chat' && data.chatId) {
-                console.log(`[S] User ${userId} switched to chat ${data.chatId}`);
                 const chat = await this.prisma.chat.findUnique({
                     where: { id: data.chatId },
                     include: { user: true, engineer: true },
@@ -155,7 +147,6 @@ class ChatControllerClass {
     async handleConnection(ws: ServerWebSocket<WSData>) {
         const userId = ws.data.userId;
         const reconnectionId = ws.data.reconnectionId;
-        console.log(`[S] User ${userId} connected with reconnectionId: ${reconnectionId}`);
         try {
             this.connections.set(userId, ws);
 
@@ -169,7 +160,6 @@ class ChatControllerClass {
             });
 
             if (user?.role === 'USER') {
-                console.log(`[S] User ${userId} is a regular user`);
                 const existingChat = await this.prisma.chat.findFirst({
                     where: {
                         userId: userId,
@@ -181,11 +171,9 @@ class ChatControllerClass {
                 });
 
                 if (existingChat) {
-                    console.log(`[S] User ${userId} has an existing chat with engineer ${existingChat.engineerId}`);
                     const engineer = existingChat.engineer;
                     const engineerOnline = this.connections.has(engineer.id);
                     if (reconnectionId && this.reconnectionMap.has(userId) && this.reconnectionMap.get(userId) === reconnectionId) {
-                        console.log(`[S] User ${userId} is reconnecting with the same reconnection ID: ${reconnectionId}`);
                         const timeout = this.disconnectTimeouts.get(userId);
                         if (timeout) {
                             clearTimeout(timeout);
@@ -193,7 +181,6 @@ class ChatControllerClass {
                         }
                         const closedChatInfo = this.closedChats.get(userId);
                         if (closedChatInfo && (Date.now() - closedChatInfo.closedAt) < DISCONNECT_TIMEOUT) {
-                            console.log(`[S] Reactivating chat ${closedChatInfo.chatId} for user ${userId}`);
                             await this.prisma.chat.update({
                                 where: { id: closedChatInfo.chatId },
                                 data: { status: 'ACTIVE' },
@@ -237,7 +224,6 @@ class ChatControllerClass {
 
 
                     if (engineerOnline) {
-                        console.log(`[S] Engineer ${engineer.id} is online, reconnecting user ${userId}`);
                         ws.send(
                             JSON.stringify({
                                 type: 'status',
@@ -277,7 +263,6 @@ class ChatControllerClass {
                 const availableEngineer = await this.findAvailableEngineer();
 
                 if (availableEngineer) {
-                    console.log(`[S] Assigning user ${userId} to engineer ${availableEngineer.id}`);
                     const chat = await this.prisma.chat.create({
                         data: {
                             userId: userId,
@@ -309,8 +294,6 @@ class ChatControllerClass {
                             })
                         );
                     }
-                } else {
-                    console.log(`[S] No available engineers for user ${userId}`);
                 }
             }
         } catch (error) {
@@ -321,7 +304,6 @@ class ChatControllerClass {
 
     async handleDisconnection(ws: ServerWebSocket<WSData>) {
         const userId = ws.data.userId;
-        console.log(`[S] User ${userId} disconnected`);
 
         const timeout = setTimeout(async () => {
             try {
@@ -344,7 +326,6 @@ class ChatControllerClass {
                                const otherPartyOnline = this.connections.has(otherPartyId);
            
                                if (!otherPartyOnline) {
-                                   console.log(`[S] Closing chat ${chat.id} as the other party is offline`);
                                    await this.prisma.chat.update({
                                        where: { id: chat.id },
                                        data: { status: 'CLOSED' },
@@ -366,7 +347,6 @@ class ChatControllerClass {
                }
            
                async getEngineerChats(engineerId: number) {
-                   console.log(`[S] Fetching active chats for engineer ${engineerId}`);
                    return await this.prisma.chat.findMany({
                        where: {
                            engineerId: engineerId,
@@ -408,29 +388,23 @@ class ChatControllerClass {
                    const reconnectionId = Number(url.searchParams.get('reconnectionId'));
            
                    if (isNaN(userId)) {
-                       console.log('Invalid user ID in WebSocket request');
                        return new Response('Invalid user ID', { status: 400 });
                    }
            
-                   console.log(`[S] Incoming WebSocket connection request from user ${userId} with reconnectionId: ${reconnectionId}`);
                    const upgraded = server.upgrade(req, { data: { userId, reconnectionId } });
                    if (!upgraded) {
-                       console.log('WebSocket upgrade failed');
                        return new Response('Expected a WebSocket connection', { status: 400 });
                    }
                    return undefined;
                },
                websocket: {
                    message(ws, message) {
-                       console.log(`[S] Received message from user ${ws.data.userId}:`, message);
                        return chatControllerInstance.handleMessage(ws, message as string);
                    },
                    open(ws) {
-                       console.log(`[S] WebSocket connection opened for user ${ws.data.userId}`);
                        return chatControllerInstance.handleConnection(ws);
                    },
                    close(ws) {
-                       console.log(`[S] WebSocket connection closed for user ${ws.data.userId}`);
                        return chatControllerInstance.handleDisconnection(ws);
                    },
                },
